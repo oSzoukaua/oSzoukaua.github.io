@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>oSzoukaua's: Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      background: #000;
+      font-family: 'PT Mono', monospace;
+      font-size: 3.6vw;
+      line-height: 3.9vw;
+      text-transform: uppercase;
+    }
+
+    main {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    section {
+      border-left: 0.2vw solid;
+    }
+
+    section.output_section { border-image: linear-gradient(180deg, #000, #56463F); color: #938782; border-image-slice: 1; }
+    section.internal_section { border-image: linear-gradient(180deg, #000, #a8a8a8); color: #84898E; border-image-slice: 1; }
+    section.promote_section { border-left-color: #353C3F; color: #000; background: linear-gradient(90deg, #232328, #000); }
+    section.lucky_section { border-left-color: #5B4C00; color: #AF9200; background: linear-gradient(90deg, #191500, #000); }
+    section.support_section { border-left-color: #5B0030; color: #A80059; background: linear-gradient(90deg, #2D0018, #000); }
+	section.motd_section { border-left-color: #003838; color: #00cccc; background: linear-gradient(90deg, #002121, #000); }
+	section.legal_section { border-image: linear-gradient(180deg, #003326, #000); color: #004C38; border-image-slice: 1; background: linear-gradient(90deg, #000A07, #000); }
+    section.countdown_section { border-image: linear-gradient(180deg, #191919, #000); color: #191919; border-image-slice: 1; }
+    section.external_section { border-image: linear-gradient(180deg, #4B4556, #000); color: #716E7A; border-image-slice: 1; }
+    section.edge_section { border-image: linear-gradient(180deg, #999999, #000); color: #8E8E8E; border-image-slice: 1; }
+
+    .row {
+      display: flex;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      padding-left: 1vw;
+    }
+
+    .left {
+      flex-shrink: 0;
+      width: 6ch;
+      font-size: 1.5vw;
+      line-height: 1.5;
+    }
+
+    .right {
+      overflow-x: auto;
+	  overflow-y: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+    }
+
+.ageModal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10000;
+  color: white;
+  font-family: 'PT Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 4vw;
+  text-align: center;
+  font-size: 2vw;
+  overflow: hidden;
+  backdrop-filter: blur(0.6vw);
+  max-height: 90vh; /* Limit height to 90% of viewport height */
+}
+
+.ageModal > div {
+  max-width: 60vw;
+  line-height: 1.6;
+  margin-bottom: 2vw;
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds max-height */
+  max-height: 80vh; /* Limit height of the content box to 80% of viewport height */
+}
+
+.ageModal > button {
+  margin-top: 2vw;
+  padding: 1vw 3vw;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  font-size: 1.5vw;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  border: 0.1vw solid transparent;
+}
+
+.ageModal > button:hover {
+  background-color: transparent;
+  color: #fff;
+  border-color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ageModal {
+    font-size: 4vw;
+    padding: 6vw;
+  }
+
+  .ageModal > div {
+    max-width: 80vw;
+  }
+
+  .ageModal > button {
+    font-size: 3vw;
+    padding: 2vw 5vw;
+  }
+}
+
+
+
+    @media (max-width: 500px) {
+      html, body {
+        font-size: 6vw;
+      }
+
+      .left {
+        font-size: 4vw;
+      }
+
+      .row {
+        padding: 1.5vw 2vw;
+      }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 0.3vw;
+	  height: 0.3vw;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 0.25vw;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="output_section" id="output_section"></section>
+    <section class="internal_section" id="internal_section"></section>
+    <section class="promote_section" id="promote_section"></section>
+    <section class="lucky_section" id="lucky_section"></section>
+    <section class="support_section" id="support_section"></section>
+	<section class="motd_section" id="motd_section"></section>
+	<section class="legal_section" id="legal_section"></section>
+    <section class="countdown_section" id="countdown_section"></section>
+    <section class="external_section" id="external_section"></section>
+    <section class="edge_section" id="edge_section"></section>
+  </main>
+
+  <div class="ageModal" id="ageModal">
+    <div>
+      This site contains content aimed at people aged 18 and older. By pressing "AGREE", you confirm that you are at least 18 years old and consent to viewing content intended for adults.
+    </div>
+    <button id="ageConfirmBtn">AGREE</button>
+  </div>
+
+  <script>
+	      const centerNumber = 2753;
+		  
+		  
+		  // Things i have produced/assisted in producing
+		  const output_section = [
+			{ title: "Lucky Blocks", url: "https://modrinth.com/datapack/oszoukauas-lb" },
+			{ title: "Realistic Spiders", url: "https://modrinth.com/datapack/oszoukauas-realistic-spiders" },
+			{ title: "No Water & Fog", url: "https://modrinth.com/resourcepack/oszoukauas-no-water-fog" },
+			{ title: "Reduce Villagers", url: "https://modrinth.com/resourcepack/mute-villagers" },
+			{ title: "Bee Small", url: "https://modrinth.com/datapack/oszoukauas-bee-small" },
+			{ title: "Re-place!", url: "https://modrinth.com/datapack/oszoukauas-re-place!" },
+			{ title: "Lush World", url: "https://modrinth.com/resourcepack/oszoukauas-lush-world" },
+			{ title: "Floating Damage", url: "https://modrinth.com/datapack/oszoukauas-floating-damage" },
+			{ title: "Animated Potions", url: "https://modrinth.com/resourcepack/animated-potions" },
+			{ title: "Sleek Crosshair!", url: "https://modrinth.com/resourcepack/oszouakuas-sleep-crosshair!" },
+			{ title: "Tool Guard", url: "https://modrinth.com/datapack/oszoukauas-tool-guard" },
+			{ title: "Slimy Honey!", url: "https://modrinth.com/datapack/oszoukauas-slimy-honey!" },
+			{ title: "Real Height", url: "https://modrinth.com/datapack/oszoukauas-real-height" },
+			{ title: "Totem HUD overlays", url: "https://modrinth.com/resourcepack/oszoukauas-totem-hud-overlay" },
+			{ title: "Carpet Thickness", url: "https://modrinth.com/resourcepack/thinner-carpets" },
+			{ title: "Better Blended Creepers", url: "https://modrinth.com/resourcepack/better-blended-creepers" },
+			{ title: "Infini-Slime", url: "https://modrinth.com/datapack/oszoukauas-infinislime" },
+			{ title: "No loss XP", url: "https://modrinth.com/datapack/oszoukauas-no-loss-xp" },
+			{ title: "Book o' Experience", url: "https://modrinth.com/datapack/oszoukauas-book-o-experience" },
+			{ title: "XP is Bottles!", url: "https://modrinth.com/datapack/oszoukauas-xp-is-bottles!" },
+			{ title: "Invisiward", url: "https://modrinth.com/datapack/oszoukauas-invisiward" },
+			{ title: "Dynamic Sleek Crosshair!", url: "https://modrinth.com/resourcepack/oszouakuas-dynamic-sleek-crosshair!" },
+			{ title: "Visible importance", url: "https://modrinth.com/resourcepack/visible-importance" },
+			{ title: "Reduced Petals", url: "https://modrinth.com/resourcepack/oszoukauas-reduced-petals" },
+			{ title: "Burn you!", url: "https://modrinth.com/datapack/oszoukauas-burn-you!" },
+			{ title: "Items don't last", url: "https://modrinth.com/datapack/oszoukauas-items-dont-last" },
+			{ title: "Softcore", url: "https://modrinth.com/datapack/oszoukauas-softcore" },
+			{ title: "Just DYE already!", url: "https://modrinth.com/datapack/oszoukauas-just-dye-already!" },
+			{ title: "Pure Map", url: "https://modrinth.com/resourcepack/oszoukauas-pure-map" },
+			{ title: "Cerulean Wisp", url: "https://modrinth.com/datapack/oszoukauas-cerulean-wisp" },
+			{ title: "Bottles are crafted!", url: "https://modrinth.com/datapack/oszoukauas-bottles-are-crafted!" },
+			{ title: "Bottles are crafted!", url: "https://modrinth.com/datapack/oszoukauas-bottles-are-crafted!" },
+			{ title: "Pillaging Friends!", url: "https://modrinth.com/datapack/oszoukauas-pillaging-friends!" },
+			{ title: "Leave Leaves", url: "https://modrinth.com/resourcepack/oszoukauas-leave-leaves" },
+			{ title: "Square Shadows", url: "https://modrinth.com/resourcepack/oszoukauas-square-shadows" },
+			{ title: "Super Sprint", url: "https://modrinth.com/datapack/oszoukauas-super-sprint" },
+			{ title: "Alt-Craft", url: "https://modrinth.com/resourcepack/oszoukauas-alt-craft" },
+			{ title: "Chicken Jockey!", url: "https://modrinth.com/datapack/oszoukauas-chicken-jockey!" },
+			{ title: "Get Down!", url: "https://modrinth.com/datapack/oszoukauas-get-down!" },
+			{ title: "Bluesky post 18", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lniulninh22a" },
+			{ title: "Bluesky post 17", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lnbq3qz3uk2l" },
+			{ title: "Bluesky post 16", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lmnttmn6tk2h" },
+			{ title: "Bluesky post 15", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lm5mnbycus2g" },
+			{ title: "Bluesky post 14", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3ljd64dzfv22z" },
+			{ title: "Bluesky post 13", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3ljd5seuw3c2z" },
+			{ title: "Bluesky post 12", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lg7nlxx34k2d" },
+			{ title: "Bluesky post 11", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lg4x7ymlnc2v" },
+			{ title: "Bluesky post 10", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3leq3ep5bos22" },
+			{ title: "Bluesky post 9", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lekcrirf422j" },
+			{ title: "Bluesky post 8", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3led75zajws2z" },
+			{ title: "Bluesky post 7", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lecpwvte6c2s" },
+			{ title: "Bluesky post 6", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lecehhtsgs2d" },
+			{ title: "Bluesky post 5", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3leacxjeemc2p" },
+			{ title: "Bluesky post 4", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3lea7kp4uyk2o" },
+			{ title: "Bluesky post 3", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3le63jvshgk2x" },
+			{ title: "Bluesky post 2", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3le5ipu6ghc2j" },
+			{ title: "Bluesky post 1", url: "https://bsky.app/profile/oszoukaua.bsky.social/post/3le5h6zklfs2o" },
+			{ title: "Minecraft ATM 10 - No Crafting - Raw Vod.1", url: "https://www.youtube.com/watch?v=4A9TwEE9Gi0" },
+			{ title: "Minecraft ATM 10 - No Crafting - Raw Vod.2", url: "https://www.youtube.com/watch?v=stPTtzzdnic" },
+			{ title: "Minecraft ATM 10 - No Crafting - Raw Vod.3", url: "https://www.youtube.com/watch?v=D-XPOzVvpmM" },
+			{ title: "Minecraft ATM 10 - No Crafting - Raw Vod.4", url: "https://www.youtube.com/watch?v=9o588xpJ3xA" },
+			{ title: "Minecraft ATM 10 - No Crafting - Raw Vod.5", url: "https://www.youtube.com/watch?v=kvxR6sv7rrA" },
+			{ title: "Drawing Stickers! Sticker 20 - A Can of Beans!", url: "https://www.youtube.com/shorts/eZtWoBmkHz4" },
+			{ title: "Drawing Stickers! Sticker 19 - A Flamingo!", url: "https://www.youtube.com/shorts/jgqrK39qecU" },
+			{ title: "Drawing Stickers! Sticker 18 - A Pill Bottle!", url: "https://www.youtube.com/shorts/FjdC_r6aVMQ" },
+			{ title: "Drawing Stickers! Sticker 17 - A Stop Sign!", url: "https://www.youtube.com/shorts/mqpRgPVduAU" },
+			{ title: "Drawing Stickers! Sticker 16 - A Pillow!", url: "https://www.youtube.com/shorts/TCWmgjYeY-M" },
+			{ title: "Drawing Stickers! Sticker 15 - A Box!", url: "https://www.youtube.com/shorts/6mx2aTQRP6o" },
+			{ title: "Drawing Stickers! Sticker 14 - A Paperclip!", url: "https://www.youtube.com/shorts/KIOMt7Reazc" },
+			{ title: "Drawing Stickers! Sticker 13 - A Cheese Wheel!", url: "https://www.youtube.com/shorts/kGWuWxJUQEU" },
+			{ title: "Drawing Stickers! Sticker 12 - A Trafic cone!", url: "https://www.youtube.com/shorts/4BFm5HTs8oM" },
+			{ title: "Drawing Stickers! Sticker 11 - A Toaster!", url: "https://www.youtube.com/shorts/OPqYDCVwboE" },
+			{ title: "Drawing Stickers! Sticker 10 - A Cake!", url: "https://www.youtube.com/shorts/_-PgnkcU7Mg" },
+			{ title: "Drawing Stickers! Sticker 9 - A Circle!", url: "https://www.youtube.com/shorts/Zy4zyPthn_E" },
+			{ title: "Drawing Stickers! Sticker 8 - A Skull!", url: "https://www.youtube.com/shorts/McbvOixEzDc" },
+			{ title: "Drawing Stickers! Sticker 7 - A Mouth!", url: "https://www.youtube.com/shorts/7wKf-QNmKBc" },
+			{ title: "Drawing Stickers! Sticker 6 - A heart!", url: "https://www.youtube.com/shorts/4Zv_TNERsAo" },
+			{ title: "Drawing Stickers! Sticker 5 - Radiation Warning!", url: "https://www.youtube.com/shorts/gWcjwZMw_Mk" },
+			{ title: "Drawing Stickers! Sticker 4 - a Battery!", url: "https://www.youtube.com/shorts/IEkjNId-dAM" },
+			{ title: "Drawing Stickers! Sticker 3 - a watermelon!", url: "https://www.youtube.com/shorts/Uhph_HCuciY" },
+			{ title: "Drawing Stickers! Sticker 2 - Ice-cream popsicle!", url: "https://www.youtube.com/shorts/1JTl6gFXEgE" },
+			{ title: "Drawing Stickers! Sticker 1 - a paw!", url: "https://www.youtube.com/shorts/PyOsvRc3Lq4" },
+			{ title: "Drawing Stickers! Sticker 0 - a frog!", url: "https://www.youtube.com/shorts/JMuvlrqBKhA" },
+			{ title: "oSzoukaua's: Smazzers", url: "https://www.youtube.com/watch?v=JOBuJ7az0gQ" },
+			{ title: "oSzoukaua's: Bing-Bop Rev 2", url: "https://www.youtube.com/watch?v=ft5kFEY0CDM" },
+			{ title: "oSzoukaua's: Bing-Bop", url: "https://www.youtube.com/watch?v=JgUuMbeLxLE" },
+			{ title: "oSzoukaua's: Smaz", url: "https://www.youtube.com/watch?v=V3vdMTGPlVQ" },
+			{ title: "Snapshot 25w10a Overview", url: "https://www.youtube.com/shorts/JPZfm790dvM" },
+			{ title: "Update 1.21.4 Overview", url: "https://www.youtube.com/shorts/cOR8NC2VWkg" },
+			{ title: "Pre-Release 1.21.4 C3 Overview", url: "https://www.youtube.com/shorts/EpeIJ4YZZvs" },
+			{ title: "Snapshot 24w44a Overview", url: "https://www.youtube.com/shorts/XLOUSqXJQdw" },
+			{ title: "1.21.2 Pre-Release 1 Overview", url: "https://www.youtube.com/shorts/HVUA7LASDsc" },
+			{ title: "Snapshot 24w40a Overview", url: "https://www.youtube.com/shorts/uGnRM11Qi0k" },
+			{ title: "Snapshot 24w39a Overview", url: "https://www.youtube.com/shorts/qtiaynPJfY4" },
+			{ title: "Snapshot 24w38a Overview", url: "https://www.youtube.com/shorts/PKi_yhtu7kg" },
+			{ title: "Snapshot 24w37a Overview", url: "https://www.youtube.com/shorts/9As0rXfhGRU" },
+			{ title: "Snapshot 24w36a Overview", url: "https://www.youtube.com/shorts/PV8fiGpVrxc" },
+			{ title: "Snapshot 24w35a Overview", url: "https://www.youtube.com/shorts/rs0_QBEYNP0" },
+			{ title: "Chicken Jockey Datapack", url: "https://www.youtube.com/shorts/89VxH1_ZUCo" },
+			{ title: "New Free Phone Wallpapers!", url: "https://www.youtube.com/shorts/Wp7dhVdLML0" },
+			{ title: "Drawing Frogules - because im morbidly bored", url: "https://www.youtube.com/shorts/Ay00Is8116E" },
+			{ title: "Re-drawing the Drooling Emoji", url: "https://www.youtube.com/shorts/cMMAL8lBKFI" },
+			{ title: "Re-drawing the Winking Emoji", url: "https://www.youtube.com/shorts/OoDvgb6gZso" },
+			{ title: "Vengeance of She. - Ryutqc - Animation meme 2 electric boogaloo", url: "https://www.youtube.com/shorts/rhz5Wn2VelE" },
+			{ title: "Regret", url: "https://www.youtube.com/shorts/sXnsLxtD2uE" },
+			{ title: "no bitches?", url: "https://www.youtube.com/shorts/_knemkL2NUk" },
+			{ title: "FURRY BAIT", url: "https://www.youtube.com/shorts/DBDdE0ffe84" },
+			{ title: "W.I.P Animation preview!", url: "https://www.youtube.com/shorts/YOfSoGiCwaQ" },
+			{ title: "In My Mouth", url: "https://www.youtube.com/shorts/1gzHtuySC4A" },
+			{ title: "Long Legged Larry!", url: "https://www.youtube.com/shorts/464-AUeUIkA" },
+			{ title: "fromg_speen.mp4", url: "https://www.youtube.com/watch?v=G-1dzxeZsXQ" },
+			{ title: "Long Legged Larry!", url: "https://www.youtube.com/watch?v=CC--NwsSv7g" },
+			{ title: "Fromg! [W.I.P]", url: "https://www.youtube.com/watch?v=9M18Tdary0Q" },
+			{ title: "Eyes", url: "https://www.youtube.com/watch?v=XpKHXX4u0EM" },
+			{ title: "Sweet Dreams - by Left Boy - (Sped Up) - Animation meme", url: "https://www.youtube.com/watch?v=lIktZGafbq8" },
+			{ title: "Vengeance of She. - Ryutqc - Animation meme", url: "https://www.youtube.com/watch?v=aJSIdGRS7Sk" },
+			{ title: "Vengeance of She. - Ryutqc - Animation meme 2 electric boogaloo", url: "https://www.youtube.com/watch?v=MXDkmXrJneY" },
+			{ title: "Helldivers - Automaton", url: "https://www.youtube.com/watch?v=eZoKi42p8cI" },
+	        { title: "Vods", url: "https://www.youtube.com/@oSzoukauas-Vods" },
+			{ title: "Stickers", url: "https://www.youtube.com/channel/UCY6PEQiaxL1UDoPjpAnlHwQ" },
+			{ title: "Sound", url: "https://www.youtube.com/@oSzoukauas-Sound" },
+			{ title: "Minecraft updates", url: "https://www.youtube.com/@oSzoukauas-Minecraft" },
+			{ title: "Dump", url: "https://www.youtube.com/@oSzoukauas-Dump" },
+			{ title: "Animation", url: "https://www.youtube.com/@oSzoukauas-Animation" },
+	      ];
+		  
+		  // Shuffle function (Fisher–Yates)
+          function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+          }
+          // Randomize output section order on each load
+          shuffle(output_section);
+
+
+		  // My personal links
+	      const internal_section = [
+	        { title: "Ko-Fi", url: "https://ko-fi.com/oszoukaua" },
+	        { title: "Bluesky", url: "https://bsky.app/profile/oszoukaua.bsky.social" },
+	        { title: "Pinterest", url: "https://uk.pinterest.com/oSzoukaua/" },
+	        { title: "Twitch", url: "https://www.twitch.tv/oszoukaua" },
+	        { title: "Modrinth", url: "https://modrinth.com/user/oSzoukaua" },
+	        { title: "Itch.io", url: "https://oszoukaua.itch.io" },
+	        { title: "VRChat", url: "https://vrchat.com/home/user/usr_cf279c90-b4c1-4b2e-b7e6-c938a9dd67ce" },
+	      ];
+
+
+		  // Outputs that i would like to promote heavier
+	      const promote_section = [
+	        { title: "Yummers ↗", url: "file:///C:/Users/senti/Desktop/oszoukauas_website/website_4/yummers.html" },
+	      ];
+
+
+		  // Randomly opens a link form "output_section"
+	      const lucky_section = [
+	        { title: "Im Feeling Lucky~" },
+	      ];
+
+		  // For supporting me and what i do
+		  const support_section = [
+	        { title: "Support me <3", url: "https://ko-fi.com/oszoukaua" },
+	      ];
+		  
+		  
+		  // For random comments i wanna make
+		  const motd_section = [
+	        { title: "Consider kissing my ass", url: "https://example.com/event1" },
+	      ];
+		  
+		  // Legal disclainer
+		  const legal_section = [
+	        { title: "Legal: Usage of my content/brand", url: "https://pastebin.com/raw/bnSUX9zk" },
+			{ title: "Legal: Re-Dis/Prod of my products", url: "https://pastebin.com/raw/bH0vjEij" },
+	      ];
+
+		  // For future events
+	      const countdown_section = [
+	        { timestamp: 1764720000, url: "https://example.com/event1" },
+	      ];
+
+		  // For cool pople/entities that i deem worth promoting
+	      const external_section = [
+	        { title: "Zeribian", url: "https://bsky.app/profile/zeribian.bsky.social" },
+			{ title: "Modrinth", url: "https://modrinth.com", right_color: "#71877A" },
+	      ];
+		  
+		  // Shuffle function (Fisher–Yates)
+          function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+          }
+          // Randomize output section order on each load
+          shuffle(external_section);
+		  
+		  const edge_section = [
+	        { title: "Eat the rich", url: "Eat the rich"},
+	      ];
+
+	      const formatNumber = n => `#${n.toString().padStart(4, '0')}`;
+
+
+const addRow = (container, number, html, left_color, right_color) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  // Apply the section.output_section class to the left part (which will handle the gradient)
+  row.innerHTML = `
+    <div class="left section output_section" style="color: ${left_color}">${formatNumber(number)}</div>
+    <div class="right" style="color: ${right_color}">${html}</div>
+  `;
+
+  container.appendChild(row);
+  return row;
+};
+
+
+
+		  const output_sectionSection = document.getElementById("output_section");
+	        output_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length - promote_section.length - internal_section.length - output_section.length + i;
+	        addRow(output_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.Color);
+	      });
+
+	      const internal_sectionSection = document.getElementById("internal_section");
+	      internal_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length - promote_section.length - internal_section.length + i;
+	        addRow(internal_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+
+	      const promote_sectionSection = document.getElementById("promote_section");
+	      promote_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length - promote_section.length + i;
+	        addRow(promote_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+		  
+		  const lucky_sectionSection = document.getElementById("lucky_section");
+	      lucky_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length + i;
+	        addRow(lucky_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+		  
+		  const support_sectionSection = document.getElementById("support_section");
+	      support_section.forEach((item, i) => {
+	        const number = centerNumber;
+	        addRow(support_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+		  
+		  const motd_sectionSection = document.getElementById("motd_section");
+	      motd_section.forEach((item, i) => {
+	        const number = "MOTD";
+	        addRow(motd_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+		  
+		  const legal_sectionSection = document.getElementById("legal_section");
+	      legal_section.forEach((item, i) => {
+	        const number = centerNumber + i + 1;
+	        addRow(legal_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+		  
+		  const external_sectionSection = document.getElementById("external_section");
+	      external_section.forEach((item, i) => {
+	        const number = centerNumber + legal_section.length + countdown_section.length + 1 + i;
+	        addRow(external_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	      });
+
+	      const countdown_sectionSection = document.getElementById("countdown_section");
+	      let nextNumber = centerNumber + legal_section.length + 1;
+
+	      const startColor = 'rgb(38, 38, 38)';
+	      const darkenColor = (color, amount) => {
+	        const rgb = color.match(/\d+/g).map(Number);
+	        return `rgb(${Math.max(0, rgb[0] - amount)}, ${Math.max(0, rgb[1] - amount)}, ${Math.max(0, rgb[2] - amount)})`;
+	      };
+
+	      const rows = countdown_section.map((item, i) => {
+	        const darkColor = darkenColor(startColor, i * 10);
+	        return addRow(countdown_sectionSection, nextNumber++, '', darkColor);
+	      });
+
+	      const updatecountdown_section = () => {
+	        countdown_section.forEach((item, i) => {
+	          const now = new Date();
+	          const timeRemaining = item.timestamp * 1000 - now.getTime();
+	          const row = rows[i];
+
+	          let displayText;
+	          if (timeRemaining > 0) {
+	            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+	            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+	            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+	            displayText = `${days}d : ${hours}h : ${minutes}m : ${seconds}s`;
+	          } else {
+	            displayText = 'Event Ended';
+	          }
+
+	          row.querySelector('.right').innerHTML = `<a href="${item.url}" target="_blank">${displayText}<\/a>`, item.left_color, item.right_color;
+	        });
+	      };
+
+	      setInterval(updatecountdown_section, 1000);
+	      updatecountdown_section();
+
+	     const edge_sectionSection = document.getElementById("edge_section");
+
+	// Start numbering for external section after the last countdown number
+	let externalSectionStartNumber = nextNumber; // Use the number after the last countdown entry
+
+	edge_section.forEach((item, i) => {
+	 const number = centerNumber + legal_section.length + countdown_section.length + external_section.length + 1 + i;
+	 addRow(edge_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`);
+	});
+
+
+function createOverlay() {
+  const overlay = document.createElement('div');
+  overlay.id = 'eatTheRichModal';
+  overlay.className = 'ageModal';
+
+  // Add the message text
+  const message = document.createElement('div');
+  message.textContent = "Eat the rich is not political, its a truth of life, why should we support and defend those who keep taking from us. Living is a fundamental human right, not something to be bought or sold. Corporations are eroding that right, prioritizing profit over people and the planet. Clean air, water, healthcare, and education are increasingly out of reach for many. Corporations monopolize these essentials, polluting the environment, exploiting people, and destroying ecosystems for their gain. This isn’t just a few bad actors, it's a broken system designed to keep the rich rich and everyone else struggling too much to notice. The damage is irreversible for many of us, but we can fix it for those who have not yet been born. We have the power to change things if we force it, put people before profits, make sustainability the norm, and punish those responsible. Life is a right, not a commodity, and it's up to us to fight for it before we forget that. we have made it now impossible for a human being to survive on this planet without working for someone more fortunate than them, without money you have nothing, no food, no water, no shelter, no clothing. In law pets are seen as objects or property, not family members or living beings, and to the rich we are simply pets.";
+  overlay.appendChild(message);
+
+  // Close button functionality
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'IGNORE';
+  closeButton.addEventListener('click', () => {
+    overlay.remove();
+  });
+
+  overlay.appendChild(closeButton);
+  document.body.appendChild(overlay);
+}
+
+
+// Delegate click event to the document
+document.addEventListener('click', (e) => {
+  const link = e.target.closest('a[href="Eat the rich"]');
+  if (link) {
+    e.preventDefault();  // Prevent the default link behavior
+    createOverlay();
+  }
+});
+
+
+window.addEventListener('load', () => {
+    const ageModal = document.getElementById('ageModal');
+    const agreeBtn = document.getElementById('ageConfirmBtn');
+    const motd = document.querySelector('.motd_section');
+
+    agreeBtn.addEventListener('click', () => {
+      // Hide modal
+      ageModal.style.display = 'none';
+
+      // Scroll to .motd_section
+      if (motd) {
+        const motdRect = motd.getBoundingClientRect();
+        const scrollY = window.scrollY + motdRect.top + motdRect.height / 2 - window.innerHeight / 2;
+        window.scrollTo({
+          top: scrollY,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
+	      // Function to handle the infinite scroll and reapply highlights
+function handleInfiniteScroll() {
+  const externalSection = document.getElementById('edge_section');
+  const lastRow = externalSection.querySelector('.row:last-child');
+
+  const rect = lastRow.getBoundingClientRect();
+  const buffer = 500; // Trigger 500px before it's fully in view
+
+  if (rect.bottom <= window.innerHeight + buffer) {
+    const lastNumberElement = lastRow.querySelector('.left');
+    const lastNumberText = lastNumberElement.textContent.replace('#', '').trim();
+    const lastNumber = parseInt(lastNumberText, 10);
+    const nextNumber = lastNumber + 1;
+
+    const clonedRow = lastRow.cloneNode(true);
+    clonedRow.querySelector('.left').textContent = `#${nextNumber.toString().padStart(4, '0')}`;
+
+    externalSection.appendChild(clonedRow);
+
+    clonedRow.addEventListener('mouseenter', () => {
+      clonedRow.style.backgroundColor = '#111';
+    });
+
+    clonedRow.addEventListener('mouseleave', () => {
+      clonedRow.style.backgroundColor = '';
+    });
+  }
+}
+
+window.addEventListener('load', () => {
+  const ageModal = document.getElementById('ageModal');
+  const confirmBtn = document.getElementById('ageConfirmBtn');
+
+  // Disable scrolling initially
+  document.body.style.overflow = 'hidden';
+
+  confirmBtn.addEventListener('click', () => {
+    ageModal.style.display = 'none';
+
+    // Enable scrolling
+    document.body.style.overflow = '';
+  });
+});
+
+
+
+	// Listen for the scroll event to trigger the infinite scroll
+	window.addEventListener('scroll', handleInfiniteScroll);
+
+	// Add event listeners to existing rows for the highlight effect
+	document.querySelectorAll('.row').forEach(row => {
+	 row.addEventListener('mouseenter', () => {
+	   row.style.backgroundColor = '#111'; // Adjust this color to your liking
+	 });
+
+	 row.addEventListener('mouseleave', () => {
+	   row.style.backgroundColor = ''; // Resets the background to its original state
+	 });
+	});
+
+ // Adding the random lucky link functionality
+	      const luckyLink = document.querySelector('#lucky_section .row a');
+	      luckyLink.href = '#';  // don’t navigate away by default
+	      luckyLink.addEventListener('click', (e) => {
+	        e.preventDefault();
+
+	        // pick a random item from the output_section array
+	        const randomIndex = Math.floor(Math.random() * output_section.length);
+	        const chosen = output_section[randomIndex];
+
+	        // open it in a new tab
+	        window.open(chosen.url, '_blank');
+	      });
+  </script>
+</body>
+</html>

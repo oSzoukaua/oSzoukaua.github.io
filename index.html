@@ -29,6 +29,7 @@
     section.lucky_section { border-left-color: #5B4C00; color: #AF9200; background: linear-gradient(90deg, #191500, #000); }
     section.support_section { border-left-color: #5B0030; color: #A80059; background: linear-gradient(90deg, #2D0018, #000); }
 	section.motd_section { border-left-color: #003838; color: #00cccc; background: linear-gradient(90deg, #002121, #000); }
+	section.contact_section { border-image: linear-gradient(180deg, #30157F, #000); color: #200E71; border-image-slice: 1; background: linear-gradient(90deg, #0C0521, #000); }
 	section.legal_section { border-image: linear-gradient(180deg, #003326, #000); color: #004C38; border-image-slice: 1; background: linear-gradient(90deg, #000A07, #000); }
     section.countdown_section { border-image: linear-gradient(180deg, #191919, #000); color: #191919; border-image-slice: 1; }
     section.external_section { border-image: linear-gradient(180deg, #4B4556, #000); color: #716E7A; border-image-slice: 1; }
@@ -59,6 +60,10 @@
       position: relative;
       display: inline-block;
     }
+
+.right.clickable {
+  cursor: copy;
+}
 
 .ageModal {
   position: fixed;
@@ -123,6 +128,35 @@
   }
 }
 
+#toast {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 10px;
+  pointer-events: none;
+  font-family: sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1.5;
+  z-index: 9999;
+  border: 1px solid #fff; /* white border */
+  backdrop-filter: blur(1vw);
+}
+
+
+.toast-visible {
+  opacity: 1;
+  transition: opacity 0.125s ease-out;
+}
+
+.toast-invisible {
+  opacity: 0;
+  transition: opacity 0.125s ease-in;
+}
 
 
     @media (max-width: 500px) {
@@ -167,6 +201,7 @@
     <section class="lucky_section" id="lucky_section"></section>
     <section class="support_section" id="support_section"></section>
 	<section class="motd_section" id="motd_section"></section>
+	<section class="contact_section" id="contact_section"></section>
 	<section class="legal_section" id="legal_section"></section>
     <section class="countdown_section" id="countdown_section"></section>
     <section class="external_section" id="external_section"></section>
@@ -186,6 +221,112 @@
 		  
 		  // Things i have produced/assisted in producing
 		  const output_section = [
+	        { title: "Ko-Fi", url: "https://ko-fi.com/oszoukaua" },
+	        { title: "Bluesky", url: "https://bsky.app/profile/oszoukaua.bsky.social" },
+	        { title: "Pinterest", url: "https://uk.pinterest.com/oSzoukaua/" },
+	        { title: "Twitch", url: "https://www.twitch.tv/oszoukaua" },
+	        { title: "Modrinth", url: "https://modrinth.com/user/oSzoukaua" },
+	        { title: "Itch.io", url: "https://oszoukaua.itch.io" },
+	        { title: "VRChat", url: "https://vrchat.com/home/user/usr_cf279c90-b4c1-4b2e-b7e6-c938a9dd67ce" },
+			{ title: "But:won", url: "https://oszoukaua.itch.io/butwon" },
+			{ title: "oSzoukaua's: Story 0", url: "https://www.wattpad.com/1481023825-oszoukaua%27s-story-0-day-0" },
+			{ title: "Ko-Fi Post 74", url: "https://ko-fi.com/i/IM4M41DYVKL" },
+			{ title: "Ko-Fi Post 73", url: "https://ko-fi.com/i/IO4O31DYVJC" },
+			{ title: "Ko-Fi Post 72", url: "https://ko-fi.com/i/IC0C31BBXU0" },
+			{ title: "Ko-Fi Post 71", url: "https://ko-fi.com/i/IE1E0183VWH" },
+			{ title: "Ko-Fi Post 70", url: "https://ko-fi.com/i/IM4M4183L7W" },
+			{ title: "Ko-Fi Post 69", url: "https://ko-fi.com/i/IC0C6180L5J" },
+			{ title: "Ko-Fi Post 68", url: "https://ko-fi.com/i/IX8X417RCLA" },
+			{ title: "Ko-Fi Post 67", url: "https://ko-fi.com/i/IB0B217R9Y9" },
+			{ title: "Ko-Fi Post 66", url: "https://ko-fi.com/i/IT6T517GMRH" },
+			{ title: "Ko-Fi Post 65", url: "https://ko-fi.com/i/II2I716GEFI" },
+			{ title: "Ko-Fi Post 64", url: "https://ko-fi.com/i/IL3L3168OI0" },
+			{ title: "Ko-Fi Post 63", url: "https://ko-fi.com/i/IB0B815RJR2" },
+			{ title: "Ko-Fi Post 62", url: "https://ko-fi.com/i/IB0B515JL3P" },
+			{ title: "Ko-Fi Post 61", url: "https://ko-fi.com/i/IW7W114CES3" },
+			{ title: "Ko-Fi Post 60", url: "https://ko-fi.com/i/IF2F4149KN4" },
+			{ title: "Ko-Fi Post 59", url: "https://ko-fi.com/i/IA0A713SR4T" },
+			{ title: "Ko-Fi Post 58", url: "https://ko-fi.com/i/IY8Y413GQSE" },
+			{ title: "Ko-Fi Post 57", url: "https://ko-fi.com/i/IV7V613GIJP" },
+			{ title: "Ko-Fi Post 56", url: "https://ko-fi.com/i/IK3K812H9NL" },
+			{ title: "Ko-Fi Post 55", url: "https://ko-fi.com/i/IX8X411TLB2" },
+			{ title: "Ko-Fi Post 54", url: "https://ko-fi.com/i/IB0B011JT8B" },
+			{ title: "Ko-Fi Post 53", url: "https://ko-fi.com/i/IH2H211HTH3" },
+			{ title: "Ko-Fi Post 52", url: "https://ko-fi.com/i/IJ3J011D6NQ" },
+			{ title: "Ko-Fi Post 51", url: "https://ko-fi.com/i/IS6S410PZWY" },
+			{ title: "Ko-Fi Post 50", url: "https://ko-fi.com/i/IJ3J210GRRR" },
+			{ title: "Ko-Fi Post 49", url: "https://ko-fi.com/i/IE1E8ZPNDF" },
+			{ title: "Ko-Fi Post 48", url: "https://ko-fi.com/i/IW7W7ZDMRK" },
+			{ title: "Ko-Fi Post 47", url: "https://ko-fi.com/i/IF1F3Z8TQ4" },
+			{ title: "Ko-Fi Post 46", url: "https://ko-fi.com/i/II2I4Y14ZT" },
+			{ title: "Ko-Fi Post 45", url: "https://ko-fi.com/i/IA0A5XTXUI" },
+			{ title: "Ko-Fi Post 44", url: "https://ko-fi.com/i/IU7U1WIFUF" },
+			{ title: "Ko-Fi Post 43", url: "https://ko-fi.com/i/IZ8Z4U6OS3" },
+			{ title: "Ko-Fi Post 42", url: "https://ko-fi.com/i/IE1E1T0HCD" },
+			{ title: "Ko-Fi Post 41", url: "https://ko-fi.com/i/IT6T3RPE64" },
+			{ title: "Ko-Fi Post 40", url: "https://ko-fi.com/i/IJ3J1P628D" },
+			{ title: "Ko-Fi Post 39", url: "https://ko-fi.com/i/IZ8Z3P625O" },
+			{ title: "Ko-Fi Post 38", url: "https://ko-fi.com/i/IJ3J8OEC59" },
+			{ title: "Ko-Fi Post 37", url: "https://ko-fi.com/i/IF1F1O651F" },
+			{ title: "Ko-Fi Post 36", url: "https://ko-fi.com/i/IZ8Z5NDHHZ" },
+			{ title: "Ko-Fi Post 35", url: "https://ko-fi.com/i/IR5R3MJY2N" },
+			{ title: "Ko-Fi Post 34", url: "https://ko-fi.com/i/II2I6M41PW" },
+			{ title: "Ko-Fi Post 33", url: "https://ko-fi.com/i/ID1D6KTF8Z" },
+			{ title: "Ko-Fi Post 32", url: "https://ko-fi.com/i/IF1F5JUIG3" },
+			{ title: "Ko-Fi Post 31", url: "https://ko-fi.com/i/IU6U8JUIEE" },
+			{ title: "Ko-Fi Post 30", url: "https://ko-fi.com/i/IW7W4JLR4H" },
+			{ title: "Ko-Fi Post 29", url: "https://ko-fi.com/i/IC1C6JKMQR" },
+			{ title: "Ko-Fi Post 28", url: "https://ko-fi.com/i/IE1E2JJRDK" },
+			{ title: "Ko-Fi Post 27", url: "https://ko-fi.com/i/II2I3J819R" },
+			{ title: "Ko-Fi Post 26", url: "https://ko-fi.com/i/IQ5Q2J8083" },
+			{ title: "Ko-Fi Post 25", url: "https://ko-fi.com/i/IM4M1J5DPL" },
+			{ title: "Ko-Fi Post 24", url: "https://ko-fi.com/i/IW7W2HZKXU" },
+			{ title: "Ko-Fi Post 23", url: "https://ko-fi.com/i/IU7U3HZKCY" },
+			{ title: "Ko-Fi Post 22", url: "https://ko-fi.com/i/IJ3J5HUNGY" },
+			{ title: "Ko-Fi Post 21", url: "https://ko-fi.com/i/II2I3HUM2M" },
+			{ title: "Ko-Fi Post 20", url: "https://ko-fi.com/i/IX8X5HMUJN" },
+			{ title: "Ko-Fi Post 19", url: "https://ko-fi.com/i/IM4M3H9AEA" },
+			{ title: "Ko-Fi Post 18", url: "https://ko-fi.com/i/IE1E0H9A6T" },
+			{ title: "Ko-Fi Post 17", url: "https://ko-fi.com/i/IW7W2GZO7U" },
+			{ title: "Ko-Fi Post 16", url: "https://ko-fi.com/i/IQ5Q7G0PYA" },
+			{ title: "Ko-Fi Post 15", url: "https://ko-fi.com/i/IQ5Q8FYKKO" },
+			{ title: "Ko-Fi Post 14", url: "https://ko-fi.com/i/II2I6FYKH1" },
+			{ title: "Ko-Fi Post 13", url: "https://ko-fi.com/i/IW7W8FXS9N" },
+			{ title: "Ko-Fi Post 12", url: "https://ko-fi.com/i/IM4M8FX0C2" },
+			{ title: "Ko-Fi Post 11", url: "https://ko-fi.com/i/II3I4FMQBK" },
+			{ title: "Ko-Fi Post 10", url: "https://ko-fi.com/i/IP5P0FMJYP" },
+			{ title: "Ko-Fi Post 9", url: "https://ko-fi.com/i/IH2H0FMJYI" },
+			{ title: "Ko-Fi Post 8", url: "https://ko-fi.com/i/IC0C6FMJY8" },
+			{ title: "Ko-Fi Post 7", url: "https://ko-fi.com/i/IK3K1FMJY3" },
+			{ title: "Ko-Fi Post 6", url: "https://ko-fi.com/i/IR6R4FK6ZO" },
+			{ title: "Ko-Fi Post 5", url: "https://ko-fi.com/i/II2I7ETU4F" },
+			{ title: "Ko-Fi Post 4", url: "https://ko-fi.com/i/IF1F1ERO8K" },
+			{ title: "Ko-Fi Post 3", url: "https://ko-fi.com/i/IQ5Q5EQECG" },
+			{ title: "Ko-Fi Post 2", url: "https://ko-fi.com/i/IX7X0EMU4J" },
+			{ title: "Ko-Fi Post 1", url: "https://ko-fi.com/i/IU7U2EMB3G" },
+			{ title: "Reddit post 23", url: "https://www.reddit.com/r/furry/comments/1k6d3g7/long_day_oc/" },
+			{ title: "Reddit post 22", url: "https://www.reddit.com/r/anthroswim/comments/1k671ln/long_day_oc/" },
+			{ title: "Reddit post 21", url: "https://www.reddit.com/r/furry_irl/comments/1k3yzzs/furry_irl/" },
+			{ title: "Reddit post 20", url: "https://www.reddit.com/user/oSzoukaua/submitted/" },
+		    { title: "Reddit post 19", url: "https://www.reddit.com/r/Helldivers/comments/1hrlx5y/lil_half_animation_i_made/" },
+			{ title: "Reddit post 18", url: "https://www.reddit.com/r/furry_irl/comments/1hpvy8b/furry_irl/" },
+			{ title: "Reddit post 17", url: "https://www.reddit.com/r/furry_irl/comments/1hoi7cn/furry_irl/" },
+			{ title: "Reddit post 16", url: "https://www.reddit.com/r/furry/comments/1hnstcs/random_open_designs_i_made_oc/" },
+			{ title: "Reddit post 15", url: "https://www.reddit.com/r/furry_irl/comments/1hmx3jy/furry_irl/" },
+			{ title: "Reddit post 14", url: "https://www.reddit.com/r/furry/comments/1hmx22v/thirsty_oc/" },
+			{ title: "Reddit post 13", url: "https://www.reddit.com/r/anthroswim/comments/1hm4f66/rough_night_out_oc/" },
+			{ title: "Reddit post 12", url: "https://www.reddit.com/r/furry/comments/1hjcz8g/laross_oc/" },
+			{ title: "Reddit post 11", url: "https://www.reddit.com/r/MinecraftCommands/comments/1hfmmkl/poor_mans_shulker_box_wip_oc/" },
+			{ title: "Reddit post 10", url: "https://www.reddit.com/r/furry/comments/1gxjcy3/skraum_squaring_up_oc/" },
+			{ title: "Reddit post 9", url: "https://www.reddit.com/r/furry_irl/comments/1gxjbng/furryirl/" },
+			{ title: "Reddit post 8", url: "https://www.reddit.com/r/PhoenixSC/comments/1ge1sf5/pc/" },
+			{ title: "Reddit post 7", url: "https://www.reddit.com/r/furry/comments/1fiq2rb/blender_render_oc/" },
+			{ title: "Reddit post 6", url: "https://www.reddit.com/r/furry_irl/comments/1ernznv/furry_irl/" },
+			{ title: "Reddit post 5", url: "https://www.reddit.com/r/PhoenixSC/comments/1dycl67/big_bundle/" },
+			{ title: "Reddit post 4", url: "https://www.reddit.com/r/furry/comments/1dgrmp8/me_and_a_friend_oc/" },
+			{ title: "Reddit post 3", url: "https://www.reddit.com/r/furry/comments/1de4u8g/decided_to_finally_draw_my_fursona_oc/" },
+			{ title: "Reddit post 2", url: "https://www.reddit.com/r/MinecraftMemes/comments/1bt70mt/me_and_the_homie_cruising_in_the_new_snapshot/" },
+			{ title: "Reddit post 1", url: "https://www.reddit.com/r/furry/comments/19045an/got_inspired_by_an_image_i_saw_on_pinterest_so_i/" },
 			{ title: "Lucky Blocks", url: "https://modrinth.com/datapack/oszoukauas-lb" },
 			{ title: "Realistic Spiders", url: "https://modrinth.com/datapack/oszoukauas-realistic-spiders" },
 			{ title: "No Water & Fog", url: "https://modrinth.com/resourcepack/oszoukauas-no-water-fog" },
@@ -343,7 +484,7 @@
 
 		  // Randomly opens a link form "output_section"
 	      const lucky_section = [
-	        { title: "Im Feeling Lucky~" },
+	        { title: "Im Feeling Lucky~", url: "mr lazy over here" },
 	      ];
 
 		  // For supporting me and what i do
@@ -355,6 +496,12 @@
 		  // For random comments i wanna make
 		  const motd_section = [
 	        { title: "Consider kissing my ass", url: "https://example.com/event1" },
+	      ];
+		  
+		  // My contact info
+		  const contact_section = [
+	        { title: "contact.oSzoukaua@gmail.com 🗐", copy_text: "contact.oSzoukaua@gmail.com" },
+			{ title: "@oSzoukaua 🗐", copy_text: "@oSzoukaua" },
 	      ];
 		  
 		  // Legal disclainer
@@ -391,72 +538,92 @@
 	      const formatNumber = n => `#${n.toString().padStart(4, '0')}`;
 
 
-const addRow = (container, number, html, left_color, right_color) => {
+const addRow = (container, number, item, left_color, right_color) => {
   const row = document.createElement('div');
   row.className = 'row';
 
-  // Apply the section.output_section class to the left part (which will handle the gradient)
-  row.innerHTML = `
-    <div class="left section output_section" style="color: ${left_color}">${formatNumber(number)}</div>
-    <div class="right" style="color: ${right_color}">${html}</div>
-  `;
+  const left = `<div class="left section output_section" style="color: ${left_color}">${formatNumber(number)}</div>`;
+
+  let right;
+  if (item.copy_text) {
+    right = `<div class="right clickable" style="color: ${right_color}" data-copy="${item.copy_text}">${item.title}</div>`;
+  } else if (item.url) {
+    right = `<a class="right" style="color: ${right_color}" href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
+  } else {
+    right = `<div class="right" style="color: ${right_color}">${item.title}</div>`;
+  }
+
+  row.innerHTML = left + right;
+
+if (item.copy_text) {
+  row.querySelector('.right').addEventListener('click', (e) => {
+    navigator.clipboard.writeText(item.copy_text);
+    showToast("Copied", e);
+  });
+}
+
 
   container.appendChild(row);
   return row;
 };
 
 
-
 		  const output_sectionSection = document.getElementById("output_section");
 	        output_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - promote_section.length - internal_section.length - output_section.length + i;
-	        addRow(output_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.Color);
+	        addRow(output_sectionSection, number, item, item.left_color, item.Color);
 	      });
 
 	      const internal_sectionSection = document.getElementById("internal_section");
 	      internal_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - promote_section.length - internal_section.length + i;
-	        addRow(internal_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        addRow(internal_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 
 	      const promote_sectionSection = document.getElementById("promote_section");
 	      promote_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - promote_section.length + i;
-	        addRow(promote_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        addRow(promote_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 		  
 		  const lucky_sectionSection = document.getElementById("lucky_section");
 	      lucky_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length + i;
-	        addRow(lucky_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        addRow(lucky_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 		  
 		  const support_sectionSection = document.getElementById("support_section");
 	      support_section.forEach((item, i) => {
 	        const number = centerNumber;
-	        addRow(support_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        addRow(support_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 		  
 		  const motd_sectionSection = document.getElementById("motd_section");
 	      motd_section.forEach((item, i) => {
 	        const number = "MOTD";
-	        addRow(motd_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        addRow(motd_sectionSection, number, item, item.left_color, item.right_color);
+	      });
+		  
+		  const contact_sectionSection = document.getElementById("contact_section");
+	      contact_section.forEach((item, i) => {
+	        const number = centerNumber + i + 1;
+	        addRow(contact_sectionSection, number, item, item.left_color, item.Color);
 	      });
 		  
 		  const legal_sectionSection = document.getElementById("legal_section");
 	      legal_section.forEach((item, i) => {
-	        const number = centerNumber + i + 1;
-	        addRow(legal_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        const number = centerNumber + contact_section.length + 1 + i;
+	        addRow(legal_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 		  
 		  const external_sectionSection = document.getElementById("external_section");
 	      external_section.forEach((item, i) => {
-	        const number = centerNumber + legal_section.length + countdown_section.length + 1 + i;
-	        addRow(external_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`, item.left_color, item.right_color);
+	        const number = centerNumber + contact_section.length + legal_section.length + countdown_section.length + 1 + i;
+	        addRow(external_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 
 	      const countdown_sectionSection = document.getElementById("countdown_section");
-	      let nextNumber = centerNumber + legal_section.length + 1;
+	      let nextNumber = centerNumber + contact_section.length + legal_section.length + 1;
 
 	      const startColor = 'rgb(38, 38, 38)';
 	      const darkenColor = (color, amount) => {
@@ -499,8 +666,8 @@ const addRow = (container, number, html, left_color, right_color) => {
 	let externalSectionStartNumber = nextNumber; // Use the number after the last countdown entry
 
 	edge_section.forEach((item, i) => {
-	 const number = centerNumber + legal_section.length + countdown_section.length + external_section.length + 1 + i;
-	 addRow(edge_sectionSection, number, `<a href="${item.url}">${item.title}<\/a>`);
+	 const number = centerNumber + contact_section.length + legal_section.length + countdown_section.length + external_section.length + 1 + i;
+	 addRow(edge_sectionSection, number, item);
 	});
 
 
@@ -556,6 +723,37 @@ window.addEventListener('load', () => {
       }
     });
   });
+
+function showToast(message = "Error :(", event = null ) {
+  const toast = document.getElementById("toast");
+
+  if (toast) {
+    toast.textContent = message;
+
+	toast.classList.remove('toast-invisible');
+    toast.classList.add('toast-visible');
+
+    if (event) {
+      toast.style.left = `${event.clientX + 10}px`;
+      toast.style.top = `${event.clientY + 10}px`;
+      toast.style.bottom = 'auto';
+      toast.style.transform = 'none';
+    } else {
+      toast.style.bottom = '16px';
+      toast.style.left = '50%';
+      toast.style.top = 'auto';
+      toast.style.transform = 'translateX(-50%)';
+    }
+
+    setTimeout(() => {
+	  toast.classList.remove('toast-visible');
+      toast.classList.add('toast-invisible');
+    }, 200);
+  }
+}
+
+
+
 
 	      // Function to handle the infinite scroll and reapply highlights
 function handleInfiniteScroll() {
@@ -617,19 +815,24 @@ window.addEventListener('load', () => {
 	 });
 	});
 
- // Adding the random lucky link functionality
-	      const luckyLink = document.querySelector('#lucky_section .row a');
-	      luckyLink.href = '#';  // don’t navigate away by default
-	      luckyLink.addEventListener('click', (e) => {
-	        e.preventDefault();
+const luckyLink = document.querySelector('#lucky_section .row a');
+luckyLink.href = '#'; // don’t navigate away by default
 
-	        // pick a random item from the output_section array
-	        const randomIndex = Math.floor(Math.random() * output_section.length);
-	        const chosen = output_section[randomIndex];
+luckyLink.addEventListener('click', (e) => {
+  e.preventDefault();
 
-	        // open it in a new tab
-	        window.open(chosen.url, '_blank');
-	      });
+  // filter only items that actually have a url
+  const linkableItems = output_section.filter(item => item.url);
+  if (linkableItems.length === 0) return; // nothing to open
+
+  // pick a random item from the filtered list
+  const randomIndex = Math.floor(Math.random() * linkableItems.length);
+  const chosen = linkableItems[randomIndex];
+
+  window.open(chosen.url, '_blank');
+});
+
   </script>
+<div id="toast" class="toast-invisible"></div>
 </body>
 </html>

@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>oSzoukaua's: Website</title>
-  <link href="https://fonts.googleapis.com/css2?family=PT+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
   <style>
-    html, body {
-      background: #000;
-      font-family: 'PT Mono', monospace;
-      font-size: 3.6vw;
-      line-height: 3.9vw;
-      text-transform: uppercase;
-    }
+html, body {
+  background: #000;
+  font-family: 'Space Mono', monospace;
+  font-size: 3.6vw;
+  line-height: 3.9vw;
+  text-transform: uppercase;
+}
 
     main {
       width: 100%;
@@ -29,7 +29,7 @@
     section.lucky_section { border-left-color: #5B4C00; color: #AF9200; background: linear-gradient(90deg, #191500, #000); }
     section.support_section { border-left-color: #5B0030; color: #A80059; background: linear-gradient(90deg, #2D0018, #000); }
 	section.motd_section { border-left-color: #003838; color: #00cccc; background: linear-gradient(90deg, #002121, #000); }
-	section.contact_section { border-image: linear-gradient(180deg, #30157F, #000); color: #200E71; border-image-slice: 1; background: linear-gradient(90deg, #0C0521, #000); }
+	section.contact_section { border-left-color: #30157F; color: #200E71; background: linear-gradient(90deg, #0C0521, #000); }
 	section.legal_section { border-image: linear-gradient(180deg, #003326, #000); color: #004C38; border-image-slice: 1; background: linear-gradient(90deg, #000A07, #000); }
     section.countdown_section { border-image: linear-gradient(180deg, #191919, #000); color: #191919; border-image-slice: 1; }
     section.external_section { border-image: linear-gradient(180deg, #4B4556, #000); color: #716E7A; border-image-slice: 1; }
@@ -158,6 +158,12 @@
   opacity: 0;
   transition: opacity 0.125s ease-in;
 }
+
+
+.row_hover {
+  color: #fff;
+}
+
 
 
     @media (max-width: 500px) {
@@ -686,11 +692,17 @@ function createOverlay() {
   closeButton.textContent = 'IGNORE';
   closeButton.addEventListener('click', () => {
     overlay.remove();
+    // Re-enable scrolling when the overlay is removed
+    document.body.style.overflow = '';
   });
 
   overlay.appendChild(closeButton);
   document.body.appendChild(overlay);
+
+  // Disable scrolling on the main page
+  document.body.style.overflow = 'hidden';
 }
+
 
 
 // Delegate click event to the document
@@ -755,7 +767,7 @@ function showToast(message = "Error :(", event = null ) {
 
 
 
-	      // Function to handle the infinite scroll and reapply highlights
+// Function to handle the infinite scroll and reapply highlights
 function handleInfiniteScroll() {
   const externalSection = document.getElementById('edge_section');
   const lastRow = externalSection.querySelector('.row:last-child');
@@ -774,15 +786,17 @@ function handleInfiniteScroll() {
 
     externalSection.appendChild(clonedRow);
 
+    // Use class for hover effect
     clonedRow.addEventListener('mouseenter', () => {
-      clonedRow.style.backgroundColor = '#111';
+      clonedRow.classList.add('row_hover');
     });
 
     clonedRow.addEventListener('mouseleave', () => {
-      clonedRow.style.backgroundColor = '';
+      clonedRow.classList.remove('row_hover');
     });
   }
 }
+
 
 window.addEventListener('load', () => {
   const ageModal = document.getElementById('ageModal');
@@ -801,19 +815,20 @@ window.addEventListener('load', () => {
 
 
 
-	// Listen for the scroll event to trigger the infinite scroll
-	window.addEventListener('scroll', handleInfiniteScroll);
+// Listen for the scroll event to trigger the infinite scroll
+window.addEventListener('scroll', handleInfiniteScroll);
 
-	// Add event listeners to existing rows for the highlight effect
-	document.querySelectorAll('.row').forEach(row => {
-	 row.addEventListener('mouseenter', () => {
-	   row.style.backgroundColor = '#111'; // Adjust this color to your liking
-	 });
+// Add event listeners to existing rows for the highlight effect
+document.querySelectorAll('.row').forEach(row => {
+  row.addEventListener('mouseenter', () => {
+    row.classList.add('row_hover');
+  });
 
-	 row.addEventListener('mouseleave', () => {
-	   row.style.backgroundColor = ''; // Resets the background to its original state
-	 });
-	});
+  row.addEventListener('mouseleave', () => {
+    row.classList.remove('row_hover');
+  });
+});
+
 
 const luckyLink = document.querySelector('#lucky_section .row a');
 luckyLink.href = '#'; // don’t navigate away by default

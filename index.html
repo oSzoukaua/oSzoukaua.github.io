@@ -94,21 +94,22 @@
 
 .ageModal > button {
   margin-top: 2vw;
-  padding: 1vw 3vw;
-  background-color: #fff;
-  color: #000;
+  padding: 5px 30px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
   border: none;
   font-size: 1.5vw;
   cursor: pointer;
   text-transform: uppercase;
-  transition: all 0.3s ease;
-  border: 0.1vw solid transparent;
+  transition: all 0.2s ease;
+  border-radius: 100px;
+  border: 1px solid #fff; /* white border */
+  backdrop-filter: blur(1vw);
 }
 
 .ageModal > button:hover {
-  background-color: transparent;
-  color: #fff;
-  border-color: #fff;
+  background-color: #fff;
+  color: #000;
 }
 
 /* Responsive adjustments */
@@ -136,13 +137,13 @@
   background: rgba(255, 255, 255, 0);
   color: #fff;
   padding: 2px 8px;
-  border-radius: 10px;
   pointer-events: none;
   font-family: sans-serif;
   font-size: 10px;
   text-transform: uppercase;
   line-height: 1.5;
   z-index: 9999;
+  border-radius: 10px;
   border: 1px solid #fff; /* white border */
   backdrop-filter: blur(1vw);
 }
@@ -506,8 +507,8 @@
 		  
 		  // Legal disclainer
 		  const legal_section = [
-	        { title: "Legal: Usage of my content/brand", url: "https://pastebin.com/raw/bnSUX9zk" },
-			{ title: "Legal: Re-Dis/Prod of my products", url: "https://pastebin.com/raw/bH0vjEij" },
+	        { title: "Legal: Usage of my content/brand ↗", url: "https://pastebin.com/raw/bnSUX9zk" },
+			{ title: "Legal: Re-Dis/Prod of my products ↗", url: "https://pastebin.com/raw/bH0vjEij" },
 	      ];
 
 		  // For future events

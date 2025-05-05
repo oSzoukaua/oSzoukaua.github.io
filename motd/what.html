@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>???</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      background: black;
+      font-family: 'Space Mono', monospace;
+    }
+    #bouncer {
+      position: absolute;
+      font-size: 128px;
+    }
+  </style>
+</head>
+<body>
+  <div id="bouncer">???</div>
+
+  <script>
+    const el = document.getElementById("bouncer");
+    let x = window.innerWidth / 2;
+    let y = window.innerHeight / 2;
+    let vx = 3;
+    let vy = 2;
+    let hue = 0;
+
+    function animate() {
+      x += vx;
+      y += vy;
+
+      const rect = el.getBoundingClientRect();
+
+      if (x <= 0 || x + rect.width >= window.innerWidth) vx *= -1;
+      if (y <= 0 || y + rect.height >= window.innerHeight) vy *= -1;
+
+      el.style.left = x + "px";
+      el.style.top = y + "px";
+
+      // Rainbow effect by cycling hue
+      hue = (hue + 1) % 360;
+      el.style.color = `hsl(${hue}, 100%, 50%)`;
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

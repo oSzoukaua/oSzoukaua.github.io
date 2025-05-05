@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! Surprise!</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Comic Sans MS', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+            animation: backgroundChange 0.5s infinite;
+        }
+
+        @keyframes backgroundChange {
+            0% { background-color: black; }
+            50% { background-color: #020202; }
+            100% { background-color: black; }
+        }
+
+        h1 {
+            font-size: 5em;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            25% { transform: translateY(-20px); }
+            50% { transform: translateY(0); }
+            75% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        p {
+            font-size: 2em;
+            color: white;
+            animation: spinText 2s infinite linear;
+        }
+
+        @keyframes spinText {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .button {
+            padding: 20px 50px;
+            font-size: 1.5em;
+            background-color: #666;
+            color: black;
+            border: none;
+            cursor: pointer;
+            margin-top: 30px;
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #222;
+        }
+
+        .button:active {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>wow!</h1>
+        <p>Did you click the thing?</p>
+        <p>Thats when my birthday is</p>
+        <button class="button" onclick="window.location.href='https://oszoukaua.github.io'">Whoops, Take Me Back!</button>
+    </div>
+</body>
+</html>

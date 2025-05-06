@@ -494,23 +494,23 @@ html, body {
 
 		  // Yummers project
 	      const yummers_section = [
-	        { title: "Yummers ↗", url: "Yummers/yummers.html" },
+	        { title: "Yummers", url: "Yummers/yummers.html" },
 	      ];
 
 		  // aejoicacou universe project
 	      const aejoicacou_section = [
-			{ title: "AEJOICACOU ↗", url: "AEJOICACOU_wiki/AEJOICACOU landing.html" },
+			{ title: "AEJOICACOU", url: "AEJOICACOU_wiki/AEJOICACOU landing.html" },
 	      ];
 
 
 		  // Randomly opens a link form "output_section"
 	      const lucky_section = [
-	        { title: "Im Feeling Lucky~", url: "mr lazy over here" },
+	        { title: "Im Feeling Lucky~ ↗", url: "mr lazy over here" },
 	      ];
 
 		  // For supporting me and what i do
 		  const support_section = [
-	        { title: "Support me <3", url: "https://ko-fi.com/oszoukaua", url_new: true },
+	        { title: "Support me <3 ↗", url: "https://ko-fi.com/oszoukaua", url_new: true },
 	      ];
 		  
 		  
@@ -526,8 +526,8 @@ html, body {
 		  
 		  // Legal disclainer
 		  const legal_section = [
-	        { title: "Legal: Usage of my content/brand ↗", url: "https://pastebin.com/raw/bnSUX9zk", url_new: true },
-			{ title: "Legal: Re-Dis/Prod of my products ↗", url: "https://pastebin.com/raw/bH0vjEij", url_new: true },
+	        { title: "Legal: Usage of my content/brand ↗", url: "pastetrash/content_brand_usage.html", url_new: true },
+			{ title: "Legal: Re-Dis/Prod of my products ↗", url: "pastetrash/re_distribution_re_production_products.html", url_new: true },
 	      ];
 
 		  // For future events
@@ -537,8 +537,8 @@ html, body {
 
 		  // For cool pople/entities that i deem worth promoting
 	      const external_section = [
-	        { title: "Zeribian", url: "https://bsky.app/profile/zeribian.bsky.social", url_new: true },
-			{ title: "Modrinth", url: "https://modrinth.com", background_color: "linear-gradient(90deg, rgba(107, 168, 107, 0.033), rgba(0, 0, 0, 0))", url_new: true },
+	        { title: "Zeribian ↗", url: "https://bsky.app/profile/zeribian.bsky.social", url_new: true },
+			{ title: "Modrinth ↗", url: "https://modrinth.com", background_color: "linear-gradient(90deg, rgba(107, 168, 107, 0.033), rgba(0, 0, 0, 0))", url_new: true },
 	      ];
 		  
 		  // Shuffle function (Fisher–Yates)
@@ -585,7 +585,6 @@ const addRow = (container, number, item, left_color, right_color, background_col
   });
 }
 
-
   container.appendChild(row);
   return row;
 };
@@ -594,55 +593,55 @@ const addRow = (container, number, item, left_color, right_color, background_col
 		  const output_sectionSection = document.getElementById("output_section");
 	        output_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length - output_section.length + i;
-	        addRow(output_sectionSection, number, item, item.left_color, item.Color);
+	        addRow(output_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const internal_sectionSection = document.getElementById("internal_section");
 	      internal_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length + i;
-	        addRow(internal_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(internal_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const yummers_sectionSection = document.getElementById("yummers_section");
 	      yummers_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length + i;
-	        addRow(yummers_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(yummers_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const aejoicacou_sectionSection = document.getElementById("aejoicacou_section");
 	      aejoicacou_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length - aejoicacou_section.length + i;
-	        addRow(aejoicacou_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(aejoicacou_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const lucky_sectionSection = document.getElementById("lucky_section");
 	      lucky_section.forEach((item, i) => {
 	        const number = centerNumber - lucky_section.length + i;
-	        addRow(lucky_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(lucky_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const support_sectionSection = document.getElementById("support_section");
 	      support_section.forEach((item, i) => {
 	        const number = centerNumber;
-	        addRow(support_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(support_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const motd_sectionSection = document.getElementById("motd_section");
 	      motd_section.forEach((item, i) => {
 	        const number = "MOTD";
-	        addRow(motd_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(motd_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const contact_sectionSection = document.getElementById("contact_section");
 	      contact_section.forEach((item, i) => {
 	        const number = centerNumber + i + 1;
-	        addRow(contact_sectionSection, number, item, item.left_color, item.Color);
+	        addRow(contact_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const legal_sectionSection = document.getElementById("legal_section");
 	      legal_section.forEach((item, i) => {
 	        const number = centerNumber + contact_section.length + 1 + i;
-	        addRow(legal_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(legal_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const external_sectionSection = document.getElementById("external_section");

@@ -26,12 +26,13 @@ html, body {
 
     section.output_section { border-image: linear-gradient(180deg, #000, #56463F); color: #938782; border-image-slice: 1; }
     section.internal_section { border-image: linear-gradient(180deg, #000, #a8a8a8); color: #84898E; border-image-slice: 1; }
-    section.promote_section { border-left-color: #353C3F; color: #000; background: linear-gradient(90deg, #333, #000); }
-    section.lucky_section { border-left-color: #5B4C00; color: #AF9200; background: linear-gradient(90deg, #191500, #000); }
-    section.support_section { border-left-color: #5B0030; color: #A80059; background: linear-gradient(90deg, #2D0018, #000); }
-	section.motd_section { border-left-color: #003838; color: #00cccc; background: linear-gradient(90deg, #002121, #000); }
-	section.contact_section { border-left-color: #30157F; color: #200E71; background: linear-gradient(90deg, #0C0521, #000); }
-	section.legal_section { border-image: linear-gradient(180deg, #003326, #000); color: #004C38; border-image-slice: 1; background: linear-gradient(90deg, #000A07, #000); }
+	section.yummers_section { border-left-color: #4A4A51; color: #666670; background: linear-gradient(90deg, #29292D, #000); }
+    section.aejoicacou_section { border-left-color: #892200; color: #FF3F00; background: linear-gradient(90deg, #380E00, #000); }
+    section.lucky_section { border-left-color: #C67A00; color: #FFB600; background: linear-gradient(90deg, #352100, #000); }
+    section.support_section { border-left-color: #5B0030; color: #FF0048; background: linear-gradient(90deg, #2D0018, #000); }
+	section.motd_section { border-left-color: #003838; color: #00E9FF; background: linear-gradient(90deg, #002121, #000); }
+	section.contact_section { border-left-color: #30157F; color: #6200C4; background: linear-gradient(90deg, #0C0521, #000); }
+	section.legal_section { border-image: linear-gradient(180deg, #003326, #000); color: #007C51; border-image-slice: 1; background: linear-gradient(90deg, #000A07, #000); }
     section.countdown_section { border-image: linear-gradient(180deg, #191919, #000); color: #191919; border-image-slice: 1; }
     section.external_section { border-image: linear-gradient(180deg, #4B4556, #000); color: #716E7A; border-image-slice: 1; }
     section.edge_section { border-image: linear-gradient(180deg, #999999, #000); color: #8E8E8E; border-image-slice: 1; }
@@ -162,10 +163,17 @@ html, body {
 
 
 .row_hover {
-  color: #fff;
+  color: #ffffff !important;
 }
 
+  .background {
+    position: absolute;
+	background: linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
 
+	left: 10px;
+	right: 1em;
+	height: 1em;
+}
 
     @media (max-width: 500px) {
       html, body {
@@ -205,7 +213,8 @@ html, body {
   <main>
     <section class="output_section" id="output_section"></section>
     <section class="internal_section" id="internal_section"></section>
-    <section class="promote_section" id="promote_section"></section>
+	<section class="yummers_section" id="yummers_section"></section>
+    <section class="aejoicacou_section" id="aejoicacou_section"></section>
     <section class="lucky_section" id="lucky_section"></section>
     <section class="support_section" id="support_section"></section>
 	<section class="motd_section" id="motd_section"></section>
@@ -483,11 +492,14 @@ html, body {
 	        { title: "VRChat", url: "https://vrchat.com/home/user/usr_cf279c90-b4c1-4b2e-b7e6-c938a9dd67ce" },
 	      ];
 
-
-		  // Outputs that i would like to promote heavier
-	      const promote_section = [
+		  // Yummers project
+	      const yummers_section = [
 	        { title: "Yummers ↗", url: "yummers/yummers.html" },
-			{ title: "AEJOICACOU", url: "AEJOICACOU_wiki/AEJOICACOU landing.html" },
+	      ];
+
+		  // aejoicacou universe project
+	      const aejoicacou_section = [
+			{ title: "AEJOICACOU ↗", url: "AEJOICACOU_wiki/AEJOICACOU landing.html" },
 	      ];
 
 
@@ -498,7 +510,7 @@ html, body {
 
 		  // For supporting me and what i do
 		  const support_section = [
-	        { title: "Support me <3", url: "https://ko-fi.com/oszoukaua" },
+	        { title: "Support me <3", url: "https://ko-fi.com/oszoukaua", url_new: true },
 	      ];
 		  
 		  
@@ -514,8 +526,8 @@ html, body {
 		  
 		  // Legal disclainer
 		  const legal_section = [
-	        { title: "Legal: Usage of my content/brand ↗", url: "https://pastebin.com/raw/bnSUX9zk" },
-			{ title: "Legal: Re-Dis/Prod of my products ↗", url: "https://pastebin.com/raw/bH0vjEij" },
+	        { title: "Legal: Usage of my content/brand ↗", url: "https://pastebin.com/raw/bnSUX9zk", url_new: true },
+			{ title: "Legal: Re-Dis/Prod of my products ↗", url: "https://pastebin.com/raw/bH0vjEij", url_new: true },
 	      ];
 
 		  // For future events
@@ -525,8 +537,8 @@ html, body {
 
 		  // For cool pople/entities that i deem worth promoting
 	      const external_section = [
-	        { title: "Zeribian", url: "https://bsky.app/profile/zeribian.bsky.social" },
-			{ title: "Modrinth", url: "https://modrinth.com", right_color: "#71877A" },
+	        { title: "Zeribian", url: "https://bsky.app/profile/zeribian.bsky.social", url_new: true },
+			{ title: "Modrinth", url: "https://modrinth.com", background_color: "linear-gradient(90deg, rgba(107, 168, 107, 0.033), rgba(0, 0, 0, 0))", url_new: true },
 	      ];
 		  
 		  // Shuffle function (Fisher–Yates)
@@ -546,24 +558,27 @@ html, body {
 	      const formatNumber = n => `#${n.toString().padStart(4, '0')}`;
 
 
-const addRow = (container, number, item, left_color, right_color) => {
+const addRow = (container, number, item, left_color, right_color, background_color) => {
   const row = document.createElement('div');
   row.className = 'row';
+  
+  const background = `<div class="background" style="background: ${background_color}"></div>`;
 
-  const left = `<div class="left section output_section" style="color: ${left_color}">${formatNumber(number)}</div>`;
+  const left = `<div class="left" style="color: ${left_color}">${formatNumber(number)}</div>`;
 
   let right;
   if (item.copy_text) {
-    right = `<div class="right clickable" style="color: ${right_color}" data-copy="${item.copy_text}">${item.title}</div>`;
+    right = `<div class="right" style="color: ${right_color}" data-copy="${item.copy_text}">${item.title}</div>`;
   } else if (item.url) {
-    right = `<a class="right" style="color: ${right_color}" href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>`;
+    const targetAttr = item.url_new ? ' target="_blank" rel="noopener noreferrer"' : '';
+    right = `<a class="right" style="color: ${right_color}" href="${item.url}"${targetAttr}>${item.title}</a>`;
   } else {
     right = `<div class="right" style="color: ${right_color}">${item.title}</div>`;
   }
 
-  row.innerHTML = left + right;
+  row.innerHTML = background + left + right;
 
-if (item.copy_text) {
+  if (item.copy_text) {
   row.querySelector('.right').addEventListener('click', (e) => {
     navigator.clipboard.writeText(item.copy_text);
     showToast("Copied", e);
@@ -578,20 +593,26 @@ if (item.copy_text) {
 
 		  const output_sectionSection = document.getElementById("output_section");
 	        output_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - promote_section.length - internal_section.length - output_section.length + i;
+	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length - output_section.length + i;
 	        addRow(output_sectionSection, number, item, item.left_color, item.Color);
 	      });
 
 	      const internal_sectionSection = document.getElementById("internal_section");
 	      internal_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - promote_section.length - internal_section.length + i;
+	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length + i;
 	        addRow(internal_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 
-	      const promote_sectionSection = document.getElementById("promote_section");
-	      promote_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - promote_section.length + i;
-	        addRow(promote_sectionSection, number, item, item.left_color, item.right_color);
+	      const yummers_sectionSection = document.getElementById("yummers_section");
+	      yummers_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length + i;
+	        addRow(yummers_sectionSection, number, item, item.left_color, item.right_color);
+	      });
+
+	      const aejoicacou_sectionSection = document.getElementById("aejoicacou_section");
+	      aejoicacou_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length - aejoicacou_section.length + i;
+	        addRow(aejoicacou_sectionSection, number, item, item.left_color, item.right_color);
 	      });
 		  
 		  const lucky_sectionSection = document.getElementById("lucky_section");
@@ -627,7 +648,7 @@ if (item.copy_text) {
 		  const external_sectionSection = document.getElementById("external_section");
 	      external_section.forEach((item, i) => {
 	        const number = centerNumber + contact_section.length + legal_section.length + countdown_section.length + 1 + i;
-	        addRow(external_sectionSection, number, item, item.left_color, item.right_color);
+	        addRow(external_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const countdown_sectionSection = document.getElementById("countdown_section");

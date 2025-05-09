@@ -190,6 +190,16 @@
 	{ title: "Wub", image: "wub.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
   ];
 
+// Shuffle function (Fisher–Yates)
+          function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [array[i], array[j]] = [array[j], array[i]];
+            }
+          }
+          // Randomize output section order on each load
+          shuffle(stickers);
+
   function createStickerCard(sticker) {
     const wrapper = document.createElement('div');
     wrapper.className = 'card';

@@ -1,162 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico">
-    <title>oSzoukaua's: Stickers</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Space Mono', monospace;
-            background-color: black;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico">
+  <title>oSzoukaua's: Stickers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Space Mono', monospace;
+      background-color: black;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
 
-        header {
-            font-size: 2em;
-            margin: 20px 0;
-            font-weight: bold;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            color: #ffffff;
-        }
+    header {
+      font-size: 2em;
+      margin: 20px 0;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      color: #ffffff;
+    }
 
-        .logo {
-            margin-bottom: 20px;
-        }
+    .logo {
+      margin-bottom: 20px;
+    }
 
-        .logo img {
-            width: 150px;
-            height: auto;
-            cursor: pointer;
-        }
+    .logo img {
+      width: 150px;
+      height: auto;
+    }
 
-        .sticker-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            width: 90%;
-            max-width: 1200px;
-        }
+    .sticker-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      width: 90%;
+      max-width: 1200px;
+    }
 
-        .sticker-card {
-            position: relative;
-            overflow: hidden;
-            border: 3px solid #444;
-            border-radius: 6px;
-            transition: transform 0.1s ease, box-shadow 0.3s ease;
-            transform-style: preserve-3d;
-            will-change: transform;
-            cursor: pointer;
-			perspective: 1000px;
-        }
+    .sticker-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
 
-        .sticker-card img {
-            width: 90%;
-            height: auto;
-            display: block;
-            padding: 1em;
-            transition: transform 0.1s ease;
-            position: relative;
-            z-index: 0;
-        }
+    .sticker-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease;
+      border: 3px solid #444;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: #111;
+    }
 
-        .sticker-title {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            padding: 10px 10px 0px 10px;
-            color: white;
-            text-align: center;
-            font-size: 1.2em;
-            font-weight: bold;
-            letter-spacing: 1px;
-            z-index: 2;
-            text-shadow:
-                -2px -2px 0 black,
-                 2px -2px 0 black,
-                -2px  2px 0 black,
-                 2px  2px 0 black;
-            transition: opacity 0.2s ease;
-        }
+    .sticker-inner img {
+      width: 90%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+    }
 
-        /* Fade-out effect for title text on hover */
-        .sticker-card:hover .sticker-title {
-            opacity: 0;
-        }
+    .sticker-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      padding: 10px 10px 0px 10px;
+      color: white;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      z-index: 2;
+      text-shadow:
+        -2px -2px 0 black,
+         2px -2px 0 black,
+        -2px  2px 0 black,
+         2px  2px 0 black;
+      transition: opacity 0.2s ease;
+    }
 
-        .sticker-card::before {
-            content: "";
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            z-index: 1;
-            border-radius: 6px;
-            pointer-events: none;
-            background: none;
-            mix-blend-mode: screen;
-        }
+    .sticker-inner:hover .sticker-title {
+      opacity: 0;
+    }
 
-        .sticker-card:hover::before {
-            background: linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0.09) 1%, rgba(255,255,255,0) 50%);
-        }
+    .sheen {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 6px;
+      border: 3px solid transparent;
+      z-index: 2;
+      background: 
+        linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
+        linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,.5) 20%, rgba(255,255,255,0) 30%);
+      mask-composite: exclude;
+      -webkit-mask-composite: destination-out;
+      mix-blend-mode: screen;
+      opacity: 0;
+    }
 
-        .sticker-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 6px;
-            border: 3px solid transparent;
-            pointer-events: none;
-            z-index: 2;
-            background: linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,.5) 90%);
-            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            -webkit-mask-composite: destination-out;
-            mix-blend-mode: screen;
-            transition: opacity 0.3s ease;
-            opacity: 0;
-        }
+    .sticker-inner:hover .sheen {
+      opacity: 1;
+    }
 
-        .sticker-card:hover::after {
-            opacity: 1;
-        }
-
-    </style>
+  </style>
 </head>
 <body>
-<div class="logo">
+  <div class="logo">
     <a href="https://oszoukaua.github.io">
-        <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's: watermark/logo">
+      <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's: watermark/logo">
     </a>
-</div>
+  </div>
 
-<header>Sticker Designs</header>
+  <header>Sticker Designs</header>
 
-<div class="sticker-gallery" id="sticker-gallery">
-</div>
+  <div class="sticker-gallery" id="sticker-gallery"></div>
 
-<footer>
+  <footer>
     <p>⊗ oSzoukaua - Support me!</p>
-</footer>
+  </footer>
 
-<script>
-const stickers = [
-    { title: "Boof", image: "boof.png", url: "../wip/wip_deadend.html" },
+  <script>
+    const stickers = [
+      { title: "Boof", image: "boof.png", url: "../wip/wip_deadend.html" },
     { title: "Butwon", image: "butwon.png", url: "../wip/wip_deadend.html" },
     { title: "Crushie", image: "crushie.png", url: "../wip/wip_deadend.html" },
     { title: "cube", image: "Cube.png", url: "../wip/wip_deadend.html" },
@@ -195,84 +175,98 @@ const stickers = [
 	{ title: "Wada", image: "wada.png", url: "../wip/wip_deadend.html" },
 	{ title: "Women", image: "women.png", url: "../wip/wip_deadend.html" },
 	{ title: "Wub", image: "wub.png", url: "../wip/wip_deadend.html" },
-];
+    ];
 
-// Shuffle function (Fisher–Yates)
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
+      }
     }
-}
 
-// Randomize output section order on each load
-shuffle(stickers);
+    shuffle(stickers);
 
-// Function to create sticker cards dynamically
-function createStickerCard(sticker) {
-    const card = document.createElement('div');
-    card.classList.add('sticker-card');
+    function createStickerCard(sticker) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'sticker-card';
 
-    // Create invisible cursor box
-    const cursorBox = document.createElement('div');
-    cursorBox.classList.add('cursor-box');
-    card.appendChild(cursorBox);
+      const inner = document.createElement('div');
+      inner.className = 'sticker-inner';
 
-    const link = document.createElement('a');
-    link.href = sticker.url;
-    link.target = "_blank";
+      const link = document.createElement('a');
+      link.href = sticker.url;
+      link.target = '_blank';
 
-    const img = document.createElement('img');
-    img.src = sticker.image;
-    img.alt = sticker.title;
+      const img = document.createElement('img');
+      img.src = sticker.image;
+      img.alt = sticker.title;
 
-    const title = document.createElement('div');
-    title.classList.add('sticker-title');
-    title.innerText = sticker.title;
+      const title = document.createElement('div');
+      title.className = 'sticker-title';
+      title.innerText = sticker.title;
 
-    card.appendChild(link);
-    link.appendChild(img);
-    card.appendChild(title);
+      const sheen = document.createElement('div');
+      sheen.className = 'sheen';
 
-    return card;
-}
+      link.appendChild(img);
+      inner.appendChild(link);
+      inner.appendChild(title);
+      inner.appendChild(sheen);
+      wrapper.appendChild(inner);
 
-// Append each sticker card to the gallery
-const gallery = document.getElementById('sticker-gallery');
-stickers.forEach(sticker => {
-    gallery.appendChild(createStickerCard(sticker));
+// Mouse tilt and sheen opacity based on mouse position
+wrapper.addEventListener('mousemove', e => {
+  const rect = wrapper.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  const deltaX = (x - centerX) / centerX;
+  const deltaY = (y - centerY) / centerY;
+
+  const rotateX = deltaY * -25;
+  const rotateY = deltaX * 25;
+  inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+  const angle = Math.atan2(y - centerY, x - centerY) * (180 / Math.PI);
+  inner.style.setProperty('--sheen-angle', `${angle + 90}deg`);
+
+  // Calculate distance from the center
+  const distanceFromCenter = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+
+  // Link the opacity of the second gradient to the distance
+  const gradientOpacity = Math.max(distanceFromCenter * 0.5); // Modify the factor as needed
+
+  // Update the background gradient dynamically
+  sheen.style.background = `
+    linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
+    linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,${gradientOpacity}) 20%, rgba(255,255,255,0) 30%)
+  `;
 });
 
-// Add mouse interaction for hover effects
-document.querySelectorAll('.sticker-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        // Calculate the normalized mouse position relative to the center
-        const normalizedX = (x - centerX) / centerX;
-        const normalizedY = (y - centerY) / centerY;
-
-        // Apply the rotation and scaling effects to the card
-        const rotateX = normalizedY * -22;  // Tilt effect on the X-axis
-        const rotateY = normalizedX * 22;   // Tilt effect on the Y-axis
-
-        card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
-        const angle = Math.atan2(y - centerY, x - centerY) * (180 / Math.PI);
-        card.style.setProperty('--sheen-angle', `${angle + 90}deg`);
-    });
-
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        card.style.setProperty('--sheen-angle', `180deg`);
-    });
+wrapper.addEventListener('mouseleave', () => {
+  // Reset transform and sheen angle
+  inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+  inner.style.setProperty('--sheen-angle', `180deg`);
+  
+  // Reset the background gradient and opacity
+  sheen.style.background = '';
+  sheen.style.opacity = 0;
 });
-</script>
 
+wrapper.addEventListener('mouseenter', () => {
+  // Ensure the background gradient and opacity are set back on mouse enter
+  sheen.style.opacity = 1;
+});
+
+
+      return wrapper;
+    }
+
+    const gallery = document.getElementById('sticker-gallery');
+    stickers.forEach(sticker => {
+      gallery.appendChild(createStickerCard(sticker));
+    });
+  </script>
 </body>
 </html>

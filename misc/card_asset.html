@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>oSzoukaua's: Card</title>
+    <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        header {
+            font-size: 2em;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            flex: 0 1 auto;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .card-gallery {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            width: 100%;
+        }
+
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            display: inline-block;
+            padding: 0;
+            border: 3px solid #444;
+            border-radius: 6px;
+            background-color: #111;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        .card-inner img {
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+
+        .card-title {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            padding: 10px 0 0;
+            color: #fff;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-shadow:
+                -2px -2px 0 #000,
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000;
+            z-index: 2;
+            transition: opacity 0.2s ease;
+        }
+
+        .card-inner:hover .card-title {
+            opacity: 0;
+        }
+
+        .sheen {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 6px;
+            z-index: 2;
+            background:
+                linear-gradient(var(--sheen-angle, 0deg), rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.1) 90%),
+                linear-gradient(var(--sheen-angle, 180deg), rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, .5) 20%, rgba(255, 255, 255, 0) 30%);
+            mix-blend-mode: screen;
+            opacity: 0;
+        }
+
+        .card-inner:hover .sheen {
+            opacity: 1;
+        }
+
+        footer {
+            font-size: 1em;
+            text-align: center;
+            margin-top: 20px;
+            padding: 7em 0 0;
+            width: 100%;
+            flex: 0 1 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="https://oszoukaua.github.io">
+            <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's: watermark/logo" />
+        </a>
+    </div>
+
+    <header>Cards</header>
+
+    <div class="card-gallery" id="card-gallery">
+        <div class="card">
+            <div class="card-inner">
+                <img src="placeholder.png" alt="Placeholder Image" />
+                <div class="card-title">Card</div>
+                <div class="sheen"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>⊗ oSzoukaua - Support me!</p>
+    </footer>
+
+    <script>
+        const wrapper = document.querySelector('.card');
+        const inner = document.querySelector('.card-inner');
+        const sheen = document.querySelector('.sheen');
+
+        wrapper.addEventListener('mousemove', (e) => {
+            const rect = wrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const deltaX = (x - centerX) / centerX;
+            const deltaY = (y - centerY) / centerY;
+
+            const rotateX = deltaY * -25;
+            const rotateY = deltaX * 25;
+            inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+            const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+            inner.style.setProperty('--sheen-angle', `${angle + 90}deg`);
+
+            const distanceFromCenter = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+            const gradientOpacity = Math.max(distanceFromCenter * 0.5, 0);
+
+            sheen.style.background = `
+                linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
+                linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,${gradientOpacity}) 20%, rgba(255,255,255,0) 30%)
+            `;
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+            inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            inner.style.setProperty('--sheen-angle', '180deg');
+            sheen.style.background = '';
+            sheen.style.opacity = 0;
+        });
+
+        wrapper.addEventListener('mouseenter', () => {
+            sheen.style.opacity = 1;
+        });
+    </script>
+</body>
+</html>

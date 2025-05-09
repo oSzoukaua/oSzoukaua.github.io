@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/x-icon" href="common_assets/favicon.ico">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>oSzoukaua's: Website</title>
@@ -28,6 +28,7 @@ html, body {
     section.internal_section { border-image: linear-gradient(180deg, #000, #a8a8a8); color: #84898E; border-image-slice: 1; }
 	section.yummers_section { border-left-color: #4A4A51; color: #666670; background: linear-gradient(90deg, #29292D, #000); }
     section.aejoicacou_section { border-left-color: #892200; color: #FF3F00; background: linear-gradient(90deg, #380E00, #000); }
+	section.stickers_section { border-left-color: #890084; color: #FF00E1; background: linear-gradient(90deg, #33002D, #000); }
     section.lucky_section { border-left-color: #C67A00; color: #FFB600; background: linear-gradient(90deg, #352100, #000); }
     section.support_section { border-left-color: #5B0030; color: #FF0048; background: linear-gradient(90deg, #2D0018, #000); }
 	section.motd_section { border-left-color: #003838; color: #00E9FF; background: linear-gradient(90deg, #002121, #000); }
@@ -215,6 +216,7 @@ html, body {
     <section class="internal_section" id="internal_section"></section>
 	<section class="yummers_section" id="yummers_section"></section>
     <section class="aejoicacou_section" id="aejoicacou_section"></section>
+	<section class="stickers_section" id="stickers_section"></section>
     <section class="lucky_section" id="lucky_section"></section>
     <section class="support_section" id="support_section"></section>
 	<section class="motd_section" id="motd_section"></section>
@@ -502,6 +504,11 @@ html, body {
 			{ title: "AEJOICACOU", url: "AEJOICACOU_wiki/AEJOICACOU landing.html" },
 	      ];
 
+		  // Stickers store redirector
+	      const stickers_section = [
+			{ title: "Stickers!", url: "stickers/stickers.html" },
+	      ];
+
 
 		  // Randomly opens a link form "output_section"
 	      const lucky_section = [
@@ -592,26 +599,32 @@ const addRow = (container, number, item, left_color, right_color, background_col
 
 		  const output_sectionSection = document.getElementById("output_section");
 	        output_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length - output_section.length + i;
+	        const number = centerNumber - lucky_section.length - stickers_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length - output_section.length + i;
 	        addRow(output_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const internal_sectionSection = document.getElementById("internal_section");
 	      internal_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length + i;
+	        const number = centerNumber - lucky_section.length - stickers_section.length - aejoicacou_section.length - yummers_section.length - internal_section.length + i;
 	        addRow(internal_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const yummers_sectionSection = document.getElementById("yummers_section");
 	      yummers_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - aejoicacou_section.length - yummers_section.length + i;
+	        const number = centerNumber - lucky_section.length - stickers_section.length - aejoicacou_section.length - yummers_section.length + i;
 	        addRow(yummers_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 
 	      const aejoicacou_sectionSection = document.getElementById("aejoicacou_section");
 	      aejoicacou_section.forEach((item, i) => {
-	        const number = centerNumber - lucky_section.length - aejoicacou_section.length + i;
+	        const number = centerNumber - lucky_section.length - stickers_section.length - aejoicacou_section.length + i;
 	        addRow(aejoicacou_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
+	      });
+		  
+		  const stickers_sectionSection = document.getElementById("stickers_section");
+	      stickers_section.forEach((item, i) => {
+	        const number = centerNumber - lucky_section.length - stickers_section.length + i;
+	        addRow(stickers_sectionSection, number, item, item.left_color, item.right_color, item.background_color);
 	      });
 		  
 		  const lucky_sectionSection = document.getElementById("lucky_section");

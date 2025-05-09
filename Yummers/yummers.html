@@ -1,27 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta charset="UTF-8">
-  <title>oSzoukaua's: Webstore</title>
-  <style>
-    body {
-      background: black;
-      color: #eee;
-      font-family: monospace;
-      padding: 2rem;
-      margin: 0;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico">
+    <title>oSzoukaua's: Yummers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Space Mono', monospace;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        header {
+            font-size: 2em;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #ffffff;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 150px;
+            height: auto;
+            cursor: pointer;
+        }
+
     .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-    }
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 4em;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+        }
     .product {
       background: RGB( 0, 0, 0, 0);
       padding: 1rem;
@@ -70,8 +94,13 @@
   </style>
 </head>
 <body>
+<div class="logo">
+    <a href="https://oszoukaua.github.io">
+        <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's: watermark/logo">
+    </a>
+</div>
 
-  <h1>WEBSTORE</h1>
+<header>Webstore</header>
 
   <div class="product-grid">
     <div class="product">
@@ -93,5 +122,8 @@
       <button class="add-to-cart">Add to Cart</button>
     </div>
   </div>
+<footer>
+    <p>⊗ oSzoukaua - Support me!</p>
+</footer>
 </body>
 </html>

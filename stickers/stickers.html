@@ -38,6 +38,21 @@
       width: 150px;
       height: auto;
     }
+	
+	footer {
+margin-top: 20px;
+font-size: 0.9em;
+text-align: center;
+position: relative;
+bottom: 10px;
+width: 100%;
+color: white;
+}
+
+footer a {
+color: white;
+text-decoration: underline;
+}
 
     .card-gallery {
       display: grid;
@@ -60,7 +75,6 @@
       border: 3px solid #444;
       border-radius: 6px;
       overflow: hidden;
-      background-color: #111;
 	  
     }
 
@@ -88,8 +102,13 @@
          2px -2px 0 black,
         -2px  2px 0 black,
          2px  2px 0 black;
-      transition: opacity 0.2s ease;
+	  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
     }
+
+.card-inner:hover .card-title {
+  color: #000;
+  transform: translateY(20px);
+}
 
     .card-inner:hover .card-title {
       opacity: 0;
@@ -127,6 +146,126 @@
   transform-origin: center center;
 }
 
+#popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3); /* semi-transparent dark overlay */
+  backdrop-filter: blur(10px);     /* this applies the blur */
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+#popup-content {
+  background: black;
+  padding: 2em;
+  border-radius: 6px;
+  border: 1px solid white;
+  max-width: 90%;
+  width: 800px;
+  height: 90%;
+  text-align: center;
+  color: white;
+  position: relative;  /* Allows positioning of child elements */
+}
+
+#popup-content img {
+  width: 100%;           /* Makes sure it fills the container width */
+  max-width: 70%;       /* Prevents overflow */
+  height: auto;          /* Maintains aspect ratio */
+  border-radius: 8px;
+  margin-bottom: 1em;
+  object-fit: contain;   /* Ensures the image scales to fit without stretching */
+}
+
+#popup-title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5em; /* You can adjust the font size */
+  font-weight: bold;
+}
+
+#popup-price {
+  position: absolute;
+  bottom: 40px; /* Adjust distance from the bottom */
+  right: 20px;
+  font-size: 1.2em;
+  color: #f0f0f0;
+}
+
+.btn {
+  text-shadow:
+        -2px -2px 0 black,
+         2px -2px 0 black,
+        -2px  2px 0 black,
+         2px  2px 0 black;
+  padding: 0.5em 1em;
+  border: 1px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  border-radius: 3px;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  z-index: 1; /* Ensure button text stays above gradient */
+}
+
+.btn:hover::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  z-index: -1; /* Place gradient behind text */
+  background: repeating-linear-gradient(
+    45deg,
+    white 0px,
+    white 4px,
+    transparent 4px,
+    transparent 8px
+  );
+  background-size: 11.314px 11.314px; /* Stripe size */
+  animation: scrollStripes 1s linear infinite;
+  border-radius: 3px;
+}
+
+@keyframes scrollStripes {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -28.285px 28.285px;
+  }
+}
+
+.btn-bottom-right {
+  position: absolute; /* Position relative to the parent */
+  bottom: 20px; /* Distance from the bottom of the parent */
+  right: 20px; /* Distance from the right of the parent */
+}
+
+.btn-top-right {
+  position: absolute; /* Position relative to the parent */
+  top: 20px; /* Distance from the bottom of the parent */
+  right: 20px; /* Distance from the right of the parent */
+}
+
+.btn-fill-horizontal {
+  left: 20px; /* Align the element to the left of the parent */
+  right: 20px; /* Extend the element beyond the right of the parent */
+  width: auto; /* Make the element's width adjust based on content */
+}
+
+
 
 
 
@@ -138,59 +277,75 @@
       <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's: watermark/logo">
     </a>
   </div>
-
   <header>Sticker Designs</header>
-
   <div class="card-gallery" id="card-gallery"></div>
+<footer>
+    <p>⊗ oSzoukaua - Support me! - <a href="../contact/contact_stickers.html" target="_blank" rel="noopener noreferrer">Contact Stickers</a></p>
+</footer>
 
-  <footer>
-    <p>⊗ oSzoukaua - Support me!</p>
-  </footer>
 
-<script>
-  const stickers = [
-    { title: "Boof", image: "boof.png", url: "../misc/wip_deadend.html", author: "average" },
-    { title: "Butwon", image: "butwon.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Crushie", image: "crushie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Cube", image: "cube.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Fat fuck", image: "fat_fuck.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Flox", image: "flox.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Frag", image: "frag.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Froog", image: "froog.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Furries", image: "furries.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Heathy", image: "heathy.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Larena", image: "larena.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Love", image: "love.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "P.M.A.F", image: "pmaf.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Pup", image: "pup.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Skrush", image: "skrush.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "Sodafizz", image: "sodafizz.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-    { title: "VCR", image: "vcr.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Bald", image: "bald.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Birthday", image: "birthday.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Bri-ish", image: "bri-ish.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Cat", image: "cat.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Deadie", image: "deadie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Dura-sell", image: "dura-sell.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Flamg", image: "flamg.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Froggie", image: "froggie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Gay-Diation", image: "gay-dation.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Mawmie", image: "mawmie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "No", image: "no.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Nuh-uh", image: "nuh-uh.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Orgie", image: "orgie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Pawb", image: "pawb.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Pibs", image: "pibs.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Slimmie", image: "slimmie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Sneepie", image: "sneepie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Sphere", image: "sphere.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Vlc", image: "vlc.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Wada", image: "wada.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Women", image: "women.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	{ title: "Wub", image: "wub.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-  ];
 
-// Shuffle function (Fisher–Yates)
+  <!-- Popup Modal -->
+<div id="popup">
+  <div id="popup-content">
+    <img id="popup-img" src="" alt="">
+    <h2 id="popup-title"></h2>
+    <p id="popup-desc"></p>
+    <p id="popup-price"></p>
+    <div id="popup-buttons">
+      <button class="btn btn-top-right" onclick="document.getElementById('popup').style.display='none'">X</button>
+      <a id="popup-link" href="#" target="_blank">
+        <button class="btn btn-bottom-right btn-fill-horizontal">PURCHASE</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    const stickers = [
+      { title: "Boof", image: "boof.png", url: "../misc/wip_deadend.html", author: "Average", description: "A charmingly loud and fluffy design.", price: "£3.50" },
+  { title: "Butwon", image: "butwon.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "A sticcker of the logo of a shitty pointless game ive published", price: "£4.00" },
+  { title: "Crushie", image: "crushie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "//>w<//", price: "£3.75" },
+  { title: "Gopper block", image: "gopper_block.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "This is a texture that was made for a banner image for my first ever minecraft data pack \"oSzoukaua's: Lucky blocks\" on modrinth", price: "£3.00" },
+  { title: "Fat fuck", image: "fat_fuck.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Little guy, taken from a frame of an animation I was working on, on my animations channel", price: "£4.20" },
+  { title: "Flox", image: "flox.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "An old logo for a unfinished, un released, and un anounced game I was working on", price: "£3.80" },
+  { title: "Frag", image: "frag.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Front render of a little frog 3D model I made, and uplaoded to my ko-fi :)", price: "£4.00" },
+  { title: "Froog", image: "froog.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Side render of a little frog 3D model I made, and uplaoded to my ko-fi :)", price: "£3.50" },
+  { title: "Furries", image: "furries.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Little sticker warning thing I designed because I was bored!", price: "£3.50" },
+  { title: "Heathy", image: "heathy.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Center element I took from a picture I drew!", price: "£3.75" },
+  { title: "Larena", image: "larena.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Center element I took from a picture I drew!", price: "£4.00" },
+  { title: "Love", image: "love.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Old thing I made and then later updated with colour because I was bored.", price: "£3.50" },
+  { title: "P.M.A.F", image: "pmaf.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Old logo for a un released, up finished, and un published VRChat world I was working on", price: "£3.75" },
+  { title: "Pup", image: "pup.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Center element I took from a announcement i made for a old VRChat group I ran", price: "£3.50" },
+  { title: "Skrush", image: "skrush.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Center element I took from an old picture I drew!", price: "£4.00" },
+  { title: "Sodafizz", image: "sodafizz.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Logo/icon for a youtube channel that was once planned", price: "£4.20" },
+  { title: "VCR", image: "vcr.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Old logo for a \"gaming team\" that i wanted to make when i was like 14", price: "£4.00" },
+  { title: "Bald", image: "bald.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Birthday", image: "birthday.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Bri-ish", image: "bri-ish.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Cat", image: "cat.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Deadie", image: "deadie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Dura-sell", image: "dura-sell.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Flamg", image: "flamg.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Froggie", image: "froggie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Gay-Diation", image: "gay-dation.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Mawmie", image: "mawmie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "No", image: "no.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Nuh-uh", image: "nuh-uh.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Orgie", image: "orgie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Pawb", image: "pawb.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Pibs", image: "pibs.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Slimmie", image: "slimmie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Sneepie", image: "sneepie.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Sphere", image: "sphere.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Vlc", image: "vlc.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Wada", image: "wada.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Women", image: "women.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+  { title: "Wub", image: "wub.png", url: "../misc/wip_deadend.html", author: "oSzoukaua", description: "Art I made for my Stickers youtube channel", price: "£3.00" },
+    ];
+	
+	// Shuffle function (Fisher–Yates)
           function shuffle(array) {
             for (let i = array.length - 1; i > 0; i--) {
               const j = Math.floor(Math.random() * (i + 1));
@@ -200,65 +355,72 @@
           // Randomize output section order on each load
           shuffle(stickers);
 
-  function createStickerCard(sticker) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'card';
+    function createStickerCard(sticker) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'card';
 
-    const inner = document.createElement('div');
-    inner.className = 'card-inner';
+      const inner = document.createElement('div');
+      inner.className = 'card-inner';
 
-    const link = document.createElement('a');
-    link.href = sticker.url;
-    link.target = '_blank';
+      const img = document.createElement('img');
+      img.src = sticker.image;
+      img.alt = sticker.title;
 
-    const img = document.createElement('img');
-    img.src = sticker.image;
-    img.alt = sticker.title;
+      const title = document.createElement('div');
+      title.className = 'card-title';
+      title.innerText = sticker.title;
 
-    const title = document.createElement('div');
-    title.className = 'card-title';
-    title.innerText = sticker.title;
+      const sheen = document.createElement('div');
+      sheen.className = 'sheen';
 
-    const sheen = document.createElement('div');
-    sheen.className = 'sheen';
+      const author = document.createElement('div');
+      author.className = 'card-author';
+      author.innerText = sticker.author;
 
-    // Create author tag
-    const author = document.createElement('div');
-    author.className = 'card-author';
-    author.innerText = sticker.author;
+      inner.appendChild(img);
+      inner.appendChild(title);
+      inner.appendChild(sheen);
+      inner.appendChild(author);
+      wrapper.appendChild(inner);
 
-    link.appendChild(img);
-    inner.appendChild(link);
-    inner.appendChild(title);
-    inner.appendChild(sheen);
-    inner.appendChild(author); // Add author to the card
-    wrapper.appendChild(inner);
+      wrapper.addEventListener('click', () => {
+        document.getElementById('popup-img').src = sticker.image;
+        document.getElementById('popup-title').innerText = sticker.title;
+        document.getElementById('popup-desc').innerText = sticker.description || "No description available.";
+        document.getElementById('popup-price').innerText = `Price: ${sticker.price || "N/A"}`;
+        document.getElementById('popup-link').href = sticker.url;
+        document.getElementById('popup').style.display = 'flex';
+      });
 
-    // Mouse tilt and sheen opacity based on mouse position
-    wrapper.addEventListener('mousemove', e => {
-      const rect = wrapper.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const deltaX = (x - centerX) / centerX;
-      const deltaY = (y - centerY) / centerY;
+// Mouse tilt and sheen opacity based on mouse position
+wrapper.addEventListener('mousemove', e => {
+  const rect = wrapper.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  const deltaX = (x - centerX) / centerX;
+  const deltaY = (y - centerY) / centerY;
 
-      const rotateX = deltaY * -25;
-      const rotateY = deltaX * 25;
-      inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  const maxTilt = 25; // Max tilt angle (degrees)
 
-      const angle = Math.atan2(y - centerY, x - centerY) * (180 / Math.PI);
-      inner.style.setProperty('--sheen-angle', `${angle + 90}deg`);
+const rotateX = Math.max(Math.min(deltaY * -30, maxTilt), -maxTilt);
+const rotateY = Math.max(Math.min(deltaX * 30, maxTilt), -maxTilt);
+  inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
-      const distanceFromCenter = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
-      const gradientOpacity = Math.max(distanceFromCenter * 0.3);
+  const angle = Math.atan2(y - centerY, x - centerY) * (180 / Math.PI);
+  inner.style.setProperty('--sheen-angle', `${angle + 90}deg`);
 
-      sheen.style.background = `
-        linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
-        linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,${gradientOpacity}) 20%, rgba(255,255,255,0) 30%)
-      `;
-    });
+  const distanceFromCenter = Math.sqrt(deltaX ** 2 + deltaY ** 2);
+  const gradientOpacity = Math.max(distanceFromCenter * 0.3 - 0.1, 0);
+  const sheen_offset = `${Math.min(distanceFromCenter * 70)}%`; // convert to % and clamp
+
+  sheen.style.background = `
+    linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
+    linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,${gradientOpacity}) ${sheen_offset}, rgba(255,255,255,0) 30%)
+  `;
+});
+
 
     wrapper.addEventListener('mouseleave', () => {
       inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
@@ -277,8 +439,14 @@
   const gallery = document.getElementById('card-gallery');
   stickers.forEach(sticker => {
     gallery.appendChild(createStickerCard(sticker));
+	
+	// Add an event listener to the popup background
+document.getElementById('popup').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('popup')) {
+    document.getElementById('popup').style.display = 'none';
+  }
+});
   });
 </script>
-
 </body>
 </html>

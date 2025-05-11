@@ -528,7 +528,7 @@ html, body {
 		  
 		  // My contact info
 		  const contact_section = [
-	        { title: "contact.oSzoukaua@gmail.com 🗐", copy_text: "contact.oSzoukaua@gmail.com" },
+	        { title: "Contact oSzoukaua", url: "contact/contact_selector.html" },
 	      ];
 		  
 		  // Legal disclainer
@@ -585,12 +585,6 @@ const addRow = (container, number, item, left_color, right_color, background_col
 
   row.innerHTML = background + left + right;
 
-  if (item.copy_text) {
-  row.querySelector('.right').addEventListener('click', (e) => {
-    navigator.clipboard.writeText(item.copy_text);
-    showToast("Copied", e);
-  });
-}
 
   container.appendChild(row);
   return row;

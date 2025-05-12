@@ -326,12 +326,19 @@ height: 100%;
 }
 
 .btn-fill-horizontal {
-  display: block; /* Ensure the button becomes a block-level element */
-  left: 0; /* Align the element to the left of the parent */
-  right: 0; /* Align the element to the right of the parent */
-  width: 100%; /* Make the element fill the parent's width */
-  padding: 0.6em 1.2em; /* Adjust padding if needed */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Optional: center horizontally */
+
+  width: 100%;
+  max-height: 2em;            /* Enough for 1em text + padding */
+
+  padding: 0 1.2em;         /* Only horizontal padding */
+  overflow: hidden;
 }
+
+
+
 
 
 
@@ -350,8 +357,8 @@ height: 100%;
 	 <div id="card-gallery" class="card-gallery">
   </div>
   
-<a href="../webstore/webstore.html" rel="noopener noreferrer">
-    <button class="btn btn-fill-horizontal">Go to webstore</button>
+<a href="../webstore/webstore.html" class="btn btn-fill-horizontal" rel="noopener noreferrer">
+    Go to webstore
 </a>
 
   </main>
@@ -363,82 +370,78 @@ height: 100%;
 </body>
 <script>
     const stickers = [
-      { title: "Nothing Soda", image: "soda_1.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	  { title: "Nothing Cream Soda", image: "soda_2.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
-	  { title: "Gnaw Bars", image: "bar_1.png", url: "../misc/wip_deadend.html", author: "oSzoukaua" },
+      { title: "Nothing Soda", image: "soda_1.png", url: "../webstore/webstore.html?tag=Yummers&open=1", author: "oSzoukaua" },
+	  { title: "Nothing Cream Soda", image: "soda_2.png", url: "../webstore/webstore.html?tag=Yummers&open=2", author: "oSzoukaua" },
+	  { title: "Gnaw Bars", image: "bar_1.png", url: "../webstore/webstore.html?tag=Yummers&open=3", author: "oSzoukaua" },
     ];
 
-    function createStickerCard(sticker) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'card';
+function createStickerCard(sticker) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'card';
+  wrapper.style.cursor = 'pointer';             // show pointer on hover
+  wrapper.title  = `Open ${sticker.title}`;      // accessibility
 
-      const inner = document.createElement('div');
-      inner.className = 'card-inner';
+  const inner = document.createElement('div');
+  inner.className = 'card-inner';
 
-      const img = document.createElement('img');
-      img.src = sticker.image;
-      img.alt = sticker.title;
+  const img = document.createElement('img');
+  img.src = sticker.image;
+  img.alt = sticker.title;
 
-      const title = document.createElement('div');
-      title.className = 'card-title';
-      title.innerText = sticker.title;
+  const title = document.createElement('div');
+  title.className = 'card-title';
+  title.innerText = sticker.title;
 
-      const sheen = document.createElement('div');
-      sheen.className = 'sheen';
+  const sheen = document.createElement('div');
+  sheen.className = 'sheen';
 
-      const author = document.createElement('div');
-      author.className = 'card-author';
-      author.innerText = sticker.author;
+  const author = document.createElement('div');
+  author.className = 'card-author';
+  author.innerText = sticker.author;
 
-      inner.appendChild(img);
-      inner.appendChild(title);
-      inner.appendChild(sheen);
-      inner.appendChild(author);
-      wrapper.appendChild(inner);
+  inner.append(img, title, sheen, author);
+  wrapper.appendChild(inner);
 
-// Mouse tilt and sheen opacity based on mouse position
-wrapper.addEventListener('mousemove', e => {
-  const rect = wrapper.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const centerX = rect.width / 2;
-  const centerY = rect.height / 2;
-  const deltaX = (x - centerX) / centerX;
-  const deltaY = (y - centerY) / centerY;
+  // click navigates to sticker.url
+  wrapper.addEventListener('click', () => {
+    window.open(sticker.url, '_blank', 'noopener');
+  });
 
-  const maxTilt = 25; // Max tilt angle (degrees)
+  // your existing tilt + sheen logic
+  wrapper.addEventListener('mousemove', e => {
+    const rect = wrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const dx = (x - cx) / cx;
+    const dy = (y - cy) / cy;
+    const maxTilt = 25;
+    const rX = Math.max(Math.min(dy * -30, maxTilt), -maxTilt);
+    const rY = Math.max(Math.min(dx *  30, maxTilt), -maxTilt);
+    inner.style.transform = `rotateX(${rX}deg) rotateY(${rY}deg)`;
+    const angle = Math.atan2(y - cy, x - cx) * (180/Math.PI);
+    inner.style.setProperty('--sheen-angle', `${angle + 90}deg`);
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    const opacity = Math.max(dist * 0.3 - 0.1, 0);
+    const offset  = `${Math.min(dist * 70)}%`;
+    sheen.style.background = `
+      linear-gradient(var(--sheen-angle), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
+      linear-gradient(calc(var(--sheen-angle) + 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,${opacity}) ${offset}, rgba(255,255,255,0) 30%)
+    `;
+  });
 
-const rotateX = Math.max(Math.min(deltaY * -30, maxTilt), -maxTilt);
-const rotateY = Math.max(Math.min(deltaX * 30, maxTilt), -maxTilt);
-  inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  wrapper.addEventListener('mouseenter', () => {
+    sheen.style.opacity = 1;
+  });
+  wrapper.addEventListener('mouseleave', () => {
+    inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    sheen.style.opacity = 0;
+  });
 
-  const angle = Math.atan2(y - centerY, x - centerY) * (180 / Math.PI);
-  inner.style.setProperty('--sheen-angle', `${angle + 90}deg`);
+  return wrapper;
+}
 
-  const distanceFromCenter = Math.sqrt(deltaX ** 2 + deltaY ** 2);
-  const gradientOpacity = Math.max(distanceFromCenter * 0.3 - 0.1, 0);
-  const sheen_offset = `${Math.min(distanceFromCenter * 70)}%`; // convert to % and clamp
-
-  sheen.style.background = `
-    linear-gradient(var(--sheen-angle, 0deg), rgba(255,255,255,0) 40%, rgba(255,255,255,0.1) 90%),
-    linear-gradient(var(--sheen-angle, 180deg), rgba(255,255,255,0) 10%, rgba(255,255,255,${gradientOpacity}) ${sheen_offset}, rgba(255,255,255,0) 30%)
-  `;
-});
-
-
-    wrapper.addEventListener('mouseleave', () => {
-      inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
-      inner.style.setProperty('--sheen-angle', `180deg`);
-      sheen.style.background = '';
-      sheen.style.opacity = 0;
-    });
-
-    wrapper.addEventListener('mouseenter', () => {
-      sheen.style.opacity = 1;
-    });
-
-    return wrapper;
-  }
 
   const gallery = document.getElementById('card-gallery');
   stickers.forEach(sticker => {

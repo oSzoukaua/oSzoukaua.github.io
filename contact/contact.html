@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico"/>
-  <title>oSzoukaua's: Base page</title>
+  <title>Contact oSzoukaua</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
   <style>
 
@@ -103,30 +103,72 @@
         color: white;
         text-decoration: underline;
     }
+
+	.button-container {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+		width: 100%;
+		max-width: 300px;
+		text-align: center;
+	}
 	
 	.hide {
         display: none;
     }
 	
-		mother {
+	mother {
     display: none;
 }
 
   </style>
+
 <mother>
   <hat>
     <div class="logo">
-      <a href="../index.html" data-append-params> <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's logo" /> </a>
+    <a href="../index.html" data-append-params> <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's logo" /> </a>
     </div>
-    <header>Base page</header>
-	<div id= "scroll_target">Scroll target</div>
+    <header>Contacts</header>
+	<div class="button-container">
+        <button id="general-email" class="btn" onclick="copyToClipboard('contact.oszoukaua+website@gmail.com', this)">Copy Email</button>
+		<button id="webstore-email" class="btn" onclick="copyToClipboard('contact.oszoukaua+webstore@gmail.com', this)">Copy Webstore Email</button>
+		<button id="yummers-email" class="btn" onclick="copyToClipboard('contact.oszoukaua+yummers@gmail.com', this)">Copy Yummers Email</button>
+		<button id="stickers-email" class="btn" onclick="copyToClipboard('contact.oszoukaua+stickers@gmail.com', this)">Copy Stickers Email</button>
+        <button id="general-discord" class="btn" onclick="copyToClipboard('@oSzoukaua', this)">Copy Discord</button>
+        <a id="general-bluesky" class="btn" href="https://bsky.app/profile/oszoukaua.bsky.social">Bluesky</a>
+        <a id="general-kofi" class="btn" href="https://ko-fi.com/oszoukaua">Support me!</a>
+    </div>
   </hat>
 
-  <shoe>
-    <p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email" data-append-params>Contact</a> </p>
-  </shoe>
+<shoe>
+	<p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,webstore-email" data-append-params>Contact</a> </p>
+</shoe>
+
 </mother>
+
 <script>
+
+function copyToClipboard(text, button) {
+  if (!button) return;
+
+  const tempInput = document.createElement('textarea');
+  tempInput.value = text;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempInput);
+
+  const originalText = button.tagName.toLowerCase() === 'a' ? button.innerHTML : button.textContent;
+  button.innerHTML = 'Copied!';
+
+  setTimeout(() => {
+    if (button.tagName.toLowerCase() === 'a') {
+      button.innerHTML = originalText;
+    } else {
+      button.textContent = originalText;
+    }
+  }, 500);
+}
 
 function createModal(title, message, buttonText, callback) {
     const modal = document.createElement('div');
@@ -208,6 +250,7 @@ function appendUrlParamsToLinks() {
     });
 }
 
+
 function toggleElementsBasedOnQuery() {
 
     const params = new URLSearchParams(window.location.search);
@@ -226,26 +269,9 @@ function toggleElementsBasedOnQuery() {
     }
 }
 
-function scrollToElement(element) {
-  if (!element) return;
-  const rect = element.getBoundingClientRect();
-  const scrollY = rect.top + window.pageYOffset - window.innerHeight / 2 + rect.height / 2;
-  window.scrollTo({
-    top: scrollY,
-    behavior: 'smooth'
-  });
-}
-
 window.onload = function() {
     createAgeModal();
     toggleElementsBasedOnQuery();
-
-    // Use requestAnimationFrame to ensure the scroll happens after rendering is complete
-    requestAnimationFrame(function() {
-        requestAnimationFrame(function() {
-            scrollToElement(document.querySelector('.scroll_target'));
-        });
-    });
 };
 
 </script>

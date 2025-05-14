@@ -2,131 +2,116 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico" />
-  <title>oSzoukaua's: Yummers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico"/>
+  <title>oSzoukaua's: Webstore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
   <style>
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Space Mono', monospace;
-      background-color: #000;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
 
-    header {
-      font-size: 2em;
-      margin: 20px 0;
-      font-weight: bold;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      color: #fff;
-    }
-
-    .logo {
-      margin-top: 30px;
-    }
-
-    .logo img {
-      width: 160px;
-      height: auto;
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "Space Mono", monospace;
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
     }
 
     .btn {
-      padding: 0.6em 1.2em;
-      border: 1px solid #fff;
-      background: transparent;
-      color: #fff;
-      text-decoration: none;
-      text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-      cursor: pointer;
-      border-radius: 4px;
-      position: relative;
-      overflow: hidden;
-      font-size: 1em;
-      z-index: 1;
+        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+        padding: 0.5em 1em;
+        border: 1px solid white;
+        background: transparent;
+        color: white;
+        cursor: pointer;
+        border-radius: 3px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+        z-index: 1;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px white;
     }
 
     .btn:hover::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      right: -1px;
-      bottom: -1px;
-      z-index: -1;
-      background: repeating-linear-gradient(
-        45deg,
-        #fff 0,
-        #fff 4px,
-        transparent 4px,
-        transparent 8px
-      );
-      background-size: 11.314px 11.314px;
-      animation: scrollStripes 1s linear infinite;
-      border-radius: 4px;
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        z-index: -1;
+        background: repeating-linear-gradient(45deg, white 0px, white 4px, transparent 4px, transparent 8px);
+        background-size: 11.314px 11.314px;
+        animation: scrollStripes 1s linear infinite;
+        border-radius: 3px;
     }
 
     @keyframes scrollStripes {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: -28.285px 28.285px;
-      }
+        0% {
+            background-position: 0 0;
+        }
+        100% {
+            background-position: -28.285px 28.285px;
+        }
     }
 
-    .btn-top-right,
-    .btn-bottom-right {
-      position: fixed;
-      z-index: 10;
+    .logo {
+        margin-top: 30px;
     }
 
-    .btn-top-right {
-      top: 20px;
-      right: 20px;
+    .logo img {
+        width: 160px;
+        height: auto;
     }
 
-    .btn-bottom-right {
-      bottom: 20px;
-      right: 20px;
+    header {
+        font-size: 2em;
+        margin: 20px 0;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 5px;
     }
 
-    main {
-      width: 90%;
-      margin: 40px auto;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    hat {
+        width: 90%;
+        max-width: 900px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    section {
-      margin-bottom: 60px;
-      text-align: center;
+    shoe {
+        font-size: 0.9em;
+        text-align: center;
+        padding: 20px;
     }
 
-    h2 {
-      font-size: 1.6em;
-      margin-bottom: 10px;
-      display: inline-block;
-      padding-bottom: 5px;
+    shoe a {
+        color: white;
+        text-decoration: underline;
+    }
+	
+	.hide {
+        display: none;
     }
 
-    p {
-      font-size: 1.1em;
-      line-height: 1.6em;
-      max-width: 700px;
-      margin: 10px auto;
-    }
+      .category_title {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
 
     .product-gallery {
       display: flex;
@@ -136,16 +121,18 @@
       margin-top: 30px;
     }
 
-    .product-item {
-      flex-grow: 0;
-      padding: 20px;
-      border: 3px solid #444;
-      border-radius: 3px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      box-sizing: border-box;
-    }
+.product-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures space between content and button */
+  align-items: center; /* Centers content horizontally */
+  padding: 20px;
+  border: 3px solid #444;
+  border-radius: 3px;
+  text-align: center;
+  box-sizing: border-box;
+  position: relative; /* Allows absolute positioning inside */
+}
 
     .product-item img {
       width: 100%;
@@ -153,6 +140,7 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
+	  cursor: pointer;
     }
 
     .product-item h4 {
@@ -183,6 +171,10 @@
       margin-top: 20px;
       text-align: left;
       padding: 10px;
+	   display: flex;
+    align-items: center;
+    gap: 1rem; /* Optional spacing */
+    flex-wrap: wrap; /* Wrap to next line on small screens */
     }
 
     #filters label {
@@ -211,7 +203,7 @@
       right: 20px;
       padding: 0.6em;
       border-radius: 6px;
-      background: transparent;
+      background: black;
       border: 3px solid #fff;
       font-size: 1.5em;
       color: #fff;
@@ -233,8 +225,6 @@
   z-index: 999;
   backdrop-filter: blur(10px); /* Adds blur effect */
 }
-
-
 
     .modal-content {
       background: black;
@@ -272,10 +262,10 @@ padding: 0;
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 1em; /* Set a valid font-size */
+  font-size: 1em;
   cursor: pointer;
-  width: 2em; /* Adjust based on your needs */
-  height: 2em; /* Keep height equal to width for a square */
+  width: 2em;
+  height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -287,18 +277,6 @@ padding: 0;
   height: auto;
 }
 
-
-    footer {
-      font-size: 0.9em;
-      text-align: center;
-      padding: 20px 0;
-      color: #fff;
-    }
-
-    footer a {
-      color: #fff;
-      text-decoration: underline;
-    }
 
     @media (max-width: 600px) {
       .product-gallery {
@@ -367,27 +345,42 @@ padding: 0;
   align-items: center;
 }
 
-  </style>
-</head>
-<body>
-  <main>
-    <div class="logo">
-      <a href="https://oszoukaua.github.io">
-        <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's Logo" />
-      </a>
-    </div>
+	mother {
+    display: none;
+}
 
-    <header>Yummers</header>
+.btn-fill-horizontal {
+  width: 100%; /* Makes the button take up the full width */
+}
+
+.btn-align-bottom {
+  margin-top: auto;
+  height: 3em; /* Set the height you want for the button */
+}
+
+#cart-button img {
+  width: 35px; /* Adjust width */
+  height: auto; /* Maintain aspect ratio */
+}
+
+  </style>
+<mother>
+  <hat>
+    <div class="logo">
+    <a href="../index.html" data-append-params> <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's logo" /> </a>
+    </div>
+    <header>Webstore</header>
+  </hat>
 
     <div id="search-bar-container">
       <input type="text" id="search-bar" placeholder="Search for products..." />
     </div>
 
     <div id="filters">
-      <h2>Categories:</h2>
-      <label><input type="checkbox" class="tag-filter" value="Yummers" /> Yummers</label>
-      <label><input type="checkbox" class="tag-filter" value="Stickers" /> Stickers</label>
-    </div>
+  <div class="category_title">Categories:</div>
+  <label><input type="checkbox" class="tag-filter" value="Yummers" id="checkbox_yummers"/> Yummers</label>
+  <label><input type="checkbox" class="tag-filter" value="Stickers" id="checkbox_stickers"/> Stickers</label>
+</div>
 
     <div id="item-slider-container">
       <label for="item-slider">
@@ -397,11 +390,11 @@ padding: 0;
     </div>
 
     <div class="product-gallery" id="product-list">
-      <!-- Dynamic product items will be injected here -->
     </div>
-  </main>
 
-  <button id="cart-button" class="btn">🛒</button>
+	<button id="cart-button" class="btn">
+		<img src="../common_assets/cart_icon.png" alt="Cart" />
+	</button>
 
 <div id="cart-modal">
   <div class="modal-content">
@@ -418,48 +411,39 @@ padding: 0;
   </div>
 </div>
 
-
-
-
-  <div id="product-modal">
-    <div class="modal-content">
-      <span class="close-btn btn" onclick="closeModal()">&times;</span>
-      <h4 id="modal-name"></h4>
-      <img id="modal-img" src="" alt="Product Image" />
-      <p id="modal-desc"></p>
-      <!-- Add to Cart button in modal -->
-        <div class="add-to-cart-container">
-    <button id="modal-add-btn" class="btn">Add to Cart</button>
-  </div>
+<div id="product-modal">
+<div class="modal-content">
+		<span class="close-btn btn" onclick="closeModal()">&times;</span>
+		<h4 id="modal-name"></h4>
+		<img id="modal-img" src="" alt="Product Image" />
+		<p id="modal-desc"></p>
+		<button id="modal-add-btn" class="btn btn-fill-horizontal btn-align-bottom">Add to Cart</button>
 </div>
-    </div>
-  </div>
-  
+</div>
 
+  <shoe>
+    <p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> </p>
+  </shoe>
 
-
-  <footer>
-    <p>⊗ oSzoukaua - Support me! - <a href="../contact/contact_stickers.html" target="_blank" rel="noopener noreferrer">Contact Yummers</a></p>
-  </footer>
-
+</mother>
   <script>
     const products = [
       { id: 1, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description" },
       { id: 2, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description" },
       { id: 3, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description" },
-      { id: 4, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../misc/placeholder.png", description: "Placeholder product description" },
+      { id: 4, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../common_assets/placeholder.png", description: "Placeholder product description" },
       { id: 5, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description" },
       { id: 6, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description" },
       { id: 7, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description" },
-      { id: 8, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../misc/placeholder.png", description: "Placeholder product description" },
+      { id: 8, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../common_assets/placeholder.png", description: "Placeholder product description" },
 	  { id: 9, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description" },
       { id: 10, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description" },
       { id: 11, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description" },
-      { id: 12, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../misc/placeholder.png", description: "Placeholder product description" },
+      { id: 12, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../common_assets/placeholder.png", description: "Placeholder product description" },
       { id: 13, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description" },
       { id: 14, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description" },
       { id: 15, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description" },
-      { id: 16, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../misc/placeholder.png", description: "Placeholder product description" },
+      { id: 16, name: "Sticker Pack 20 Pack", price: 9, tags: ["Stickers"], img: "../common_assets/placeholder.png", description: "Placeholder product description" },
 	  { id: 17, name: "Boof Single Sticker", price: 3.50, tags: ["Sticker"], img: "../stickers/boof.png", description: "A charmingly loud and fluffy design." },
 	  { id: 18, name: "Butwon Single Sticker", price: 4.00, tags: ["Sticker"], img: "../stickers/butwon.png", description: "A sticker of the logo of a shitty pointless game I've published." },
 	  { id: 19, name: "Crushie Single Sticker", price: 3.75, tags: ["Stickers"], img: "../stickers/crushie.png", description: "//>w<//" },
@@ -475,7 +459,7 @@ padding: 0;
 	  { id: 29, name: "P.M.A.F Single Sticker", price: 3.75, tags: ["Stickers"], img: "../stickers/pmaf.png", description: "Old logo for an unreleased, unfinished, and unpublished VRChat world I was working on." },
 	  { id: 30, name: "Pup Single Sticker", price: 3.50, tags: ["Stickers"], img: "../stickers/pup.png", description: "Center element I took from an announcement I made for an old VRChat group I ran." },
 	  { id: 31, name: "Skrush Single Sticker", price: 4.00, tags: ["Stickers"], img: "../stickers/skrush.png", description: "Center element I took from an old picture I drew!" },
-	  { id: 32, name: "Sodafizz Single Sticker", price: 4.20, tags: ["Stickers", "../stickers/sodafizz.png"], img: "sodafizz.png", description: "Logo/icon for a YouTube channel that was once planned." },
+	  { id: 32, name: "Sodafizz Single Sticker", price: 4.20, tags: ["Stickers"], img: "../stickers/sodafizz.png", description: "Logo/icon for a YouTube channel that was once planned." },
 	  { id: 33, name: "VCR Single Sticker", price: 4.00, tags: ["Stickers"], img: "../stickers/vcr.png", description: "Old logo for a 'gaming team' that I wanted to make when I was like 14." },
 	  { id: 34, name: "Bald Single Sticker", price: 3.00, tags: ["Stickers"], img: "../stickers/bald.png", description: "Art I made for my Stickers YouTube channel." },
 	  { id: 35, name: "Birthday Single Sticker", price: 3.00, tags: ["Stickers"], img: "../stickers/birthday.png", description: "Art I made for my Stickers YouTube channel." },
@@ -541,7 +525,7 @@ function displayProducts(items) {
       <img src="${product.img}" alt="${product.name}" />
       <h4>${product.name}</h4>
       <p>$${product.price}</p>
-      <button class="btn add-to-cart" data-id="${product.id}">Add to Cart</button>
+      <button class="btn add-to-cart btn-align-bottom btn-fill-horizontal" data-id="${product.id}">Add to Cart</button>
     `;
     div.addEventListener('click', (e) => {
       if (e.target.classList.contains('add-to-cart')) return;
@@ -712,6 +696,113 @@ function removeFromBasket(id) {
     // initial render
     renderBasket();
     document.getElementById('cart-button').addEventListener('click', openCart);
+
+function createModal(title, message, buttonText, callback) {
+    const modal = document.createElement('div');
+    modal.style = 'position:center;width:50%;height:100%;background:rgba(0,0,0,0.9);backdrop-filter: blur(10px);color:white;display:flex;justify-content:center;align-items:center;z-index:10000;';
+
+    const modalContent = document.createElement('div');
+    modalContent.style = 'text-align:center;padding:30px;border:2px solid white;background:black;border-radius: 6px;';
+
+    const modalTitle = document.createElement('h2');
+    modalTitle.textContent = title;
+    modalContent.appendChild(modalTitle);
+
+    const modalMessage = document.createElement('p');
+    modalMessage.textContent = message;
+    modalContent.appendChild(modalMessage);
+
+    const modalButton = document.createElement('button');
+    modalButton.textContent = buttonText;
+    modalButton.classList.add('btn');
+    modalButton.onclick = function() {
+        callback();
+        document.body.removeChild(modal);
+    };
+    modalContent.appendChild(modalButton);
+
+    modal.appendChild(modalContent);
+
+    document.body.appendChild(modal);
+}
+
+function createAgeModal() {
+    const params = new URLSearchParams(window.location.search);
+    const motherDiv = document.querySelector('mother'); // ✅ Correct for custom tag
+
+    if (params.get('age_modal') !== 'true') {
+        if (motherDiv) motherDiv.style.display = 'none';
+
+        createModal(
+            "Are you over 18?",
+            "This site contains content aimed at people aged 18 and older. By pressing \"I Agree\", you confirm that you are at least 18 years old and consent to viewing content intended for adults.",
+            "I Agree",
+            function () {
+                params.set('age_modal', 'true');
+                const newParams = params.toString();
+                const newUrl = window.location.pathname + '?' + newParams;
+                window.location.href = newUrl;
+            }
+        );
+    } else {
+        if (motherDiv) motherDiv.style.display = 'contents'; // or ''
+        appendUrlParamsToLinks();
+    }
+}
+
+function appendUrlParamsToLinks() {
+    const currentQuery = window.location.search;
+    if (!currentQuery) return;
+
+    const excludeParams = ['hidden','tag','open']; // Add any keys you want to exclude
+    const currentParams = new URLSearchParams(currentQuery);
+
+    // Remove excluded params
+    excludeParams.forEach(param => currentParams.delete(param));
+
+    const paramString = currentParams.toString();
+    if (!paramString) return;
+
+    // Only target links with the data-append-params attribute
+    document.querySelectorAll("a[data-append-params][href]").forEach(link => {
+        const url = new URL(link.href, window.location.origin);
+        const linkParams = new URLSearchParams(url.search);
+
+        // Append current params if not already present
+        currentParams.forEach((value, key) => {
+            if (!linkParams.has(key)) {
+                linkParams.set(key, value);
+            }
+        });
+
+        url.search = linkParams.toString();
+        link.href = url.toString();
+    });
+}
+
+
+function toggleElementsBasedOnQuery() {
+
+    const params = new URLSearchParams(window.location.search);
+    const hiddenIds = params.get('hidden') ? params.get('hidden').split(',') : [];
+
+
+    if (hiddenIds.length > 0) {
+
+        const elements = document.querySelectorAll('[id]');
+
+        elements.forEach((element) => {
+            if (hiddenIds.includes(element.id)) {
+                element.classList.add('hide');
+            }
+        });
+    }
+}
+
+window.onload = function() {
+    createAgeModal();
+    toggleElementsBasedOnQuery();
+};
   </script>
 </body>
 </html>

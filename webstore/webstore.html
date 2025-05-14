@@ -403,7 +403,7 @@ padding: 0;
     <ul id="basket-list"></ul>
     <div class="buttons-container">
       <button class="btn" onclick="clearBasket()">Clear Cart</button>
-	  <button id="save-cart-btn" class="btn" onclick="saveCartToCookies()">Save Cart</button>
+	  <button id="save-cart-btn" class="btn" onclick="saveCartToCookies()">Save Cart to Cookies</button>
       <div class="total-container">
         <div id="cart-total" class="cart-total"></div>
         <button class="btn" onclick="purchaseBasket()">Purchase</button>
@@ -803,7 +803,6 @@ function getCookie(name) {
 function saveCartToCookies() {
   // Store the basket array as JSON
   setCookie("savedBasket", JSON.stringify(basket), 30);
-  alert("Cart saved!");
 }
 
 function loadCartFromCookies() {

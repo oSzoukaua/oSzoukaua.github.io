@@ -127,11 +127,17 @@
   justify-content: space-between; /* Ensures space between content and button */
   align-items: center; /* Centers content horizontally */
   padding: 20px;
-  border: 3px solid #444;
+  border: 1px solid #444;
   border-radius: 3px;
   text-align: center;
   box-sizing: border-box;
   position: relative; /* Allows absolute positioning inside */
+  cursor: pointer;
+  transition: border 0.05s ease;
+}
+
+.product-item:hover {
+  border: 1px solid white;
 }
 
     .product-item img {
@@ -140,7 +146,6 @@
       object-fit: cover;
       border-radius: 8px;
       margin-bottom: 10px;
-	  cursor: pointer;
     }
 
     .product-item h4 {
@@ -610,7 +615,7 @@ function renderBasket() {
       <span>${item.name}</span>
       <span style="margin-left:auto;"></span>
       <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="qty-input" style="width:50px; margin-left:10px;" />
-      <span class="item-total" style="width:60px; margin-left:10px;">$${itemTotal}</span>
+      <span class="item-total" style="width:60px; margin-left:10px;">$${itemTotal.toFixed(2)}</span>
       <button class="remove-btn btn" data-id="${item.id}">X</button>
     `;
 

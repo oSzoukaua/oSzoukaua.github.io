@@ -290,21 +290,16 @@ function createStickerCard(sticker) {
   wrapper.appendChild(inner);
 
 wrapper.addEventListener('click', () => {
-  // Create a dummy <a> element to reuse appendUrlParamsToLinks logic
   const tempLink = document.createElement('a');
   tempLink.href = sticker.url;
   tempLink.setAttribute('data-append-params', '');
 
-  // Append to DOM temporarily so querySelectorAll in appendUrlParamsToLinks picks it up
   document.body.appendChild(tempLink);
 
-  // Call your existing function to update the link
   appendUrlParamsToLinks();
 
-  // Open the updated link
-  window.open(tempLink.href, '_blank', 'noopener');
+  window.open(tempLink.href, '_self', 'noopener');
 
-  // Clean up the dummy link
   tempLink.remove();
 });
 

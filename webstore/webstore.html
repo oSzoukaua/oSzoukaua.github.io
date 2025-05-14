@@ -404,7 +404,7 @@ padding: 0;
     <div class="buttons-container">
       <button class="btn" onclick="clearBasket()">Clear Cart</button>
 	  <button id="save-cart-btn" class="btn" onclick="saveCartToCookies()" title="Click to save current basket contents in local Cookies">Save Cart to Cookies</button>
-	  <button id="load-cart-btn" class="btn" onclick="loadCartFromCookies();" title="Click to load any cart items saved in local Cookies">Load cart from Cookies</button>
+	  <button id="load-cart-btn" class="btn" onclick="loadCartFromCookies(); renderBasket();" title="Click to load any cart items saved in local Cookies">Load cart from Cookies</button>
       <div class="total-container">
         <div id="cart-total" class="cart-total"></div>
         <button class="btn" onclick="purchaseBasket()">Purchase</button>

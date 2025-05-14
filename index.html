@@ -859,8 +859,6 @@ function createAgeModal() {
                 params.set('age_modal', 'true');
                 const newParams = params.toString();
                 const newUrl = window.location.pathname + '?' + newParams;
-                
-                scrollToId('motd_section');
 
                 window.location.href = newUrl;
             }

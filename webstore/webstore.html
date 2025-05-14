@@ -403,8 +403,9 @@ padding: 0;
     <ul id="basket-list"></ul>
     <div class="buttons-container">
       <button class="btn" onclick="clearBasket()">Clear Cart</button>
+	  <button id="save-cart-btn" class="btn" onclick="saveCartToCookies()">Save Cart</button>
       <div class="total-container">
-        <div id="cart-total" class="cart-total"></div> <!-- Total goes here -->
+        <div id="cart-total" class="cart-total"></div>
         <button class="btn" onclick="purchaseBasket()">Purchase</button>
       </div>
     </div>
@@ -784,10 +785,51 @@ function toggleElementsBasedOnQuery() {
     }
 }
 
+// --- COOKIE HELPERS ---
+function setCookie(name, value, days) {
+  const expires = days
+    ? "; expires=" + new Date(Date.now() + days*864e5).toUTCString()
+    : "";
+  document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+}
+function getCookie(name) {
+  return document.cookie.split("; ").reduce((r, v) => {
+    const [key, val] = v.split("=");
+    return key === name ? decodeURIComponent(val) : r;
+  }, "");
+}
+
+// --- SAVE & LOAD ---
+function saveCartToCookies() {
+  // Store the basket array as JSON
+  setCookie("savedBasket", JSON.stringify(basket), 30);
+  alert("Cart saved!");
+}
+
+function loadCartFromCookies() {
+  const data = getCookie("savedBasket");
+  if (data) {
+    try {
+      const arr = JSON.parse(data);
+      if (Array.isArray(arr)) {
+        // Replace our in-memory basket
+        basket.length = 0;
+        arr.forEach(item => basket.push(item));
+      }
+    } catch(e) {
+      console.warn("Invalid basket cookie:", e);
+    }
+  }
+}
+
+
 window.onload = function() {
-    createAgeModal();
-    toggleElementsBasedOnQuery();
+  loadCartFromCookies();
+  createAgeModal();
+  toggleElementsBasedOnQuery();
+  renderBasket();
 };
+
   </script>
 </body>
 </html>

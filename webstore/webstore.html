@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico"/>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
   <title>oSzoukaua's: Webstore</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
   <style>
@@ -523,17 +525,28 @@ padding: 0;
   </div>
 </div>
 
-<div id="product-modal">
-<div class="modal-content">
-		<span class="close-btn btn" onclick="closeModal()">&times;</span>
-		<h4 id="modal-name"></h4>
-		<img id="modal-img" src="" alt="Product Image" />
-		<p id="modal-desc"></p>
-		<p id="modal-size"></p>
-		<button id="modal-add-btn" class="btn btn-fill-horizontal btn-align-bottom">Add to Cart</button>
-		<button id="sizer-btn" class="btn btn-fill-horizontal btn-align-bottom">Sizer</button>
-</div>
-</div>
+  <div id="product-modal">
+    <div class="modal-content">
+      <span class="close-btn btn" onclick="closeModal()">&times;</span>
+      <h4 id="modal-name"></h4>
+      <!-- Model Viewer element, hidden by default -->
+      <model-viewer
+        id="modal-model"
+        src=""
+        alt="Product Model"
+        style="max-width:30%; display:none;"
+        auto-rotate
+        camera-controls
+        background-color="black">
+      </model-viewer>
+      <!-- Image element, fallback if no model -->
+      <img id="modal-img" src="" alt="Product Image" style="max-width:30%; display:none;" />
+      <p id="modal-desc"></p>
+      <p id="modal-size"></p>
+      <button id="modal-add-btn" class="btn btn-fill-horizontal btn-align-bottom">Add to Cart</button>
+      <button id="sizer-btn" class="btn btn-fill-horizontal btn-align-bottom">Sizer</button>
+    </div>
+  </div>
 
   <shoe>
     <p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> </p>
@@ -541,7 +554,7 @@ padding: 0;
 </mother>
   <script>
     const products = [
-    { id: 1, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description", height: 150, width: 50 },
+    { id: 1, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], description: "Placeholder product description", height: 150, width: 50, model: "products/nothing_soda_r1/nothing_soda_r1.glb" },
     { id: 2, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description", height: 150, width: 50 },
     { id: 3, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description", height: 50, width: 50 },
 	{ id: 4, name: "Boof Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/boof.png", description: "A charmingly loud and fluffy design.", height: 50, width: 50 },
@@ -694,29 +707,44 @@ function filterProducts() {
 }
 
 
-function openModal(product) {
-  document.getElementById('modal-img').src = product.img;
-  document.getElementById('modal-name').textContent = product.name;
-  document.getElementById('modal-desc').textContent = product.description || '';
-  document.getElementById('modal-size').textContent = product.height && product.width ? `H ${product.height}mm * W ${product.width}mm` : '';
-  document.getElementById('modal-add-btn').setAttribute('data-id', product.id);
-  document.getElementById('product-modal').style.display = 'flex';
+    function openModal(product) {
+      // Set text fields
+      document.getElementById('modal-name').textContent = product.name;
+      document.getElementById('modal-desc').textContent = product.description || '';
+      document.getElementById('modal-size').textContent =
+        product.height && product.width ? `H ${product.height}mm * W ${product.width}mm` : '';
+      document.getElementById('modal-add-btn').setAttribute('data-id', product.id);
 
-  // Sizer integration
-  const sizerBtn = document.getElementById('sizer-btn');
-  const img = new Image();
-  img.src = product.img;
 
-  img.onload = function () {
-    const height = product.height;
-    const encodedImg = encodeURIComponent(product.img);
-    sizerBtn.onclick = () => {
-      const sizerURL = `../sizer/sizer.html?height=${height}&img=${encodedImg}`;
-      window.open(sizerURL, '_blank');
-    };
-    sizerBtn.style.display = 'inline-block'; // Show Sizer button if hidden
-  };
-}
+      // Toggle between model-viewer and img based on product.model
+      const modelViewer = document.getElementById('modal-model');
+      const imgEl = document.getElementById('modal-img');
+      if (product.model) {
+        modelViewer.src = product.model;
+        modelViewer.style.display = 'block';
+        imgEl.style.display = 'none';
+      } else {
+        imgEl.src = product.img;
+        imgEl.style.display = 'block';
+        modelViewer.style.display = 'none';
+      }
+
+   // Show modal
+      document.getElementById('product-modal').style.display = 'flex';
+
+ // Configure Sizer button
+      const sizerBtn = document.getElementById('sizer-btn');
+      if (product.model) {
+        const encodedModel = encodeURIComponent(product.model);
+        sizerBtn.onclick = () =>
+          window.open(`../sizer/sizer.html?model=${encodedModel}`, '_blank');
+      } else {
+        const encodedImg = encodeURIComponent(product.img);
+        sizerBtn.onclick = () =>
+          window.open(`../sizer/sizer.html?height=${product.height}&img=${encodedImg}`, '_blank');
+      }
+      sizerBtn.style.display = 'inline-block';
+    }
 
 function closeModal() {
   document.getElementById('product-modal').style.display = 'none';

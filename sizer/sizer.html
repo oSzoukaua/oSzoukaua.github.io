@@ -105,9 +105,6 @@ html, body {
       <img id="product" src="" alt="Product Image" style="display: none;" />
       <!-- 3D Model Viewer -->
       <model-viewer 
-	  camera-orbit="0deg 90deg 10m"
-  field-of-view="5deg"
-  camera-controls
   id="model-viewer" 
   src="" 
   alt="3D Model" 
@@ -160,7 +157,7 @@ html, body {
     if (modelSrc) {
       modelViewer.src = modelSrc;
       modelViewer.style.display = 'block';
-      if (heightMM > 0) modelViewer.style.height = mmToPx(heightMM) + 'px';
+      if (heightMM > 0) modelViewer.style.height = (mmToPx(heightMM) + 50 + 'px');
     } else if (imgSrc) {
       productImg.src = imgSrc;
       productImg.style.display = 'block';

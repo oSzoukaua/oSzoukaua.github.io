@@ -111,6 +111,7 @@ html, body {
   camera-controls 
   auto-rotate 
   disable-zoom 
+  camera-orbit="0deg 75deg 2m"
   style="display: none;">
 </model-viewer>
     </div>
@@ -157,11 +158,11 @@ html, body {
     if (modelSrc) {
       modelViewer.src = modelSrc;
       modelViewer.style.display = 'block';
-      if (heightMM > 0) modelViewer.style.height = (mmToPx(heightMM) + 50 + 'px');
+      if (heightMM > 0) modelViewer.style.height = (mmToPx(heightMM) + 100 + 'px');
     } else if (imgSrc) {
       productImg.src = imgSrc;
       productImg.style.display = 'block';
-      if (heightMM > 0) productImg.style.height = mmToPx(heightMM) + 'px';
+      if (heightMM > 0) productImg.style.height = mmToPx(heightMM) + 100 + 'px';
     }
 
     cardImg.style.height = mmToPx(cardHeightMM) + 'px';

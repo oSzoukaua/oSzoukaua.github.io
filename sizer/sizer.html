@@ -111,7 +111,8 @@ html, body {
   camera-controls 
   auto-rotate 
   disable-zoom 
-  camera-orbit="0deg 75deg 1.5m"
+  camera-orbit="0deg 90deg 2.2m"
+  max-camera-orbit="360deg 180deg 10m" 
   style="display: none;">
 </model-viewer>
     </div>
@@ -159,6 +160,7 @@ html, body {
       modelViewer.src = modelSrc;
       modelViewer.style.display = 'block';
       if (heightMM > 0) modelViewer.style.height = (mmToPx(heightMM) + 100 + 'px');
+	  if (heightMM > 0) modelViewer.style.width = (mmToPx(heightMM) + 100 + 'px');
     } else if (imgSrc) {
       productImg.src = imgSrc;
       productImg.style.display = 'block';

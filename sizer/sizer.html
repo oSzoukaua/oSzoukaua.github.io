@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/x-icon" href="favicon.png"/>
   <title>Sizer</title>
+  <!-- Model Viewer Library -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
 html, body {
   margin: 0;
@@ -12,7 +14,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   font-family: sans-serif;
-  background-color: #444; /* fallback for body */
+  background-color: #444;
 }
 
 #scale-wrapper {
@@ -23,16 +25,15 @@ html, body {
   height: 100%;
   background-color: #444;
   background-image:
-  linear-gradient(45deg, #666 25%, transparent 25%), 
-  linear-gradient(-45deg, #666 25%, transparent 25%), 
-  linear-gradient(45deg, transparent 75%, #666 75%), 
-  linear-gradient(-45deg, transparent 75%, #666 75%);
-
+    linear-gradient(45deg, #666 25%, transparent 25%),
+    linear-gradient(-45deg, #666 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #666 75%),
+    linear-gradient(-45deg, transparent 75%, #666 75%);
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
 
 #card-wrapper {
-  position: fixed;      /* pinned to viewport */
+  position: fixed;
   top: 0;
   left: 20px;
   transform-origin: top left;
@@ -45,17 +46,20 @@ html, body {
 }
 
 #product-wrapper {
-  position: fixed;      /* pinned center of viewport */
+  position: fixed;
   top: 50%;
   left: 50%;
   transform-origin: center center;
   transform: translate(-50%, -50%);
+  perspective: 800px;
+  border: 1px dotted cyan;
 }
 
-#product {
+#product, model-viewer {
   display: block;
   /* height set by JS */
   transform-origin: center center;
+  border: 1px dotted magenta;
 }
 
 #slider-container {
@@ -98,7 +102,12 @@ html, body {
       <img id="card" src="bank_card.png" alt="Bank Card" />
     </div>
     <div id="product-wrapper">
-      <img id="product" src="" alt="Product Image" />
+      <!-- Image fallback -->
+      <img id="product" src="" alt="Product Image" style="display: none;" />
+      <!-- 3D Model Viewer -->
+      <model-viewer id="model-viewer" src="" alt="3D Model" camera-controls auto-rotate style="display: none;
+                width: auto; height: auto;">
+      </model-viewer>
     </div>
   </div>
 
@@ -123,9 +132,11 @@ html, body {
 
     const urlParams = new URLSearchParams(window.location.search);
     const imgSrc = urlParams.get('img');
+    const modelSrc = urlParams.get('model');
     const heightMM = parseFloat(urlParams.get('height')) || 0;
 
     const productImg = document.getElementById('product');
+    const modelViewer = document.getElementById('model-viewer');
     const cardImg = document.getElementById('card');
     const scaleSlider = document.getElementById('scale-slider');
     const scaleNumber = document.getElementById('scale-number');
@@ -134,38 +145,38 @@ html, body {
     const scaleWrapper = document.getElementById('scale-wrapper');
 
     const cardHeightMM = 53.98;
-    const checkerSizeMM = 20; // 1cm = 10mm
+    const checkerSizeMM = 20;
     const baseCheckerPx = mmToPx(checkerSizeMM);
 
-    if (imgSrc) productImg.src = imgSrc;
-    if (heightMM > 0) productImg.style.height = mmToPx(heightMM) + 'px';
-    cardImg.style.height = mmToPx(cardHeightMM) + 'px';
+    // Decide which element to show
+    if (modelSrc) {
+      modelViewer.src = modelSrc;
+      modelViewer.style.display = 'block';
+      if (heightMM > 0) modelViewer.style.height = mmToPx(heightMM) + 'px';
+    } else if (imgSrc) {
+      productImg.src = imgSrc;
+      productImg.style.display = 'block';
+      if (heightMM > 0) productImg.style.height = mmToPx(heightMM) + 'px';
+    }
 
-    // initialize background size
+    cardImg.style.height = mmToPx(cardHeightMM) + 'px';
     scaleWrapper.style.backgroundSize = `${baseCheckerPx}px ${baseCheckerPx}px`;
 
-function updateScale(scale) {
-  // card & product scale
-  cardWrapper.style.transform = `scale(${scale})`;
-  productWrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+    function updateScale(scale) {
+      cardWrapper.style.transform = `scale(${scale})`;
+      productWrapper.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      const size = baseCheckerPx * scale;
+      scaleWrapper.style.backgroundSize = `${size}px ${size}px`;
+      scaleWrapper.style.backgroundPosition = 
+        `0 0, 0 ${size/2}px, ${size/2}px -${size/2}px, -${size/2}px 0`;
+    }
 
-  // background checker size in pixels
-  const size = baseCheckerPx * scale;
-  scaleWrapper.style.backgroundSize = `${size}px ${size}px`;
-
-  // scale background position values proportionally
-  scaleWrapper.style.backgroundPosition = 
-    `0 0, 0 ${size/2}px, ${size/2}px -${size/2}px, -${size/2}px 0`;
-}
-
-    // Sync slider -> number input, update scale
     scaleSlider.addEventListener('input', () => {
       const scale = parseFloat(scaleSlider.value);
       scaleNumber.value = scale.toFixed(2);
       updateScale(scale);
     });
 
-    // Sync number input -> slider, update scale
     scaleNumber.addEventListener('input', () => {
       let val = parseFloat(scaleNumber.value);
       if (isNaN(val)) return;
@@ -175,7 +186,6 @@ function updateScale(scale) {
       updateScale(val);
     });
 
-    // Allow scroll anywhere to adjust scale
     window.addEventListener('wheel', (e) => {
       e.preventDefault();
       let currentScale = parseFloat(scaleSlider.value);
@@ -185,11 +195,27 @@ function updateScale(scale) {
       scaleNumber.value = newScale.toFixed(2);
       updateScale(newScale);
     }, { passive: false });
-	
-	// Initial scale value from slider or default
-const initialScale = parseFloat(scaleSlider.value) || 1;
-updateScale(initialScale);
 
+    const initialScale = parseFloat(scaleSlider.value) || 1;
+    updateScale(initialScale);
+
+productWrapper.addEventListener('mousemove', (e) => {
+      const rect = productWrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Calculate rotation angles - max 15deg rotation
+      const rotateX = ((y - centerY) / centerY) * 44;
+      const rotateY = ((x - centerX) / centerX) * -44;
+
+      productImg.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1)`;
+    });
+
+    productWrapper.addEventListener('mouseleave', () => {
+      productImg.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+    });
   </script>
 </body>
 </html>

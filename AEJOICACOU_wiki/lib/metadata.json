@@ -1,6 +1,6 @@
 {
   "vaultName": "AEJOICACOU Wiki",
-  "lastExport": 1746656757512,
+  "lastExport": 1747240429317,
   "pluginVersion": "1.8.01",
   "validBodyClasses": "publish css-settings-manager theme-dark show-ribbon infobox-enabled infobox-hide-thead",
   "useCustomHeadContent": false,
@@ -181,944 +181,944 @@
     "lib/media/6155340132a851f6089e.svg"
   ],
   "fileInfo": {
+    "AEJOICACOU landing.md": {
+      "modifiedTime": 1747240429317,
+      "sourceSize": 683,
+      "exportedPath": "AEJOICACOU landing.html",
+      "dependencies": []
+    },
     "lib/fonts/94f2f163d4b698242fef.otf": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 66800,
       "exportedPath": "lib/fonts/94f2f163d4b698242fef.otf",
       "dependencies": []
     },
     "lib/fonts/72505e6a122c6acd5471.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 104232,
       "exportedPath": "lib/fonts/72505e6a122c6acd5471.woff2",
       "dependencies": []
     },
     "lib/fonts/2d5198822ab091ce4305.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 104332,
       "exportedPath": "lib/fonts/2d5198822ab091ce4305.woff2",
       "dependencies": []
     },
     "lib/fonts/c8ba52b05a9ef10f4758.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 98868,
       "exportedPath": "lib/fonts/c8ba52b05a9ef10f4758.woff2",
       "dependencies": []
     },
     "lib/fonts/cb10ffd7684cd9836a05.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 106876,
       "exportedPath": "lib/fonts/cb10ffd7684cd9836a05.woff2",
       "dependencies": []
     },
     "lib/fonts/b5f0f109bc88052d4000.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 105804,
       "exportedPath": "lib/fonts/b5f0f109bc88052d4000.woff2",
       "dependencies": []
     },
     "lib/fonts/cbe0ae49c52c920fd563.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 106108,
       "exportedPath": "lib/fonts/cbe0ae49c52c920fd563.woff2",
       "dependencies": []
     },
     "lib/fonts/535a6cf662596b3bd6a6.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 111708,
       "exportedPath": "lib/fonts/535a6cf662596b3bd6a6.woff2",
       "dependencies": []
     },
     "lib/fonts/70cc7ff27245e82ad414.ttf": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 192740,
       "exportedPath": "lib/fonts/70cc7ff27245e82ad414.ttf",
       "dependencies": []
     },
     "lib/fonts/454577c22304619db035.ttf": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 161376,
       "exportedPath": "lib/fonts/454577c22304619db035.ttf",
       "dependencies": []
     },
     "lib/fonts/52ac8f3034507f1d9e53.ttf": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 191568,
       "exportedPath": "lib/fonts/52ac8f3034507f1d9e53.ttf",
       "dependencies": []
     },
     "lib/fonts/05b618077343fbbd92b7.ttf": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 155288,
       "exportedPath": "lib/fonts/05b618077343fbbd92b7.ttf",
       "dependencies": []
     },
     "lib/fonts/4bb6ac751d1c5478ff3a.woff2": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 7876,
       "exportedPath": "lib/fonts/4bb6ac751d1c5478ff3a.woff2",
       "dependencies": []
     },
     "lib/media/6155340132a851f6089e.svg": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 315,
       "exportedPath": "lib/media/6155340132a851f6089e.svg",
       "dependencies": []
     },
-    "AEJOICACOU landing.md": {
-      "modifiedTime": 1746656757512,
-      "sourceSize": 684,
-      "exportedPath": "AEJOICACOU landing.html",
-      "dependencies": []
-    },
     "Body/Elements/Bile/Bile atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1984,
       "exportedPath": "Body/Elements/Bile/Bile atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Bile/Bile rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2169,
       "exportedPath": "Body/Elements/Bile/Bile rules.html",
       "dependencies": []
     },
     "Body/Elements/Bile/Plague of the Mind.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1901,
       "exportedPath": "Body/Elements/Bile/Plague of the Mind.html",
       "dependencies": []
     },
     "Body/Elements/Blood/Blood atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2546,
       "exportedPath": "Body/Elements/Blood/Blood atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Blood/Blood long term storage.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2087,
       "exportedPath": "Body/Elements/Blood/Blood long term storage.html",
       "dependencies": []
     },
     "Body/Elements/Blood/Blood rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2677,
       "exportedPath": "Body/Elements/Blood/Blood rules.html",
       "dependencies": []
     },
     "Body/Elements/Blood/Blood types.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1769,
       "exportedPath": "Body/Elements/Blood/Blood types.html",
       "dependencies": []
     },
     "Body/Elements/Blood/Blood-oath.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2142,
       "exportedPath": "Body/Elements/Blood/Blood-oath.html",
       "dependencies": []
     },
     "Body/Elements/Bone/Bone atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2014,
       "exportedPath": "Body/Elements/Bone/Bone atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Bone/Bone rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1895,
       "exportedPath": "Body/Elements/Bone/Bone rules.html",
       "dependencies": []
     },
     "Body/Elements/Flesh/Tattoos/Fur-displacement etching.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2046,
       "exportedPath": "Body/Elements/Flesh/Tattoos/Fur-displacement etching.html",
       "dependencies": []
     },
     "Body/Elements/Flesh/Tattoos/Illuminace ink.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2024,
       "exportedPath": "Body/Elements/Flesh/Tattoos/Illuminace ink.html",
       "dependencies": []
     },
     "Body/Elements/Flesh/Flesh atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1903,
       "exportedPath": "Body/Elements/Flesh/Flesh atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Flesh/Flesh rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1552,
       "exportedPath": "Body/Elements/Flesh/Flesh rules.html",
       "dependencies": []
     },
     "Body/Elements/Hormone/Hormone atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2022,
       "exportedPath": "Body/Elements/Hormone/Hormone atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Hormone/Hormone rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1782,
       "exportedPath": "Body/Elements/Hormone/Hormone rules.html",
       "dependencies": []
     },
     "Body/Elements/Matt/Matt atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1524,
       "exportedPath": "Body/Elements/Matt/Matt atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Matt/Matt rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1752,
       "exportedPath": "Body/Elements/Matt/Matt rules.html",
       "dependencies": []
     },
     "Body/Elements/Soul/Soul atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1858,
       "exportedPath": "Body/Elements/Soul/Soul atrophy.html",
       "dependencies": []
     },
     "Body/Elements/Soul/Soul rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1757,
       "exportedPath": "Body/Elements/Soul/Soul rules.html",
       "dependencies": []
     },
     "Body/Elements/Soul/Will-Hollowing.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2720,
       "exportedPath": "Body/Elements/Soul/Will-Hollowing.html",
       "dependencies": []
     },
     "Body/Elements/7 Bodily elements.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1385,
       "exportedPath": "Body/Elements/7 Bodily elements.html",
       "dependencies": []
     },
     "Body/Body atrophy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1757,
       "exportedPath": "Body/Body atrophy.html",
       "dependencies": []
     },
     "Body/Body rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1142,
       "exportedPath": "Body/Body rules.html",
       "dependencies": []
     },
     "Body/Morich.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1776,
       "exportedPath": "Body/Morich.html",
       "dependencies": []
     },
     "Creatures/Creature attributes/Post-evolution/Anograde Ranking.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1913,
       "exportedPath": "Creatures/Creature attributes/Post-evolution/Anograde Ranking.html",
       "dependencies": []
     },
     "Creatures/Creature attributes/Post-evolution/Post-evolution.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 877,
       "exportedPath": "Creatures/Creature attributes/Post-evolution/Post-evolution.html",
       "dependencies": []
     },
     "Creatures/Creature attributes/Sentience/Krover scale.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2980,
       "exportedPath": "Creatures/Creature attributes/Sentience/Krover scale.html",
       "dependencies": []
     },
     "Creatures/Crows.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 522,
       "exportedPath": "Creatures/Crows.html",
       "dependencies": []
     },
     "Creatures/Frogule.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1494,
       "exportedPath": "Creatures/Frogule.html",
       "dependencies": []
     },
     "Creatures/Jester rats.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1987,
       "exportedPath": "Creatures/Jester rats.html",
       "dependencies": []
     },
     "Creatures/Pryuve.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2399,
       "exportedPath": "Creatures/Pryuve.html",
       "dependencies": []
     },
     "Creatures/Satyr.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2506,
       "exportedPath": "Creatures/Satyr.html",
       "dependencies": []
     },
     "Magic/Blood magic/Blood enrichment/Blood enrichment rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1528,
       "exportedPath": "Magic/Blood magic/Blood enrichment/Blood enrichment rules.html",
       "dependencies": []
     },
     "Magic/Blood magic/Blood enrichment/Tattoo blood enrichment.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2473,
       "exportedPath": "Magic/Blood magic/Blood enrichment/Tattoo blood enrichment.html",
       "dependencies": []
     },
     "Magic/Blood magic/Blood magic rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1691,
       "exportedPath": "Magic/Blood magic/Blood magic rules.html",
       "dependencies": []
     },
     "Magic/Blood magic/Blood necromancy.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1511,
       "exportedPath": "Magic/Blood magic/Blood necromancy.html",
       "dependencies": []
     },
     "Magic/Blood magic/Coagulate tooling.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1734,
       "exportedPath": "Magic/Blood magic/Coagulate tooling.html",
       "dependencies": []
     },
     "Magic/Glyphs/Glyph types/Aegis glyph.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1927,
       "exportedPath": "Magic/Glyphs/Glyph types/Aegis glyph.html",
       "dependencies": []
     },
     "Magic/Glyphs/Glyph types/Crupid glyph.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1893,
       "exportedPath": "Magic/Glyphs/Glyph types/Crupid glyph.html",
       "dependencies": []
     },
     "Magic/Glyphs/Glyph rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2431,
       "exportedPath": "Magic/Glyphs/Glyph rules.html",
       "dependencies": []
     },
     "Magic/Glyphs/Types of glyph.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1723,
       "exportedPath": "Magic/Glyphs/Types of glyph.html",
       "dependencies": []
     },
     "Magic/Paraphoto magic/Invision.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2188,
       "exportedPath": "Magic/Paraphoto magic/Invision.html",
       "dependencies": []
     },
     "Magic/Paraphoto magic/Paraphoto magic.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2669,
       "exportedPath": "Magic/Paraphoto magic/Paraphoto magic.html",
       "dependencies": []
     },
     "Magic/Paraphoto magic/Umbraeon.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1513,
       "exportedPath": "Magic/Paraphoto magic/Umbraeon.html",
       "dependencies": []
     },
     "Magic/Forms of Magic.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1438,
       "exportedPath": "Magic/Forms of Magic.html",
       "dependencies": []
     },
     "Magic/Magic deterioration.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1420,
       "exportedPath": "Magic/Magic deterioration.html",
       "dependencies": []
     },
     "Magic/Magic Feeding.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1438,
       "exportedPath": "Magic/Magic Feeding.html",
       "dependencies": []
     },
     "Magic/Magic material.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1834,
       "exportedPath": "Magic/Magic material.html",
       "dependencies": []
     },
     "Magic/Magic rules.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2205,
       "exportedPath": "Magic/Magic rules.html",
       "dependencies": []
     },
     "Media/0.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1437393,
       "exportedPath": "Media/0.png",
       "dependencies": []
     },
     "Media/1.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 961803,
       "exportedPath": "Media/1.png",
       "dependencies": []
     },
     "Media/2.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1311982,
       "exportedPath": "Media/2.png",
       "dependencies": []
     },
     "Media/anograde_ranking_image.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 392121,
       "exportedPath": "Media/anograde_ranking_image.png",
       "dependencies": []
     },
     "Media/coagulate_tooling.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 524354,
       "exportedPath": "Media/coagulate_tooling.png",
       "dependencies": []
     },
     "Media/crow.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 183011,
       "exportedPath": "Media/crow.png",
       "dependencies": []
     },
     "Media/CTP_jacket.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 817101,
       "exportedPath": "Media/CTP_jacket.png",
       "dependencies": []
     },
     "Media/frogule.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 600587,
       "exportedPath": "Media/frogule.png",
       "dependencies": []
     },
     "Media/jester_rat.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 326084,
       "exportedPath": "Media/jester_rat.png",
       "dependencies": []
     },
     "Media/limbo_celestial_system.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 223676,
       "exportedPath": "Media/limbo_celestial_system.png",
       "dependencies": []
     },
     "Media/logo.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 638397,
       "exportedPath": "Media/logo.png",
       "dependencies": []
     },
     "Media/planet_limbo_in_space.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2572621,
       "exportedPath": "Media/planet_limbo_in_space.png",
       "dependencies": []
     },
     "Media/ring_runes.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 406569,
       "exportedPath": "Media/ring_runes.png",
       "dependencies": []
     },
     "Media/satyr_carnivorl.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 6132548,
       "exportedPath": "Media/satyr_carnivorl.png",
       "dependencies": []
     },
     "Media/tattoos.png": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 978288,
       "exportedPath": "Media/tattoos.png",
       "dependencies": []
     },
     "Non-realm specifics/Style/People styles.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 265,
       "exportedPath": "Non-realm specifics/Style/People styles.html",
       "dependencies": []
     },
     "Non-realm specifics/Artificial General Intelligence.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 432,
       "exportedPath": "Non-realm specifics/Artificial General Intelligence.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Enviroment/Bilefair weather.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1448,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Enviroment/Bilefair weather.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Enviroment/Sickly glow.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1053,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Enviroment/Sickly glow.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Enviroment/Slick clouds.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1351,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Enviroment/Slick clouds.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/Art/Carnivorl Graffiti.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 699,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/Art/Carnivorl Graffiti.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/locations/Flak Markets.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 912,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/locations/Flak Markets.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Style/Carnivorl Style.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1639,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Style/Carnivorl Style.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Style/Whiskers.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1091,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Style/Whiskers.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Carnivorl people.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1586,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Carnivorl people.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Carnivorl social structure.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1520,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Social groups/Carnivorl/People/Carnivorl social structure.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Bilefair flame.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 10,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Bilefair flame.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Bilefair realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2209,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Bilefair realm.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Bilefair realm/Bilefair species.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 415,
       "exportedPath": "Realms/7 Accursed realms/Bilefair realm/Bilefair species.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Cordisec Realm/Enviroment/Cordisec weather.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1621,
       "exportedPath": "Realms/7 Accursed realms/Cordisec Realm/Enviroment/Cordisec weather.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Cordisec Realm/Enviroment/Rain sweep.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1675,
       "exportedPath": "Realms/7 Accursed realms/Cordisec Realm/Enviroment/Rain sweep.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Cordisec Realm/Cordisec flame.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 10,
       "exportedPath": "Realms/7 Accursed realms/Cordisec Realm/Cordisec flame.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Cordisec Realm/Cordisec realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2180,
       "exportedPath": "Realms/7 Accursed realms/Cordisec Realm/Cordisec realm.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Cordisec Realm/Cordisec species.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 730,
       "exportedPath": "Realms/7 Accursed realms/Cordisec Realm/Cordisec species.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Enviroment/Mortisanctum weather.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2716,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Enviroment/Mortisanctum weather.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Enviroment/Radiation storms.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2188,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Enviroment/Radiation storms.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/Locations/Library of Sanuc.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 933,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/Locations/Library of Sanuc.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/known-people/Krover Synop.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 53,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/known-people/Krover Synop.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/known-people/Sarum Teret.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 28,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/known-people/Sarum Teret.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/Style/Mortisac Style.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 906,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/Style/Mortisac Style.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/Mortisac people.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1730,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/Mortisac people.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/Mortisanctum social structure.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 861,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Social groups/Mortisac/People/Mortisanctum social structure.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Mortisanctum flame.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 16,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Mortisanctum flame.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Mortisanctum realm/Mortisanctum realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1653,
       "exportedPath": "Realms/7 Accursed realms/Mortisanctum realm/Mortisanctum realm.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Enviroment/Features/Screamers.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1365,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Enviroment/Features/Screamers.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Enviroment/Blood rain.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 389,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Enviroment/Blood rain.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Enviroment/Body fall.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 328,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Enviroment/Body fall.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Enviroment/Ossuary weather.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 813,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Enviroment/Ossuary weather.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/gMedi ranking system/Initiation grunt ranks.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1490,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/gMedi ranking system/Initiation grunt ranks.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/Style/gMedi Style.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 471,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/Style/gMedi Style.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi messengers.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 449,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi messengers.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi people.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 583,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi people.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi Reverent.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1623,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi Reverent.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi social structure.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 55,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi social structure.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi Vivicurge.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 433,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/People/gMedi Vivicurge.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/Products/Faux flesh.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 448,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/Products/Faux flesh.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/Rituals/Allegiance process.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2173,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Social groups/gMedi/Rituals/Allegiance process.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Ossuary flame.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 16,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Ossuary flame.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Ossuary realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 699,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Ossuary realm.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Ossuary realm/Ossuary species.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 87,
       "exportedPath": "Realms/7 Accursed realms/Ossuary realm/Ossuary species.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Scaleth/Enviroment/Social groups/Common/Heat-reading.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 3111,
       "exportedPath": "Realms/7 Accursed realms/Scaleth/Enviroment/Social groups/Common/Heat-reading.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Scaleth/Enviroment/Dry storm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2469,
       "exportedPath": "Realms/7 Accursed realms/Scaleth/Enviroment/Dry storm.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Scaleth/Enviroment/Shefang expanse.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2825,
       "exportedPath": "Realms/7 Accursed realms/Scaleth/Enviroment/Shefang expanse.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Scaleth/Enviroment/Shefang weather.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1805,
       "exportedPath": "Realms/7 Accursed realms/Scaleth/Enviroment/Shefang weather.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Scaleth/Enviroment/Thermal fissure.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2329,
       "exportedPath": "Realms/7 Accursed realms/Scaleth/Enviroment/Thermal fissure.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Scaleth/Scaleth realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1438,
       "exportedPath": "Realms/7 Accursed realms/Scaleth/Scaleth realm.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/7 Accursed realms.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 846,
       "exportedPath": "Realms/7 Accursed realms/7 Accursed realms.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Accursed flames.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 716,
       "exportedPath": "Realms/7 Accursed realms/Accursed flames.html",
       "dependencies": []
     },
     "Realms/7 Accursed realms/Aque.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 764,
       "exportedPath": "Realms/7 Accursed realms/Aque.html",
       "dependencies": []
     },
     "Realms/7 Haloed realms/7 Haloed realms.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 627,
       "exportedPath": "Realms/7 Haloed realms/7 Haloed realms.html",
       "dependencies": []
     },
     "Realms/7 Haloed realms/Halo.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 465,
       "exportedPath": "Realms/7 Haloed realms/Halo.html",
       "dependencies": []
     },
     "Realms/7 Haloed realms/Haloed flames.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 58,
       "exportedPath": "Realms/7 Haloed realms/Haloed flames.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Limbo celestial system/Limbo system.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1003,
       "exportedPath": "Realms/Limbo realm/Limbo celestial system/Limbo system.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Enviroment/Limbo weather.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 464,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Enviroment/Limbo weather.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Locations/Industrial sprawl.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1382,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Locations/Industrial sprawl.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Locations/Wastes.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 755,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Locations/Wastes.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Social groups/Mequin/Mequin machines.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1212,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Social groups/Mequin/Mequin machines.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Limbo native species.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1577,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Limbo native species.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Limbo's dark side.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1603,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Limbo's dark side.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Limbo's light side.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1435,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Limbo's light side.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Planet Limbo.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 2354,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Planet Limbo.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Planet Limbo/Ring rune.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1870,
       "exportedPath": "Realms/Limbo realm/Planet Limbo/Ring rune.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Black hole Lucifer.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1836,
       "exportedPath": "Realms/Limbo realm/Black hole Lucifer.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Limbic flame.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 58,
       "exportedPath": "Realms/Limbo realm/Limbic flame.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Limbo Realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1902,
       "exportedPath": "Realms/Limbo realm/Limbo Realm.html",
       "dependencies": []
     },
     "Realms/Limbo realm/Star Spirit.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1534,
       "exportedPath": "Realms/Limbo realm/Star Spirit.html",
       "dependencies": []
     },
     "Realms/Mire realm/Mire realm.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1375,
       "exportedPath": "Realms/Mire realm/Mire realm.html",
       "dependencies": []
     },
     "Realms/Realmic flame.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1647,
       "exportedPath": "Realms/Realmic flame.html",
       "dependencies": []
     },
     "Realms/Realms.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1337,
       "exportedPath": "Realms/Realms.html",
       "dependencies": []
     },
     "Vignettes/Creature trafficking prevention/CTP.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 4292,
       "exportedPath": "Vignettes/Creature trafficking prevention/CTP.html",
       "dependencies": []
     },
     "Vignettes/Creature trafficking prevention/CTP jacket.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 373,
       "exportedPath": "Vignettes/Creature trafficking prevention/CTP jacket.html",
       "dependencies": []
     },
     "Timeline.md": {
-      "modifiedTime": 1746656757512,
+      "modifiedTime": 1747240429317,
       "sourceSize": 1771,
       "exportedPath": "Timeline.html",
       "dependencies": []

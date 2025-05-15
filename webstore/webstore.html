@@ -20,6 +20,7 @@
         flex-direction: column;
         align-items: center;
         min-height: 100vh;
+		scrollbar-gutter: stable;
     }
 
     .btn {
@@ -35,11 +36,6 @@
         text-decoration: none;
         z-index: 1;
         transition: all 0.3s ease-in-out;
-    }
-
-    .btn:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px white;
     }
 
     .btn:hover::before {
@@ -85,7 +81,6 @@
 
     hat {
         width: 90%;
-        max-width: 900px;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -193,24 +188,43 @@
       text-align: center;
     }
 
-    #item-slider {
-      width: 100%;
-      max-width: 400px;
-    }
+#item-slider {
+  -webkit-appearance: none;
+  width: 25em;
+  height: 12px;
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  outline: none;
+}
 
-    #slider-value {
-      font-weight: bold;
-    }
+#item-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: #000;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+#item-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: #000;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
 
     #cart-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      padding: 0.6em;
       border-radius: 6px;
       background: black;
-      border: 3px solid #fff;
-      font-size: 1.5em;
+      border: 1px solid #fff;
       color: #fff;
       cursor: pointer;
       z-index: 10;
@@ -368,6 +382,91 @@ padding: 0;
   height: auto; /* Maintain aspect ratio */
 }
 
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      width: 15em;
+      font-family: sans-serif;
+    }
+
+    .dropdown-toggle {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+	  height: auto;
+      background: transparent;
+      border: 1px solid white;
+      border-radius: 3px;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+	  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+    }
+
+    .dropdown-toggle:hover::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      z-index: -1;
+      background: repeating-linear-gradient(
+        45deg,
+        white 0px,
+        white 4px,
+        transparent 4px,
+        transparent 8px
+      );
+      background-size: 11.314px 11.314px;
+      animation: scrollStripes 1s linear infinite;
+      border-radius: 3px;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      padding: 0.5rem 0;
+      background-color: black;
+      border: 1px solid #444;
+      border-radius: 4px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 100;
+      box-sizing: border-box;
+    }
+
+    /* Menu items */
+    .dropdown-menu label {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .dropdown.open .dropdown-menu {
+      display: block;
+    }
+
+ input[type=number] {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  width: 120px;
+  outline: none;
+
+  -moz-appearance: number-input;
+  -webkit-appearance: number-input;
+  appearance: number-input;
+}
+
   </style>
 <mother>
   <hat>
@@ -381,18 +480,23 @@ padding: 0;
       <input type="text" id="search-bar" placeholder="Search for products..." />
     </div>
 
-    <div id="filters">
+<div id="filters">
   <div class="category_title">Categories:</div>
   <label><input type="checkbox" class="tag-filter" value="Yummers" id="checkbox_yummers"/> Yummers</label>
   <label><input type="checkbox" class="tag-filter" value="Stickers" id="checkbox_stickers"/> Stickers</label>
-  <label><input type="checkbox" class="tag-filter" value="AEJOICACOU" id="checkbox_stickers"/> AEJOICACOU</label>
+  <label><input type="checkbox" class="tag-filter" value="AEJOICACOU" id="checkbox_aejoicacou"/> AEJOICACOU</label>
+
+<div class="dropdown" id="filter-dropdown">
+<div class="dropdown-toggle">Filter Options</div>
+<div class="dropdown-menu">
+    <label><input type="checkbox" id="match-all-tags" /> Match all tags</label>
+</div>
+</div>
 </div>
 
     <div id="item-slider-container">
-      <label for="item-slider">
-        Items per row: <span id="slider-value">6</span>
-      </label>
-      <input type="range" id="item-slider" min="1" max="10" value="6" />
+      <label for="item-slider">Row scale: <span id="slider-value">7</span></label>
+      <input type="range" id="item-slider" min="1" max="20" value="7" />
     </div>
 
     <div class="product-gallery" id="product-list">
@@ -425,60 +529,65 @@ padding: 0;
 		<h4 id="modal-name"></h4>
 		<img id="modal-img" src="" alt="Product Image" />
 		<p id="modal-desc"></p>
+		<p id="modal-size"></p>
 		<button id="modal-add-btn" class="btn btn-fill-horizontal btn-align-bottom">Add to Cart</button>
+		<button id="sizer-btn" class="btn btn-fill-horizontal btn-align-bottom">Sizer</button>
 </div>
 </div>
 
   <shoe>
     <p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> </p>
   </shoe>
-
 </mother>
   <script>
     const products = [
-    { id: 1, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description" },
-    { id: 2, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description" },
-    { id: 3, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description" },
-	{ id: 4, name: "Boof Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/boof.png", description: "A charmingly loud and fluffy design." },
-	{ id: 5, name: "Butwon Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/butwon.png", description: "A sticker of the logo of a shitty pointless game I've published." },
-	{ id: 6, name: "Crushie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/crushie.png", description: "//>w<//" },
-	{ id: 7, name: "Gopper block Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/gopper_block.png", description: "This is a texture made for a banner image for my first-ever Minecraft datapack 'oSzoukaua's: Lucky blocks' on modrinth." },
-	{ id: 8, name: "Fat fuck Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/fat_fuck.png", description: "Little guy, taken from a frame of an animation I was working on, on my animations channel." },
-	{ id: 9, name: "Flox Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/flox.png", description: "An old logo for an unfinished, unreleased, and unannounced game I was working on." },
-	{ id: 10, name: "Frag Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/frag.png", description: "Front render of a little frog 3D model I made, and uploaded to my Ko-fi :)." },
-	{ id: 11, name: "Froog Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/froog.png", description: "Side render of a little frog 3D model I made, and uploaded to my Ko-fi :)." },
-	{ id: 12, name: "Furries Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/furries.png", description: "Little sticker warning thing I designed because I was bored!" },
-	{ id: 13, name: "Heathy Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/heathy.png", description: "Center element I took from a picture I drew!" },
-	{ id: 14, name: "Larena Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/larena.png", description: "Center element I took from a picture I drew!" },
-	{ id: 15, name: "Love Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/love.png", description: "Old thing I made and then later updated with color because I was bored." },
-	{ id: 16, name: "P.M.A.F Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pmaf.png", description: "Old logo for an unreleased, unfinished, and unpublished VRChat world I was working on." },
-	{ id: 17, name: "Pup Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pup.png", description: "Center element I took from an announcement I made for an old VRChat group I ran." },
-	{ id: 18, name: "Skrush Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/skrush.png", description: "Center element I took from an old picture I drew!" },
-	{ id: 19, name: "Sodafizz Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sodafizz.png", description: "Logo/icon for a YouTube channel that was once planned." },
-	{ id: 20, name: "VCR Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/vcr.png", description: "Old logo for a 'gaming team' that I wanted to make when I was like 14." },
-	{ id: 21, name: "Bald Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/bald.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 22, name: "Birthday Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/birthday.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 23, name: "Bri-ish Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/bri-ish.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 24, name: "Cat Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/cat.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 25, name: "Deadie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/deadie.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 26, name: "Dura-sell Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/dura-sell.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 27, name: "Flamg Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/flamg.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 28, name: "Froggie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/froggie.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 29, name: "Gay-Diation Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/gay-dation.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 30, name: "Mawmie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/mawmie.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 31, name: "No Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/no.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 32, name: "Nuh-uh Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/nuh-uh.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 33, name: "Orgie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/orgie.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 34, name: "Pawb Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pawb.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 35, name: "Pibs Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pibs.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 36, name: "Slimmie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/slimmie.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 37, name: "Sneepie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sneepie.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 38, name: "Sphere Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sphere.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 39, name: "Vlc Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/vlc.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 40, name: "Wada Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/wada.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 41, name: "Women Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/women.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 42, name: "Wub Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/wub.png", description: "Art I made for my Stickers YouTube channel." },
-	{ id: 43, name: "AEJOICACOU Single Sticker", price: 0.50, tags: ["Stickers","AEJOICACOU"], img: "../stickers/AEJOICACOU_logo.png", description: "AEJOICACOU Universe logo." },
+    { id: 1, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description", height: 50, width: 50 },
+    { id: 2, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description", height: 50, width: 50 },
+    { id: 3, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description", height: 50, width: 50 },
+	{ id: 4, name: "Boof Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/boof.png", description: "A charmingly loud and fluffy design.", height: 50, width: 50 },
+	{ id: 5, name: "Butwon Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/butwon.png", description: "A sticker of the logo of a shitty pointless game I've published.", height: 50, width: 50 },
+	{ id: 6, name: "Crushie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/crushie.png", description: "//>w<//", height: 50, width: 50 },
+	{ id: 7, name: "Gopper block Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/gopper_block.png", description: "This is a texture made for a banner image for my first-ever Minecraft datapack 'oSzoukaua's: Lucky blocks' on modrinth.", height: 50, width: 50 },
+	{ id: 8, name: "Fat fuck Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/fat_fuck.png", description: "Little guy, taken from a frame of an animation I was working on, on my animations channel.", height: 50, width: 50 },
+	{ id: 9, name: "Flox Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/flox.png", description: "An old logo for an unfinished, unreleased, and unannounced game I was working on.", height: 50, width: 50 },
+	{ id: 10, name: "Frag Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/frag.png", description: "Front render of a little frog 3D model I made, and uploaded to my Ko-fi :).", height: 50, width: 50 },
+	{ id: 11, name: "Froog Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/froog.png", description: "Side render of a little frog 3D model I made, and uploaded to my Ko-fi :).", height: 50, width: 50 },
+	{ id: 12, name: "Furries Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/furries.png", description: "Little sticker warning thing I designed because I was bored!", height: 50, width: 50 },
+	{ id: 13, name: "Heathy Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/heathy.png", description: "Center element I took from a picture I drew!", height: 50, width: 50 },
+	{ id: 14, name: "Larena Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/larena.png", description: "Center element I took from a picture I drew!", height: 50, width: 50 },
+	{ id: 15, name: "Love Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/love.png", description: "Old thing I made and then later updated with color because I was bored.", height: 50, width: 50 },
+	{ id: 16, name: "P.M.A.F Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pmaf.png", description: "Old logo for an unreleased, unfinished, and unpublished VRChat world I was working on.", height: 50, width: 50 },
+	{ id: 17, name: "Pup Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pup.png", description: "Center element I took from an announcement I made for an old VRChat group I ran.", height: 50, width: 50 },
+	{ id: 18, name: "Skrush Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/skrush.png", description: "Center element I took from an old picture I drew!", height: 50, width: 50 },
+	{ id: 19, name: "Sodafizz Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sodafizz.png", description: "Logo/icon for a YouTube channel that was once planned.", height: 50, width: 50 },
+	{ id: 20, name: "VCR Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/vcr.png", description: "Old logo for a 'gaming team' that I wanted to make when I was like 14.", height: 50, width: 50 },
+	{ id: 21, name: "Bald Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/bald.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 22, name: "Birthday Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/birthday.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 23, name: "Bri-ish Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/bri-ish.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 24, name: "Cat Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/cat.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 25, name: "Deadie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/deadie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 26, name: "Dura-sell Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/dura-sell.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 27, name: "Flamg Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/flamg.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 28, name: "Froggie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/froggie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 29, name: "Gay-Diation Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/gay-dation.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 30, name: "Mawmie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/mawmie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 31, name: "No Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/no.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 32, name: "Nuh-uh Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/nuh-uh.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 33, name: "Orgie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/orgie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 34, name: "Pawb Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pawb.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 35, name: "Pibs Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pibs.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 36, name: "Slimmie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/slimmie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 37, name: "Sneepie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sneepie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 38, name: "Sphere Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sphere.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 39, name: "Vlc Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/vlc.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 40, name: "Wada Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/wada.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 41, name: "Women Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/women.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 42, name: "Wub Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/wub.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
+	{ id: 43, name: "AEJOICACOU Single Sticker", price: 0.50, tags: ["Stickers","AEJOICACOU"], img: "../stickers/AEJOICACOU_logo.png", description: "AEJOICACOU Universe logo.", height: 50, width: 50 },
+	{ id: 44, name: "Thirsty boi Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/thirsty.png", description: "Lil' guy i drew a while ago because i was bored", height: 50, width: 50 },
+	{ id: 45, name: "huh Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/huh.png", description: "Confused fella i drew for an animation meme i never posted.", height: 50, width: 50 },
+	{ id: 46, name: "Not apossom Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/not_apossom.png", description: "Cute lil' fella i drew for an animation meme i never posted.", height: 50, width: 50 },
+	{ id: 47, name: "Scraum fell :( Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/scraum_fell.png", description: "Cute lil' fella i drew for an animation meme i never posted.", height: 50, width: 50 },
     ];
 
     function shuffle(array) {
@@ -498,17 +607,35 @@ padding: 0;
     const sliderValue = document.getElementById("slider-value");
 
     function updateSliderMax(count) {
-      const max = Math.min(10, count);
+      const max = Math.min(20, count);
       slider.max = max;
       if (+slider.value > max) slider.value = max;
       sliderValue.textContent = slider.value;
     }
+	
+	slider.addEventListener('input', () => {
+  sliderValue.textContent = slider.value;
+  updateFlexBasis(+slider.value);
+});
 
     function updateFlexBasis(perRow) {
       document.querySelectorAll('.product-item').forEach(item => {
         item.style.flexBasis = `calc(${100 / perRow}% - 20px)`;
       });
     }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.getElementById('filter-dropdown');
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+
+    toggle.addEventListener('mouseenter', () => {
+      dropdown.classList.toggle('open');
+    });
+
+  dropdown.addEventListener('mouseleave', () => {
+    dropdown.classList.remove('open');
+  });
+});
 
 function displayProducts(items) {
   productListEl.innerHTML = '';
@@ -528,7 +655,6 @@ function displayProducts(items) {
     productListEl.appendChild(div);
   });
   updateFlexBasis(+slider.value);
-  updateSliderMax(items.length);
 }
 
 	productListEl.addEventListener('click', (e) => {
@@ -541,35 +667,70 @@ function displayProducts(items) {
 document.getElementById('cart-button').addEventListener('click', openCart);
 
 
-    function filterProducts() {
-      const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked')).map(cb => cb.value);
-      const query = document.getElementById("search-bar").value.toLowerCase();
-      const filtered = products.filter(p =>
-        (selectedTags.length === 0 || p.tags.some(tag => selectedTags.includes(tag))) &&
-        p.name.toLowerCase().includes(query)
-      );
-      displayProducts(filtered);
+function filterProducts() {
+  const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked'))
+                            .map(cb => cb.value);
+  const matchAll = document.getElementById('match-all-tags').checked;
+  const query = document.getElementById("search-bar").value.toLowerCase();
+
+  const filtered = products.filter(p => {
+    const nameMatch = p.name.toLowerCase().includes(query);
+
+    // if no tags selected, just match name
+    if (selectedTags.length === 0) return nameMatch;
+
+    if (matchAll) {
+      // AND logic: every selected tag must be in p.tags
+      const allPresent = selectedTags.every(tag => p.tags.includes(tag));
+      return nameMatch && allPresent;
+    } else {
+      // OR logic: at least one selected tag appears in p.tags
+      const anyPresent = p.tags.some(tag => selectedTags.includes(tag));
+      return nameMatch && anyPresent;
     }
+  });
+
+  displayProducts(filtered);
+}
+
 
 function openModal(product) {
-      document.getElementById('modal-img').src = product.img;
-      document.getElementById('modal-name').textContent = product.name;
-      document.getElementById('modal-desc').textContent = product.description || '';
-      document.getElementById('modal-add-btn').setAttribute('data-id', product.id);
-      document.getElementById('product-modal').style.display = 'flex';
-    }
+  document.getElementById('modal-img').src = product.img;
+  document.getElementById('modal-name').textContent = product.name;
+  document.getElementById('modal-desc').textContent = product.description || '';
+  document.getElementById('modal-size').textContent = product.height && product.width ? `H ${product.height}mm * W ${product.width}mm` : '';
+  document.getElementById('modal-add-btn').setAttribute('data-id', product.id);
+  document.getElementById('product-modal').style.display = 'flex';
 
-    function closeModal() { document.getElementById('product-modal').style.display = 'none'; }
-	
-	document.getElementById('modal-add-btn').addEventListener('click', function() {
-      const id = parseInt(this.getAttribute('data-id'), 10);
-      addToBasket(id);
-      closeModal();
-    });
+  // Sizer integration
+  const sizerBtn = document.getElementById('sizer-btn');
+  const img = new Image();
+  img.src = product.img;
 
-    const productModal = document.getElementById('product-modal');
-	
-    productModal.addEventListener('click', (e) => {
+  img.onload = function () {
+    const height = product.height;
+    const encodedImg = encodeURIComponent(product.img);
+    sizerBtn.onclick = () => {
+      const sizerURL = `../sizer/sizer.html?height=${height}&img=${encodedImg}`;
+      window.open(sizerURL, '_blank');
+    };
+    sizerBtn.style.display = 'inline-block'; // Show Sizer button if hidden
+  };
+}
+
+function closeModal() {
+  document.getElementById('product-modal').style.display = 'none';
+}
+
+document.getElementById('modal-add-btn').addEventListener('click', function () {
+  const id = parseInt(this.getAttribute('data-id'), 10);
+  addToBasket(id);
+  closeModal();
+});
+
+const productModal = document.getElementById('product-modal');
+
+productModal.addEventListener('click', (e) => {
   if (e.target === productModal) {
     closeModal();
   }
@@ -577,30 +738,37 @@ function openModal(product) {
 
 cartModal.addEventListener('click', (e) => {
   if (e.target === cartModal) {
-    closeCart();  // Assuming you have a function to close the cart modal
+    closeCart(); // Assuming you have a function to close the cart modal
   }
 });
 
-    // Initial setup
-    displayProducts(products);
-    document.getElementById('search-bar').addEventListener('input', filterProducts);
-    document.querySelectorAll('.tag-filter').forEach(cb => cb.addEventListener('change', filterProducts));
 
-    const params = new URLSearchParams(window.location.search);
-    const tagParam = params.get('tag');
-    if (tagParam) {
-      document.querySelectorAll('.tag-filter').forEach(cb => cb.checked = cb.value === tagParam);
-      filterProducts();
-    }
-    const openParam = params.get('open');
-    if (openParam) {
-      const openId = parseInt(openParam, 10);
-      const target = products.find(p => p.id === openId);
-      if (target) {
-        // ensure products are rendered first
-        setTimeout(() => openModal(target), 200);
-      }
-    }
+// Initial setup
+displayProducts(products);
+document.getElementById('search-bar')
+        .addEventListener('input', filterProducts);
+document.querySelectorAll('.tag-filter')
+        .forEach(cb => cb.addEventListener('change', filterProducts));
+
+// wire up the new toggle
+document.getElementById('match-all-tags')
+        .addEventListener('change', filterProducts);
+
+const params = new URLSearchParams(window.location.search);
+const tagParam = params.get('tag');
+if (tagParam) {
+  document.querySelectorAll('.tag-filter')
+          .forEach(cb => cb.checked = cb.value === tagParam);
+  filterProducts();
+}
+const openParam = params.get('open');
+if (openParam) {
+  const openId = parseInt(openParam, 10);
+  const target = products.find(p => p.id === openId);
+  if (target) {
+    setTimeout(() => openModal(target), 200);
+  }
+}
 	
 function renderBasket() {
   const basketListEl = document.getElementById('basket-list');

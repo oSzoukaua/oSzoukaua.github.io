@@ -1,1036 +1,725 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico"/>
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
-  <title>oSzoukaua's: Webstore</title>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
-  <style>
-
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: "Space Mono", monospace;
-        background-color: black;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-		scrollbar-gutter: stable;
-    }
-
-    .btn {
-        text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
-        padding: 0.5em 1em;
-        border: 1px solid white;
-        background: transparent;
-        color: white;
-        cursor: pointer;
-        border-radius: 3px;
-        position: relative;
-        overflow: hidden;
-        text-decoration: none;
-        z-index: 1;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .btn:hover::before {
-        content: "";
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        right: -1px;
-        bottom: -1px;
-        z-index: -1;
-        background: repeating-linear-gradient(45deg, white 0px, white 4px, transparent 4px, transparent 8px);
-        background-size: 11.314px 11.314px;
-        animation: scrollStripes 1s linear infinite;
-        border-radius: 3px;
-    }
-
-    @keyframes scrollStripes {
-        0% {
-            background-position: 0 0;
-        }
-        100% {
-            background-position: -28.285px 28.285px;
-        }
-    }
-
-    .logo {
-        margin-top: 30px;
-    }
-
-    .logo img {
-        width: 160px;
-        height: auto;
-    }
-
-    header {
-        font-size: 2em;
-        margin: 20px 0;
-        font-weight: bold;
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 5px;
-    }
-
-    hat {
-        width: 90%;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    shoe {
-        font-size: 0.9em;
-        text-align: center;
-        padding: 20px;
-    }
-
-    shoe a {
-        color: white;
-        text-decoration: underline;
-    }
-	
-	.hide {
-        display: none;
-    }
-
-      .category_title {
-    display: inline-block;
-    font-weight: bold;
-    margin-right: 0.5rem;
-  }
-
-    .product-gallery {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 30px;
-    }
-
-.product-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Ensures space between content and button */
-  align-items: center; /* Centers content horizontally */
-  padding: 20px;
-  border: 1px solid #444;
-  border-radius: 3px;
-  text-align: center;
-  box-sizing: border-box;
-  position: relative; /* Allows absolute positioning inside */
-  cursor: pointer;
-  transition: border 0.05s ease;
-}
-
-.product-item:hover {
-  border: 1px solid white;
-}
-
-    .product-item img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
-    .product-item h4 {
-      margin: 10px 0;
-      font-size: 1.2em;
-    }
-
-    .product-item p {
-      margin: 5px 0;
-    }
-
-    .product-item .btn {
-      width: 100%;
-      margin-top: auto;
-    }
-
-    #search-bar {
-      width: 100%;
-      background: #000;
-      padding: 8px;
-      margin-top: 10px;
-      color: #fff;
-      font-size: 1em;
-      border-radius: 4px;
-    }
-
-    #filters {
-      margin-top: 20px;
-      text-align: left;
-      padding: 10px;
-	   display: flex;
-    align-items: center;
-    gap: 1rem; /* Optional spacing */
-    flex-wrap: wrap; /* Wrap to next line on small screens */
-    }
-
-    #filters label {
-      font-size: 1em;
-      color: #fff;
-      margin-right: 10px;
-    }
-
-    #item-slider-container {
-      margin: 20px 0;
-      text-align: center;
-    }
-
-#item-slider {
-  -webkit-appearance: none;
-  width: 25em;
-  height: 12px;
-  background: #000;
-  border: 2px solid #fff;
-  border-radius: 6px;
-  outline: none;
-}
-
-#item-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-  background: #000;
-  border: 2px solid #fff;
-  cursor: pointer;
-}
-
-#item-slider::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  border-radius: 100%;
-  background: #000;
-  border: 2px solid #fff;
-  cursor: pointer;
-}
-
-    #cart-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      border-radius: 6px;
-      background: black;
-      border: 1px solid #fff;
-      color: #fff;
-      cursor: pointer;
-      z-index: 10;
-    }
-
-#cart-modal,
-#product-modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  backdrop-filter: blur(10px); /* Adds blur effect */
-}
-
-    .modal-content {
-      background: black;
-      color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-	  border: 3px solid #444;
-      width: 80%;
-	  height: 80%;
-      text-align: center;
-      position: relative;
-	  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Ensures content starts from the top */
-  align-items: center;
-    }
-
-    .modal-content h2 {
-      margin-top: 0;
-    }
-
-    .modal-content ul {
-      list-style: none;
-      padding: 0;
-      margin: 10px 0;
-      text-align: left;
-    }
-
-    .modal-content ul li {
-      margin-bottom: 10px;
-    }
-
-.close-btn {
-padding: 0;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1em;
-  cursor: pointer;
-  width: 2em;
-  height: 2em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-#product-modal img {
-  max-width: 30%;
-  height: auto;
-}
-
-
-    @media (max-width: 600px) {
-      .product-gallery {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .btn-top-right,
-      .btn-bottom-right {
-        font-size: 0.85em;
-        padding: 0.4em 0.8em;
-      }
-
-      #search-bar {
-        width: 80%;
-      }
-    }
-	 .modal-content ul li {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .remove-btn {
-      margin-left: 10px;
-      background: transparent;
-      border: 1px solid #fff;
-      color: #fff;
-      padding: 0.3em 0.6em;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-.buttons-container {
-  margin-top: auto;
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="icon" type="image/x-icon" href="../common_assets/favicon.ico"/>
+		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet"/>
+		<link rel="stylesheet" href="../common_assets/base_style.css" />
+		<title>oSzoukaua's: Webstore</title>
+		<style>
+			#cart-button img {
+			width: 35px;
+			height: auto;
+			}
+			
+			.category_title {
+			display: inline-block;
+			font-weight: bold;
+			margin-right: 0.5rem;
+			}
+			
+			.product-gallery {
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 30px;
+			}
+			
+			.product-item {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: center;
+			padding: 20px;
+			border: 1px solid #444;
+			border-radius: 3px;
+			text-align: center;
+			box-sizing: border-box;
+			position: relative;
+			cursor: pointer;
+			transition: border 0.05s ease;
+			}
+			
+			.product-item:hover {
+			border: 1px solid white;
+			}
+			
+			.product-item img {
+			width: 100%;
+			height: auto;
+			object-fit: cover;
+			border-radius: 8px;
+			margin-bottom: 10px;
+			}
+			
+			.product-item h4 {
+			margin: 10px 0;
+			font-size: 1.2em;
+			}
+			
+			.product-item p {
+			margin: 5px 0;
+			}
+			
+			.product-item .btn {
+			width: 100%;
+			margin-top: auto;
+			}
+			
+			#search-bar {
+			width: 100%;
+			background: #000;
+			padding: 8px;
+			margin-top: 10px;
+			color: #fff;
+			font-size: 1em;
+			border-radius: 4px;
+			}
+			
+			#filters {
+			margin-top: 20px;
+			text-align: left;
+			padding: 10px;
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			flex-wrap: wrap;
+			}
+			
+			#filters label {
+			font-size: 1em;
+			color: #fff;
+			margin-right: 10px;
+			}
+			
+			#item-slider-container {
+			margin: 20px 0;
+			text-align: center;
+			}
+			
+			#cart-button {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			border-radius: 6px;
+			background: black;
+			border: 1px solid #fff;
+			color: #fff;
+			cursor: pointer;
+			z-index: 10;
+			}
+			
+			#cart-modal,
+			#product-modal {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: rgba(0, 0, 0, 0.7);
+			display: none;
+			justify-content: center;
+			align-items: center;
+			z-index: 999;
+			backdrop-filter: blur(10px);
+			}
+			
+			@media (max-width: 600px) {
+			.product-gallery {
+			flex-direction: column;
+			align-items: center;
+			}
+			#search-bar {
+			width: 80%;
+			}
+			}
+			
+			.modal-content ul li {
+			margin-bottom: 10px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			}
+			
+			.remove-btn {
+			margin-left: 10px;
+			background: transparent;
+			border: 1px solid #fff;
+			color: #fff;
+			padding: 0.3em 0.6em;
+			border-radius: 4px;
+			cursor: pointer;
+			}
+			
+			.buttons-container {
+			margin-top: auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-end;
+			width: 100%;
+			}
+			
+			.total-container {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			}
+			
+			.cart-total {
+			text-align: right;
+			margin-bottom: 10px;
+			font-weight: bold;
+			}
+			
+			#basket-list {
+			display: block;
+			width: 100%;
+			overflow-y: auto;
+			}
+			
+			.add-to-cart-container {
+			position: absolute;
+			bottom: 20px;
+			right: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			}
+			
+			.dropdown {
+			position: relative;
+			display: inline-block;
+			width: 15em;
+			font-family: sans-serif;
+			}
+			
+			.dropdown-toggle {
+			position: relative;
+			z-index: 1;
+			display: block;
+			width: 100%;
+			height: auto;
+			background: transparent;
+			border: 1px solid white;
+			border-radius: 3px;
+			color: white;
+			text-align: center;
+			cursor: pointer;
+			text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+			}
+			
+			.dropdown-toggle:hover::before {
+			content: "";
+			position: absolute;
+			top: -1px;
+			left: -1px;
+			right: -1px;
+			bottom: -1px;
+			z-index: -1;
+			background: repeating-linear-gradient(
+			45deg,
+			white 0px,
+			white 4px,
+			transparent 4px,
+			transparent 8px
+			);
+			background-size: 11.314px 11.314px;
+			animation: scrollStripes 1s linear infinite;
+			border-radius: 3px;
+			}
+			
+			.dropdown-menu {
+			display: none;
+			position: absolute;
+			left: 0;
+			width: 100%;
+			margin: 0;
+			padding: 0.5rem 0;
+			background-color: black;
+			border: 1px solid #444;
+			border-radius: 4px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+			z-index: 100;
+			box-sizing: border-box;
+			}
+			
+			.dropdown-menu label {
+			display: block;
+			padding: 0.5rem 1rem;
+			font-size: 1rem;
+			color: white;
+			cursor: pointer;
+			white-space: nowrap;
+			}
+			
+			.dropdown.open .dropdown-menu {
+			display: block;
+			}
+			
+			.bottom-button-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; /* Aligns items to the bottom */
+  gap: 1rem;
   width: 100%;
+  margin-top: auto; /* Pushes this whole container to the bottom */
 }
 
-.total-container {
-  display: flex;
-  flex-direction: column; /* Stack total and purchase button vertically */
-  align-items: flex-end; /* Align both the total and button to the right */
-}
-
-.cart-total {
-  text-align: right;
-  margin-bottom: 10px; /* Space between total and purchase button */
-  font-weight: bold;
-}
-
-#basket-list {
-  display: block; /* Remove flex alignment */
-  width: 100%;
-  overflow-y: auto; /* Optional: Adds scroll if the list is too long */
-}
-
-.add-to-cart-container {
-  position: absolute;
-  bottom: 20px;  /* Adjust the space from the bottom */
-  right: 20px;   /* Adjust the space from the right */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-	mother {
-    display: none;
-}
-
-.btn-fill-horizontal {
-  width: 100%; /* Makes the button take up the full width */
-}
-
-.btn-align-bottom {
-  margin-top: auto;
-  height: 3em; /* Set the height you want for the button */
-}
-
-#cart-button img {
-  width: 35px; /* Adjust width */
-  height: auto; /* Maintain aspect ratio */
-}
-
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      width: 15em;
-      font-family: sans-serif;
-    }
-
-    .dropdown-toggle {
-      position: relative;
-      z-index: 1;
-      display: block;
-      width: 100%;
-	  height: auto;
-      background: transparent;
-      border: 1px solid white;
-      border-radius: 3px;
-      color: white;
-      text-align: center;
-      cursor: pointer;
-	  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
-    }
-
-    .dropdown-toggle:hover::before {
-      content: "";
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      right: -1px;
-      bottom: -1px;
-      z-index: -1;
-      background: repeating-linear-gradient(
-        45deg,
-        white 0px,
-        white 4px,
-        transparent 4px,
-        transparent 8px
-      );
-      background-size: 11.314px 11.314px;
-      animation: scrollStripes 1s linear infinite;
-      border-radius: 3px;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      left: 0;
-      width: 100%;
-      margin: 0;
-      padding: 0.5rem 0;
-      background-color: black;
-      border: 1px solid #444;
-      border-radius: 4px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      z-index: 100;
-      box-sizing: border-box;
-    }
-
-    /* Menu items */
-    .dropdown-menu label {
-      display: block;
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      color: white;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .dropdown.open .dropdown-menu {
-      display: block;
-    }
-
- input[type=number] {
-  background-color: #000;
+.modal-content {
+  background: black;
   color: #fff;
-  border: 1px solid #fff;
-  font-size: 1.2rem;
-  border-radius: 6px;
-  width: 120px;
-  outline: none;
+  padding: 20px;
+  border-radius: 8px;
+  border: 3px solid #444;
 
-  -moz-appearance: number-input;
-  -webkit-appearance: number-input;
-  appearance: number-input;
+  /* let the content size naturally up to 90% of the viewport */
+  width: 80%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-  </style>
-<mother>
-  <hat>
-    <div class="logo">
-    <a href="../index.html" data-append-params> <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's logo" /> </a>
-    </div>
-    <header>Webstore</header>
-  </hat>
+#modal-img, #modal-model {
+  width: 100%;
+  height: 600px;
+  display: none;
+}
 
-    <div id="search-bar-container">
-      <input type="text" id="search-bar" placeholder="Search for products..." />
-    </div>
+.modal-content h4,
+.modal-content p {
+  margin: 0; /* reset default margins so gap spacing applies uniformly */
+}
 
-<div id="filters">
-  <div class="category_title">Categories:</div>
-  <label><input type="checkbox" class="tag-filter" value="Yummers" id="checkbox_yummers"/> Yummers</label>
-  <label><input type="checkbox" class="tag-filter" value="Stickers" id="checkbox_stickers"/> Stickers</label>
-  <label><input type="checkbox" class="tag-filter" value="AEJOICACOU" id="checkbox_aejoicacou"/> AEJOICACOU</label>
-
-<div class="dropdown" id="filter-dropdown">
-<div class="dropdown-toggle">Filter Options</div>
-<div class="dropdown-menu">
-    <label><input type="checkbox" id="match-all-tags" /> Match all tags</label>
-</div>
-</div>
-</div>
-
-    <div id="item-slider-container">
-      <label for="item-slider">Row scale: <span id="slider-value">7</span></label>
-      <input type="range" id="item-slider" min="1" max="20" value="7" />
-    </div>
-
-    <div class="product-gallery" id="product-list">
-    </div>
-
-	<button id="cart-button" class="btn">
-		<img src="../common_assets/cart_icon.png" alt="Cart" />
-	</button>
-
-<div id="cart-modal">
+.sticker-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;  /* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  pointer-events: none; /* Let clicks through to base image */
+}
+		</style>
+	</head>
+	<body>
+		<div id="page_contents" class="hide">
+			<header>
+				<div class="logo">
+					<a href="../index.html" data-append-params> <img src="../common_assets/logo_watermark_high.png" alt="oSzoukaua's logo" /> </a>
+				</div>
+				<h1>Webstore</h1>
+			</header>
+			<div id="search-bar-container">
+				<input type="text" id="search-bar" placeholder="Search for products..." />
+			</div>
+			<div id="filters">
+				<div class="category_title">Categories:</div>
+				<label><input type="checkbox" class="tag-filter" value="Yummers" id="checkbox_yummers"/> Yummers</label>
+				<label><input type="checkbox" class="tag-filter" value="Stickers" id="checkbox_stickers"/> Stickers</label>
+				<label><input type="checkbox" class="tag-filter" value="AEJOICACOU" id="checkbox_aejoicacou"/> AEJOICACOU</label>
+				<div class="dropdown" id="filter-dropdown">
+					<div class="dropdown-toggle">Filter Options</div>
+					<div class="dropdown-menu">
+						<label><input type="checkbox" id="match-all-tags" /> Match all tags</label>
+					</div>
+				</div>
+			</div>
+			<div id="item-slider-container">
+				<label for="item-slider">Row scale: <span id="slider-value">7</span></label>
+				<input type="range" id="item-slider" min="1" max="20" value="9" />
+			</div>
+			<div class="product-gallery" id="product-list">
+			</div>
+			<button id="cart-button" class="btn">
+			<img src="../common_assets/cart_icon.png" alt="Cart" />
+			</button>
+			<div id="cart-modal">
+				<div class="modal-content">
+					<span class="close-btn btn" onclick="closeCart()">&times;</span>
+					<h2>Shopping Cart</h2>
+					<ul id="basket-list"></ul>
+					<div class="buttons-container">
+						<button class="btn" onclick="clearBasket()">Clear Cart</button>
+						<button id="save-cart-btn" class="btn" onclick="saveCartToCookies()" title="Click to save current basket contents in local Cookies">Save Cart to Cookies</button>
+						<button id="load-cart-btn" class="btn" onclick="loadCartFromCookies(); renderBasket();" title="Click to load any cart items saved in local Cookies">Load cart from Cookies</button>
+						<div class="total-container">
+							<div id="cart-total" class="cart-total"></div>
+							<button class="btn" onclick="purchaseBasket()">Purchase</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="product-modal">
   <div class="modal-content">
-    <span class="close-btn btn" onclick="closeCart()">&times;</span>
-    <h2>Shopping Cart</h2>
-    <ul id="basket-list"></ul>
-    <div class="buttons-container">
-      <button class="btn" onclick="clearBasket()">Clear Cart</button>
-	  <button id="save-cart-btn" class="btn" onclick="saveCartToCookies()" title="Click to save current basket contents in local Cookies">Save Cart to Cookies</button>
-	  <button id="load-cart-btn" class="btn" onclick="loadCartFromCookies(); renderBasket();" title="Click to load any cart items saved in local Cookies">Load cart from Cookies</button>
-      <div class="total-container">
-        <div id="cart-total" class="cart-total"></div>
-        <button class="btn" onclick="purchaseBasket()">Purchase</button>
-      </div>
+    <span class="close-btn btn" onclick="closeModal()">&times;</span>
+    <h4 id="modal-name"></h4>
+    <div id="modal-img" style="height: 600px;"> </div>
+    <model-viewer id="modal-model" alt="Product Model" style="height: 600px;" auto-rotate disable-pan camera-controls disable-zoom background-color="black"> </model-viewer>
+    <p id="modal-desc"></p>
+    <p id="modal-size"></p>
+    <div class="bottom-button-row">
+      <button id="modal-add-btn" class="btn btn-fill-horizontal">Add to Cart</button>
+      <button id="sizer-btn" class="btn btn-fill-horizontal">Sizer</button>
     </div>
   </div>
 </div>
-
-  <div id="product-modal">
-    <div class="modal-content">
-      <span class="close-btn btn" onclick="closeModal()">&times;</span>
-      <h4 id="modal-name"></h4>
-      <!-- Model Viewer element, hidden by default -->
-      <model-viewer
-        id="modal-model"
-        src=""
-        alt="Product Model"
-        style="max-width:30%; display:none;"
-        auto-rotate
-        camera-controls
-        background-color="black">
-      </model-viewer>
-      <!-- Image element, fallback if no model -->
-      <img id="modal-img" src="" alt="Product Image" style="max-width:30%; display:none;" />
-      <p id="modal-desc"></p>
-      <p id="modal-size"></p>
-      <button id="modal-add-btn" class="btn btn-fill-horizontal btn-align-bottom">Add to Cart</button>
-      <button id="sizer-btn" class="btn btn-fill-horizontal btn-align-bottom">Sizer</button>
-    </div>
-  </div>
-
-  <shoe>
-    <p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> </p>
-  </shoe>
-</mother>
-  <script>
-    const products = [
-    { id: 1, name: "Nothing Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_1.png", description: "Placeholder product description", height: 170, width: 50, model: "products/nothing_soda_r1/nothing_soda_r1.glb" },
-    { id: 2, name: "Nothing Cream Soda 6 Pack", price: 8, tags: ["Yummers"], img: "../yummers/soda_2.png", description: "Placeholder product description", height: 170, width: 50, model: "products/nothing_soda_r1/nothing_soda_r1.glb" },
-    { id: 3, name: "Gnaw bar 7 Pack", price: 6, tags: ["Yummers"], img: "../yummers/bar_1.png", description: "Placeholder product description", height: 40, width: 145, model: "products/gnaw_bar_r1/gnaw_bar_r1.glb" },
-	{ id: 4, name: "Boof Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/boof.png", description: "A charmingly loud and fluffy design.", height: 50, width: 50 },
-	{ id: 5, name: "Butwon Single Sticker", price: 0.50, tags: ["Sticker"], img: "../stickers/butwon.png", description: "A sticker of the logo of a shitty pointless game I've published.", height: 50, width: 50 },
-	{ id: 6, name: "Crushie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/crushie.png", description: "//>w<//", height: 50, width: 50 },
-	{ id: 7, name: "Gopper block Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/gopper_block.png", description: "This is a texture made for a banner image for my first-ever Minecraft datapack 'oSzoukaua's: Lucky blocks' on modrinth.", height: 50, width: 50 },
-	{ id: 8, name: "Fat fuck Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/fat_fuck.png", description: "Little guy, taken from a frame of an animation I was working on, on my animations channel.", height: 50, width: 50 },
-	{ id: 9, name: "Flox Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/flox.png", description: "An old logo for an unfinished, unreleased, and unannounced game I was working on.", height: 50, width: 50 },
-	{ id: 10, name: "Frag Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/frag.png", description: "Front render of a little frog 3D model I made, and uploaded to my Ko-fi :).", height: 50, width: 50 },
-	{ id: 11, name: "Froog Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/froog.png", description: "Side render of a little frog 3D model I made, and uploaded to my Ko-fi :).", height: 50, width: 50 },
-	{ id: 12, name: "Furries Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/furries.png", description: "Little sticker warning thing I designed because I was bored!", height: 50, width: 50 },
-	{ id: 13, name: "Heathy Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/heathy.png", description: "Center element I took from a picture I drew!", height: 50, width: 50 },
-	{ id: 14, name: "Larena Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/larena.png", description: "Center element I took from a picture I drew!", height: 50, width: 50 },
-	{ id: 15, name: "Love Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/love.png", description: "Old thing I made and then later updated with color because I was bored.", height: 50, width: 50 },
-	{ id: 16, name: "P.M.A.F Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pmaf.png", description: "Old logo for an unreleased, unfinished, and unpublished VRChat world I was working on.", height: 50, width: 50 },
-	{ id: 17, name: "Pup Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pup.png", description: "Center element I took from an announcement I made for an old VRChat group I ran.", height: 50, width: 50 },
-	{ id: 18, name: "Skrush Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/skrush.png", description: "Center element I took from an old picture I drew!", height: 50, width: 50 },
-	{ id: 19, name: "Sodafizz Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sodafizz.png", description: "Logo/icon for a YouTube channel that was once planned.", height: 50, width: 50 },
-	{ id: 20, name: "VCR Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/vcr.png", description: "Old logo for a 'gaming team' that I wanted to make when I was like 14.", height: 50, width: 50 },
-	{ id: 21, name: "Bald Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/bald.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 22, name: "Birthday Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/birthday.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 23, name: "Bri-ish Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/bri-ish.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 24, name: "Cat Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/cat.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 25, name: "Deadie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/deadie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 26, name: "Dura-sell Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/dura-sell.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 27, name: "Flamg Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/flamg.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 28, name: "Froggie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/froggie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 29, name: "Gay-Diation Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/gay-dation.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 30, name: "Mawmie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/mawmie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 31, name: "No Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/no.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 32, name: "Nuh-uh Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/nuh-uh.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 33, name: "Orgie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/orgie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 34, name: "Pawb Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pawb.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 35, name: "Pibs Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/pibs.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 36, name: "Slimmie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/slimmie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 37, name: "Sneepie Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sneepie.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 38, name: "Sphere Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/sphere.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 39, name: "Vlc Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/vlc.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 40, name: "Wada Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/wada.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 41, name: "Women Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/women.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 42, name: "Wub Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/wub.png", description: "Art I made for my Stickers YouTube channel.", height: 50, width: 50 },
-	{ id: 43, name: "AEJOICACOU Single Sticker", price: 0.50, tags: ["Stickers","AEJOICACOU"], img: "../stickers/AEJOICACOU_logo.png", description: "AEJOICACOU Universe logo.", height: 50, width: 50 },
-	{ id: 44, name: "Thirsty boi Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/thirsty.png", description: "Lil' guy i drew a while ago because i was bored", height: 50, width: 50 },
-	{ id: 45, name: "huh Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/huh.png", description: "Confused fella i drew for an animation meme i never posted.", height: 50, width: 50 },
-	{ id: 46, name: "Not apossom Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/not_apossom.png", description: "Cute lil' fella i drew for an animation meme i never posted.", height: 50, width: 50 },
-	{ id: 47, name: "Scraum fell :( Single Sticker", price: 0.50, tags: ["Stickers"], img: "../stickers/scraum_fell.png", description: "Cute lil' fella i drew for an animation meme i never posted.", height: 50, width: 50 },
-    ];
-
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    shuffle(products);
-
-    const basket = [];
-    const productListEl = document.getElementById("product-list");
-    const basketListEl = document.getElementById("basket-list");
-    const cartModal = document.getElementById("cart-modal");
-    const slider = document.getElementById("item-slider");
-    const sliderValue = document.getElementById("slider-value");
-
-    function updateSliderMax(count) {
-      const max = Math.min(20, count);
-      slider.max = max;
-      if (+slider.value > max) slider.value = max;
-      sliderValue.textContent = slider.value;
-    }
+			<footer>
+				<p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> </p>
+			</footer>
+		</div>
+	</body>
+	<script>
+	let products = [];
 	
-	slider.addEventListener('input', () => {
-  sliderValue.textContent = slider.value;
-  updateFlexBasis(+slider.value);
+	const searchBar = document.getElementById('search-bar');
+	const tagFilters   = Array.from(document.querySelectorAll('.tag-filter'));
+const matchAllBox  = document.getElementById('match-all-tags');
+
+
+searchBar.addEventListener('input', () => {
+  const query = searchBar.value.toLowerCase();
+  // filter products by query
+  const filtered = products.filter(product =>
+    product.name.toLowerCase().includes(query) ||
+    (product.tags && product.tags.some(tag => tag.toLowerCase().includes(query)))
+  );
+  displayProducts(filtered);
 });
+	
+			fetch('../physical_products/physical_products.json')
+			   .then(res => res.json())
+    .then(data => {
+      products = data.filter(item => item.tags?.includes("webstore_purchase"));
+      shuffle(products);
+      displayProducts(products);
+      updateSliderMax(products.length);
 
-    function updateFlexBasis(perRow) {
-      document.querySelectorAll('.product-item').forEach(item => {
-        item.style.flexBasis = `calc(${100 / perRow}% - 20px)`;
-      });
-    }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const dropdown = document.getElementById('filter-dropdown');
-    const toggle = dropdown.querySelector('.dropdown-toggle');
-
-    toggle.addEventListener('mouseenter', () => {
-      dropdown.classList.toggle('open');
+      // wire up listeners _after_ products exists
+      slider.addEventListener('input', () => {
+      sliderValue.textContent = slider.value;
+      updateFlexBasis(+slider.value);
     });
-
-  dropdown.addEventListener('mouseleave', () => {
-    dropdown.classList.remove('open');
-  });
-});
-
+      searchBar.addEventListener('input', filterProducts);
+      tagFilters.forEach(cb => cb.addEventListener('change', filterProducts));
+      matchAllBox.addEventListener('change', filterProducts);
+      document.getElementById('cart-button').addEventListener('click', openCart);
+    })
+    .catch(err => console.error('Error loading products:', err));
+		
+		    const basket = [];
+		    const productListEl = document.getElementById("product-list");
+		    const basketListEl = document.getElementById("basket-list");
+		    const cartModal = document.getElementById("cart-modal");
+		    const slider = document.getElementById("item-slider");
+		    const sliderValue = document.getElementById("slider-value");
+		
+		    function updateSliderMax(count) {
+		      const max = Math.min(20, count);
+		      slider.max = max;
+		      if (+slider.value > max) slider.value = max;
+		      sliderValue.textContent = slider.value;
+		    }
+			
+			slider.addEventListener('input', () => {
+		  sliderValue.textContent = slider.value;
+		  updateFlexBasis(+slider.value);
+		});
+		
+		    function updateFlexBasis(perRow) {
+		      document.querySelectorAll('.product-item').forEach(item => {
+		        item.style.flexBasis = `calc(${100 / perRow}% - 20px)`;
+		      });
+		    }
+		
+		  document.addEventListener('DOMContentLoaded', () => {
+		    const dropdown = document.getElementById('filter-dropdown');
+		    const toggle = dropdown.querySelector('.dropdown-toggle');
+		
+		    toggle.addEventListener('mouseenter', () => {
+		      dropdown.classList.toggle('open');
+		    });
+		
+		  dropdown.addEventListener('mouseleave', () => {
+		    dropdown.classList.remove('open');
+		  });
+		});
+		
 function displayProducts(items) {
   productListEl.innerHTML = '';
   items.forEach(product => {
     const div = document.createElement('div');
     div.classList.add('product-item');
+
+    // Check if the product has the 'custom_sticker' tag
+    const hasCustomSticker = product.tags && product.tags.includes('custom_sticker');
+
+    // Optional overlay image path — change to your actual overlay path
+    const overlayImage = hasCustomSticker
+      ? `<img class="sticker-overlay" src="custom_sticker_overlay.png" alt="Overlay" />`
+      : '';
+
     div.innerHTML = `
-      <img src="${product.img}" alt="${product.name}" />
+      <div class="product-image-wrapper">
+        <img src="${product.img}" alt="${product.name}" />
+        ${overlayImage}
+      </div>
       <h4>${product.name}</h4>
       <p>$${product.price}</p>
       <button class="btn add-to-cart btn-align-bottom btn-fill-horizontal" data-id="${product.id}">Add to Cart</button>
     `;
+
     div.addEventListener('click', (e) => {
       if (e.target.classList.contains('add-to-cart')) return;
       openModal(product);
     });
+
     productListEl.appendChild(div);
   });
+
   updateFlexBasis(+slider.value);
 }
+		
+			productListEl.addEventListener('click', (e) => {
+				if (e.target.classList.contains('add-to-cart')) {
+				const id = parseInt(e.target.getAttribute('data-id'), 10);
+				addToBasket(id);
+			}
+			});
+		
+		document.getElementById('cart-button').addEventListener('click', openCart);
+		
+		
+		function filterProducts() {
+		  const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked'))
+		                            .map(cb => cb.value);
+		  const matchAll = document.getElementById('match-all-tags').checked;
+		  const query = document.getElementById("search-bar").value.toLowerCase();
+		
+		  const filtered = products.filter(p => {
+		    const nameMatch = p.name.toLowerCase().includes(query);
+		
+		    if (selectedTags.length === 0) return nameMatch;
+		
+		    if (matchAll) {
+		      const allPresent = selectedTags.every(tag => p.tags.includes(tag));
+		      return nameMatch && allPresent;
+		    } else {
+		      const anyPresent = p.tags.some(tag => selectedTags.includes(tag));
+		      return nameMatch && anyPresent;
+		    }
+		  });
+		
+		  displayProducts(filtered);
+		}
+		
+		
+function openModal(product) {
+  document.getElementById('modal-name').textContent = product.name;
+  document.getElementById('modal-desc').textContent = product.description || '';
+  document.getElementById('modal-size').textContent =
+    product.height && product.width ? `H ${product.height}mm * W ${product.width}mm` : '';
+  document.getElementById('modal-add-btn').setAttribute('data-id', product.id);
 
-	productListEl.addEventListener('click', (e) => {
-		if (e.target.classList.contains('add-to-cart')) {
-		const id = parseInt(e.target.getAttribute('data-id'), 10);
-		addToBasket(id);
-	}
-	});
+  const modelViewer = document.getElementById('modal-model');
+  const imgEl = document.getElementById('modal-img');
 
-document.getElementById('cart-button').addEventListener('click', openCart);
-
-
-function filterProducts() {
-  const selectedTags = Array.from(document.querySelectorAll('.tag-filter:checked'))
-                            .map(cb => cb.value);
-  const matchAll = document.getElementById('match-all-tags').checked;
-  const query = document.getElementById("search-bar").value.toLowerCase();
-
-  const filtered = products.filter(p => {
-    const nameMatch = p.name.toLowerCase().includes(query);
-
-    // if no tags selected, just match name
-    if (selectedTags.length === 0) return nameMatch;
-
-    if (matchAll) {
-      // AND logic: every selected tag must be in p.tags
-      const allPresent = selectedTags.every(tag => p.tags.includes(tag));
-      return nameMatch && allPresent;
-    } else {
-      // OR logic: at least one selected tag appears in p.tags
-      const anyPresent = p.tags.some(tag => selectedTags.includes(tag));
-      return nameMatch && anyPresent;
-    }
-  });
-
-  displayProducts(filtered);
-}
-
-
-    function openModal(product) {
-      // Set text fields
-      document.getElementById('modal-name').textContent = product.name;
-      document.getElementById('modal-desc').textContent = product.description || '';
-      document.getElementById('modal-size').textContent =
-        product.height && product.width ? `H ${product.height}mm * W ${product.width}mm` : '';
-      document.getElementById('modal-add-btn').setAttribute('data-id', product.id);
-
-
-      // Toggle between model-viewer and img based on product.model
-      const modelViewer = document.getElementById('modal-model');
-      const imgEl = document.getElementById('modal-img');
-      if (product.model) {
-        modelViewer.src = product.model;
-        modelViewer.style.display = 'block';
-        imgEl.style.display = 'none';
-      } else {
-        imgEl.src = product.img;
-        imgEl.style.display = 'block';
-        modelViewer.style.display = 'none';
-      }
-
-   // Show modal
-      document.getElementById('product-modal').style.display = 'flex';
-
- // Configure Sizer button
-      const sizerBtn = document.getElementById('sizer-btn');
-      if (product.model) {
-        const encodedModel = encodeURIComponent(product.model);
-        sizerBtn.onclick = () =>
-          window.open(`../sizer/sizer.html?height=${product.height}&model=../webstore/${encodedModel}`, '_blank');
-      } else {
-        const encodedImg = encodeURIComponent(product.img);
-        sizerBtn.onclick = () =>
-          window.open(`../sizer/sizer.html?height=${product.height}&img=${encodedImg}`, '_blank');
-      }
-      sizerBtn.style.display = 'inline-block';
-    }
-
-function closeModal() {
-  document.getElementById('product-modal').style.display = 'none';
-}
-
-document.getElementById('modal-add-btn').addEventListener('click', function () {
-  const id = parseInt(this.getAttribute('data-id'), 10);
-  addToBasket(id);
-  closeModal();
-});
-
-const productModal = document.getElementById('product-modal');
-
-productModal.addEventListener('click', (e) => {
-  if (e.target === productModal) {
-    closeModal();
+  if (product.model) {
+    modelViewer.src = product.model;
+    modelViewer.style.display = 'block';
+    imgEl.style.display = 'none';
+  } else {
+    imgEl.style.display = 'block';
+    modelViewer.style.display = 'none';
+    renderStickerLayers('modal-img', product.id);
   }
-});
-
-cartModal.addEventListener('click', (e) => {
-  if (e.target === cartModal) {
-    closeCart(); // Assuming you have a function to close the cart modal
-  }
-});
 
 
-// Initial setup
-displayProducts(products);
-document.getElementById('search-bar')
-        .addEventListener('input', filterProducts);
-document.querySelectorAll('.tag-filter')
-        .forEach(cb => cb.addEventListener('change', filterProducts));
-
-// wire up the new toggle
-document.getElementById('match-all-tags')
-        .addEventListener('change', filterProducts);
-
-const params = new URLSearchParams(window.location.search);
-const tagParam = params.get('tag');
-if (tagParam) {
-  document.querySelectorAll('.tag-filter')
-          .forEach(cb => cb.checked = cb.value === tagParam);
-  filterProducts();
-}
-const openParam = params.get('open');
-if (openParam) {
-  const openId = parseInt(openParam, 10);
-  const target = products.find(p => p.id === openId);
-  if (target) {
-    setTimeout(() => openModal(target), 200);
-  }
-}
-	
-function renderBasket() {
-  const basketListEl = document.getElementById('basket-list');
-  basketListEl.innerHTML = '';
-  let total = 0;
-
-  // Loop through each item in the basket to display it
-  basket.forEach(item => {
-    const itemTotal = item.price * item.quantity;
-    total += itemTotal;
-
-    const li = document.createElement('li');
-    li.innerHTML = `
-      <span>${item.name}</span>
-      <span style="margin-left:auto;"></span>
-      <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="qty-input" style="width:50px; margin-left:10px;" />
-      <span class="item-total" style="width:60px; margin-left:10px;">$${itemTotal.toFixed(2)}</span>
-      <button class="remove-btn btn" data-id="${item.id}">X</button>
-    `;
-
-    // Quantity change listener
-    li.querySelector('.qty-input').addEventListener('change', e => {
-      const newQty = parseInt(e.target.value, 10);
-      updateQuantity(item.id, newQty);
-    });
-
-    // Remove listener
-    li.querySelector('.remove-btn').addEventListener('click', () => {
-      removeFromBasket(item.id);
-    });
-
-    basketListEl.appendChild(li);
-  });
-
-  // Display the total amount in the cart
-  document.getElementById('cart-total').textContent = `Total: $${total.toFixed(2)}`;
-}
-
-function addToBasket(id) {
-  const existing = basket.find(b => b.id === id);
-  if (existing) existing.quantity++;
-  else {
-    const prod = products.find(p => p.id === id);
-    basket.push({ ...prod, quantity: 1 });
-  }
-  renderBasket(); // Re-render the basket after updating
-}
-
-function updateQuantity(id, qty) {
-  const item = basket.find(b => b.id === id);
-  if (item) {
-    item.quantity = Math.max(1, qty); // Ensure quantity is at least 1
-    renderBasket(); // Re-render the basket after quantity change
-  }
-}
-
-function removeFromBasket(id) {
-  basket = basket.filter(b => b.id !== id); // Remove item from basket
-  renderBasket(); // Re-render the basket after removal
-}
-
-
-    function removeFromBasket(id) {
-      const index = basket.findIndex(b => b.id === id);
-      if (index > -1) {
-        basket.splice(index, 1);
-        renderBasket();
-      }
-    }
-
-    function purchaseBasket() {
-      if (basket.length === 0) {
-        alert('Your cart is empty');
-        return;
-      }
-      // Placeholder purchase logic
-      alert('THIS IS A FAKE PLACEHOLDER YOU DID NOT PURCHASE ANYTHING');
-      clearBasket();
-      closeCart();
-    }
-
-    // existing cart open/close and clear functions...
-    function clearBasket() { basket.length = 0; renderBasket(); }
-    function openCart() { document.getElementById('cart-modal').style.display = 'flex'; }
-    function closeCart() { document.getElementById('cart-modal').style.display = 'none'; }
-
-    // initial render
-    renderBasket();
-    document.getElementById('cart-button').addEventListener('click', openCart);
-
-function createModal(title, message, buttonText, callback) {
-    const modal = document.createElement('div');
-    modal.style = 'position:center;width:50%;height:100%;background:rgba(0,0,0,0.9);backdrop-filter: blur(10px);color:white;display:flex;justify-content:center;align-items:center;z-index:10000;';
-
-    const modalContent = document.createElement('div');
-    modalContent.style = 'text-align:center;padding:30px;border:2px solid white;background:black;border-radius: 6px;';
-
-    const modalTitle = document.createElement('h2');
-    modalTitle.textContent = title;
-    modalContent.appendChild(modalTitle);
-
-    const modalMessage = document.createElement('p');
-    modalMessage.textContent = message;
-    modalContent.appendChild(modalMessage);
-
-    const modalButton = document.createElement('button');
-    modalButton.textContent = buttonText;
-    modalButton.classList.add('btn');
-    modalButton.onclick = function() {
-        callback();
-        document.body.removeChild(modal);
-    };
-    modalContent.appendChild(modalButton);
-
-    modal.appendChild(modalContent);
-
-    document.body.appendChild(modal);
-}
-
-function createAgeModal() {
-    const params = new URLSearchParams(window.location.search);
-    const motherDiv = document.querySelector('mother');
-
-    if (params.get('age_modal') !== 'true') {
-        if (motherDiv) motherDiv.style.display = 'none';
-
-        createModal(
-            "Are you over 18?",
-            "This site contains content aimed at people aged 18 and older. By pressing \"I Agree\", you confirm that you are at least 18 years old and consent to viewing content intended for adults.",
-            "I Agree",
-            function () {
-                params.set('age_modal', 'true');
-                const newParams = params.toString();
-                const newUrl = window.location.pathname + '?' + newParams;
-                window.location.href = newUrl;
-            }
-        );
-    } else {
-        if (motherDiv) motherDiv.style.display = 'contents'; // or ''
-        appendUrlParamsToLinks();
-    }
-}
-
-function appendUrlParamsToLinks() {
-    const currentQuery = window.location.search;
-    if (!currentQuery) return;
-
-    const excludeParams = ['hidden','tag','open']; // Add any keys you want to exclude
-    const currentParams = new URLSearchParams(currentQuery);
-
-    // Remove excluded params
-    excludeParams.forEach(param => currentParams.delete(param));
-
-    const paramString = currentParams.toString();
-    if (!paramString) return;
-
-    // Only target links with the data-append-params attribute
-    document.querySelectorAll("a[data-append-params][href]").forEach(link => {
-        const url = new URL(link.href, window.location.origin);
-        const linkParams = new URLSearchParams(url.search);
-
-        // Append current params if not already present
-        currentParams.forEach((value, key) => {
-            if (!linkParams.has(key)) {
-                linkParams.set(key, value);
-            }
-        });
-
-        url.search = linkParams.toString();
-        link.href = url.toString();
-    });
-}
-
-
-function toggleElementsBasedOnQuery() {
-
-    const params = new URLSearchParams(window.location.search);
-    const hiddenIds = params.get('hidden') ? params.get('hidden').split(',') : [];
-
-
-    if (hiddenIds.length > 0) {
-
-        const elements = document.querySelectorAll('[id]');
-
-        elements.forEach((element) => {
-            if (hiddenIds.includes(element.id)) {
-                element.classList.add('hide');
-            }
-        });
-    }
-}
-
-// --- COOKIE HELPERS ---
-function setCookie(name, value, days) {
-  const expires = days
-    ? "; expires=" + new Date(Date.now() + days*864e5).toUTCString()
-    : "";
-  document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
-}
-function getCookie(name) {
-  return document.cookie.split("; ").reduce((r, v) => {
-    const [key, val] = v.split("=");
-    return key === name ? decodeURIComponent(val) : r;
-  }, "");
-}
-
-// --- SAVE & LOAD ---
-function saveCartToCookies() {
-  // Store the basket array as JSON
-  setCookie("savedBasket", JSON.stringify(basket), 30);
-}
-
-function loadCartFromCookies() {
-  const data = getCookie("savedBasket");
-  if (data) {
-    try {
-      const arr = JSON.parse(data);
-      if (Array.isArray(arr)) {
-        // Replace our in-memory basket
-        basket.length = 0;
-        arr.forEach(item => basket.push(item));
-      }
-    } catch(e) {
-      console.warn("Invalid basket cookie:", e);
-    }
-  }
-}
-
-
-window.onload = function() {
-  createAgeModal();
-  toggleElementsBasedOnQuery();
-};
-
-  </script>
-</body>
+		
+		      document.getElementById('product-modal').style.display = 'flex';
+		
+		      const sizerBtn = document.getElementById('sizer-btn');
+		      if (product.model) {
+		        const encodedModel = encodeURIComponent(product.model);
+		        sizerBtn.onclick = () =>
+		          window.open(`../sizer/sizer.html?height=${product.height}&model=../webstore/${encodedModel}`, '_blank');
+		      } else {
+		        const encodedImg = encodeURIComponent(product.img);
+		        sizerBtn.onclick = () =>
+		          window.open(`../sizer/sizer.html?height=${product.height}&img=${encodedImg}`, '_blank');
+		      }
+		      sizerBtn.style.display = 'inline-block';
+		    }
+		
+		function closeModal() {
+		  document.getElementById('product-modal').style.display = 'none';
+		}
+		
+		document.getElementById('modal-add-btn').addEventListener('click', function () {
+		  const id = parseInt(this.getAttribute('data-id'), 10);
+		  addToBasket(id);
+		  closeModal();
+		});
+		
+		const productModal = document.getElementById('product-modal');
+		
+		productModal.addEventListener('click', (e) => {
+		  if (e.target === productModal) {
+		    closeModal();
+		  }
+		});
+		
+		cartModal.addEventListener('click', (e) => {
+		  if (e.target === cartModal) {
+		    closeCart();
+		  }
+		});
+		
+		// wire up the new toggle
+		document.getElementById('match-all-tags')
+		        .addEventListener('change', filterProducts);
+		
+		const params = new URLSearchParams(window.location.search);
+		const tagParam = params.get('tag');
+		if (tagParam) {
+		  document.querySelectorAll('.tag-filter')
+		          .forEach(cb => cb.checked = cb.value === tagParam);
+		  filterProducts();
+		}
+		const openParam = params.get('open');
+		if (openParam) {
+		  const openId = parseInt(openParam, 10);
+		  const target = products.find(p => p.id === openId);
+		  if (target) {
+		    setTimeout(() => openModal(target), 200);
+		  }
+		}
+			
+		function renderBasket() {
+		  const basketListEl = document.getElementById('basket-list');
+		  basketListEl.innerHTML = '';
+		  let total = 0;
+		
+		  // Loop through each item in the basket to display it
+		  basket.forEach(item => {
+		    const itemTotal = item.price * item.quantity;
+		    total += itemTotal;
+		
+		    const li = document.createElement('li');
+		    li.innerHTML = `
+		      <span>${item.name}</span>
+		      <span style="margin-left:auto;"></span>
+		      <input type="number" min="1" value="${item.quantity}" data-id="${item.id}" class="qty-input" style="width:50px; margin-left:10px;" />
+		      <span class="item-total" style="width:60px; margin-left:10px;">$${itemTotal.toFixed(2)}</span>
+		      <button class="remove-btn btn" data-id="${item.id}">X</button>
+		    `;
+		
+		    // Quantity change listener
+		    li.querySelector('.qty-input').addEventListener('change', e => {
+		      const newQty = parseInt(e.target.value, 10);
+		      updateQuantity(item.id, newQty);
+		    });
+		
+		    // Remove listener
+		    li.querySelector('.remove-btn').addEventListener('click', () => {
+		      removeFromBasket(item.id);
+		    });
+		
+		    basketListEl.appendChild(li);
+		  });
+		
+		  // Display the total amount in the cart
+		  document.getElementById('cart-total').textContent = `Total: $${total.toFixed(2)}`;
+		}
+		
+		function addToBasket(id) {
+		  const existing = basket.find(b => b.id === id);
+		  if (existing) existing.quantity++;
+		  else {
+		    const prod = products.find(p => p.id === id);
+		    basket.push({ ...prod, quantity: 1 });
+		  }
+		  renderBasket();
+		}
+		
+		function updateQuantity(id, qty) {
+		  const item = basket.find(b => b.id === id);
+		  if (item) {
+		    item.quantity = Math.max(1, qty);
+		    renderBasket();
+		  }
+		}
+		
+		function removeFromBasket(id) {
+		  basket = basket.filter(b => b.id !== id);
+		  renderBasket();
+		}
+		
+		
+		    function removeFromBasket(id) {
+		      const index = basket.findIndex(b => b.id === id);
+		      if (index > -1) {
+		        basket.splice(index, 1);
+		        renderBasket();
+		      }
+		    }
+		
+		    function purchaseBasket() {
+		      if (basket.length === 0) {
+		        alert('Your cart is empty');
+		        return;
+		      }
+		      alert('THIS IS A FAKE PLACEHOLDER YOU DID NOT PURCHASE ANYTHING');
+		      clearBasket();
+		      closeCart();
+		    }
+		
+		    function clearBasket() { basket.length = 0; renderBasket(); }
+		    function openCart() { document.getElementById('cart-modal').style.display = 'flex'; }
+		    function closeCart() { document.getElementById('cart-modal').style.display = 'none'; }
+		
+		    renderBasket();
+		    document.getElementById('cart-button').addEventListener('click', openCart);
+		
+		function setCookie(name, value, days) {
+		  const expires = days
+		    ? "; expires=" + new Date(Date.now() + days*864e5).toUTCString()
+		    : "";
+		  document.cookie = name + "=" + encodeURIComponent(value) + expires + "; path=/";
+		}
+		function getCookie(name) {
+		  return document.cookie.split("; ").reduce((r, v) => {
+		    const [key, val] = v.split("=");
+		    return key === name ? decodeURIComponent(val) : r;
+		  }, "");
+		}
+		
+		function saveCartToCookies() {
+		  setCookie("savedBasket", JSON.stringify(basket), 30);
+		}
+		
+		function loadCartFromCookies() {
+		  const data = getCookie("savedBasket");
+		  if (data) {
+		    try {
+		      const arr = JSON.parse(data);
+		      if (Array.isArray(arr)) {
+		        basket.length = 0;
+		        arr.forEach(item => basket.push(item));
+		      }
+		    } catch(e) {
+		      console.warn("Invalid basket cookie:", e);
+		    }
+		  }
+		}
+	</script>
+	<script src="../common_assets/base_js.js"></script>
+	<script src="../stickers/layers.js"></script>
+	</body>
 </html>

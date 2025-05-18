@@ -1,0 +1,256 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Space Mono", monospace;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    scrollbar-gutter: stable;
+}
+
+.btn {
+    text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+    padding: 0.5em 1em;
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-top-right,
+.btn-bottom-right {
+    font-size: 0.85em;
+    padding: 0.4em 0.8em;
+}
+
+.btn-fill-horizontal {
+    width: 100%;
+}
+
+.btn-align-bottom {
+    margin-top: auto;
+    height: 3em;
+}
+
+.btn:hover::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    z-index: -1;
+    background: repeating-linear-gradient(45deg, white 0px, white 4px, transparent 4px, transparent 8px);
+    background-size: 11.314px 11.314px;
+    animation: scrollStripes 1s linear infinite;
+    border-radius: 3px;
+}
+
+.close-btn {
+padding: 0;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#item-slider {
+  -webkit-appearance: none;
+  width: 25em;
+  height: 12px;
+  background: #000;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  outline: none;
+}
+
+#item-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: #000;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+#item-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background: #000;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+ input[type=number] {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  width: 120px;
+  outline: none;
+
+  -moz-appearance: number-input;
+  -webkit-appearance: number-input;
+  appearance: number-input;
+}
+
+@keyframes scrollStripes {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -28.285px 28.285px;
+    }
+}
+
+.logo {
+    margin-top: 30px;
+}
+
+.logo img {
+    width: 160px;
+    height: auto;
+}
+
+header {
+    font-size: 2em;
+    margin: 20px 0;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+subheader {
+	font-size: 1.2em;
+	color: lightgray;
+	text-align: center;
+}
+
+footer {
+    font-size: 0.9em;
+    text-align: center;
+    padding: 20px;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+.hide {
+    display: none;
+}
+
+/* Style dropdown selects to match theme */
+select {
+  background-color: black;
+  color: white;
+  border: 1.5px solid white;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-family: "Space Mono", monospace;
+  font-size: 0.9rem;
+  cursor: pointer;
+  min-width: 120px;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
+
+option {
+  cursor: pointer;
+}
+
+/* Style sliders to match #item-slider style */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 70px;
+  height: 12px;
+  background: black;
+  border: 1px solid white;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* WebKit slider thumb */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: black;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type=range]:hover::-webkit-slider-thumb= {
+  background: white;
+  border-color: black;
+}
+
+/* Firefox slider thumb */
+input[type=range]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: black;
+  border: 1px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type=range]:hover::-moz-range-thumb {
+  background: white;
+  border-color: black;
+}
+
+/* Label styling to align nicely with controls */
+label {
+  font-family: "Space Mono", monospace;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+  min-width: 80px;
+  user-select: none;
+}
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+	  height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #111;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #333;
+      border-radius: 0.25vw;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444;
+    }

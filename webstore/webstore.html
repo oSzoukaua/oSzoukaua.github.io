@@ -70,16 +70,6 @@
 			margin-top: auto;
 			}
 			
-			#search-bar {
-			width: 100%;
-			background: #000;
-			padding: 8px;
-			margin-top: 10px;
-			color: #fff;
-			font-size: 1em;
-			border-radius: 4px;
-			}
-			
 			#filters {
 			margin-top: 20px;
 			text-align: left;
@@ -298,7 +288,7 @@
   margin: 0; /* reset default margins so gap spacing applies uniformly */
 }
 
-.sticker-overlay {
+.product-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -320,7 +310,7 @@
 				<input type="text" id="search-bar" placeholder="Search for products..." />
 			</div>
 			<div id="filters">
-				<div class="category_title">Categories:</div>
+				<div class="category_title">Filters:</div>
 				<label><input type="checkbox" class="tag-filter" value="Yummers" id="checkbox_yummers"/> Yummers</label>
 				<label><input type="checkbox" class="tag-filter" value="Stickers" id="checkbox_stickers"/> Stickers</label>
 				<label><input type="checkbox" class="tag-filter" value="AEJOICACOU" id="checkbox_aejoicacou"/> AEJOICACOU</label>
@@ -371,7 +361,7 @@
   </div>
 </div>
 			<footer>
-				<p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> </p>
+				<p>⊗ oSzoukaua - <a href="https://ko-fi.com/oszoukaua">Support me!</a> - <a href="../contact/contact.html?hidden=yummers-email,stickers-email,general-email,general-bluesky,general-discord" data-append-params>Contact</a> - <a href="../legal/legal.html">legal</a></p>
 			</footer>
 		</div>
 	</body>
@@ -457,30 +447,34 @@ function displayProducts(items) {
     const div = document.createElement('div');
     div.classList.add('product-item');
 
-    // Check if the product has the 'custom_sticker' tag
-    const hasCustomSticker = product.tags && product.tags.includes('custom_sticker');
+// Determine overlay images based on tags
+let overlays = '';
 
-    // Optional overlay image path — change to your actual overlay path
-    const overlayImage = hasCustomSticker
-      ? `<img class="sticker-overlay" src="custom_sticker_overlay.png" alt="Overlay" />`
-      : '';
+if (product.tags?.includes('custom_image')) {
+  overlays += `<img class="product-overlay" src="custom_image_overlay.png" alt="Custom Sticker Overlay" />`;
+}
 
-    div.innerHTML = `
-      <div class="product-image-wrapper">
-        <img src="${product.img}" alt="${product.name}" />
-        ${overlayImage}
-      </div>
-      <h4>${product.name}</h4>
-      <p>$${product.price}</p>
-      <button class="btn add-to-cart btn-align-bottom btn-fill-horizontal" data-id="${product.id}">Add to Cart</button>
-    `;
+if (product.tags?.includes('3d_modal')) {
+  overlays += `<img class="product-overlay" src="3d_modal_overlay.png" alt="3D Modal Overlay" />`;
+}
 
-    div.addEventListener('click', (e) => {
-      if (e.target.classList.contains('add-to-cart')) return;
-      openModal(product);
-    });
+div.innerHTML = `
+  <div class="product-image-wrapper">
+    <img src="${product.img}" alt="${product.name}" />
+    ${overlays}
+  </div>
+  <h4>${product.name}</h4>
+  <p>$${product.price}</p>
+  <button class="btn add-to-cart btn-align-bottom btn-fill-horizontal" data-id="${product.id}">Add to Cart</button>
+`;
 
-    productListEl.appendChild(div);
+div.addEventListener('click', (e) => {
+  if (e.target.classList.contains('add-to-cart')) return;
+  openModal(product);
+});
+
+productListEl.appendChild(div);
+
   });
 
   updateFlexBasis(+slider.value);
@@ -537,7 +531,7 @@ function openModal(product) {
   } else {
     imgEl.style.display = 'block';
     modelViewer.style.display = 'none';
-    renderStickerLayers('modal-img', product.id);
+    render_image_layers('modal-img', product.id);
   }
 
 
@@ -720,6 +714,6 @@ function openModal(product) {
 		}
 	</script>
 	<script src="../common_assets/base_js.js"></script>
-	<script src="../stickers/layers.js"></script>
+	<script src="../custom_image/custom_image_logic.js"></script>
 	</body>
 </html>
